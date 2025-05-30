@@ -1,3 +1,4 @@
+import HeroRoom from "../components/3dComponents/HeroRoom";
 import SearchButton from "../components/SearchButton";
 
 const Hero = () => {
@@ -23,6 +24,12 @@ const Hero = () => {
             <SearchButton />
           </div>
         </header>
+        {/* RIGHT : 3D MODEL */}
+        <figure>
+          <div className="hero-3d-layout">
+            <HeroRoom />
+          </div>
+        </figure>
       </div>
     </section>
   );
