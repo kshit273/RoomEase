@@ -20,6 +20,7 @@ section {
 }
 
 @theme {
+  --container-tablet: 1024px;
   --font-sans: "Poppins", sans-serif;
   --color-focus-100: #d72638;
   --color-black-100: #000000;
@@ -79,7 +80,7 @@ section {
   }
 
   .hero-layout {
-    @apply relative z-10 md:mt-20 mt-30 md:h-dvh h-[80vh] flex md:items-center items-start justify-center;
+    @apply relative z-10 xl:mt-20 mt-30 md:h-dvh h-[80vh] flex xl:items-center items-start justify-center;
   }
 
   .hero-text {
@@ -91,7 +92,7 @@ section {
   }
 
   .hero-3d-layout {
-    @apply xl:w-[70%] w-full h-full min-h-[50vh] absolute xl:-top-20 top-24 xl:-right-20 right-0;
+    @apply lg:w-[70%] w-full h-full min-h-[30vh] absolute lg:-top-20 top-60 lg:-right-20 right-0 z-1;
   }
 
   .navbar {

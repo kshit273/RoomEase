@@ -1,21 +1,20 @@
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { Room } from "./Room";
-
-const bulbPositions = [
-  [83.616, 257.793, 79.076],
-  [13.039, 239.985, 84.884],
-  [-55.481, 224.37, 52.732],
-  [52.58, 239.211, 30.766],
-  [-18.175, 228.615, 34.155],
-];
+import { useMediaQuery } from "react-responsive";
 
 const HeroRoom = () => {
+  let pos = [0, -130, 0];
+  const isSmallScreen = useMediaQuery({ maxWidth: 1800 });
+
+  if (isSmallScreen) {
+    return null;
+  }
+
   return (
-    <Canvas camera={{ position: [0, 0, 15], fov: 45 }}>
+    <Canvas camera={{ position: [550, 550, 550], fov: 55 }}>
       <OrbitControls
-        enablePan={false}
-        maxDistance={600}
+        maxDistance={550}
         minDistance={300}
         minPolarAngle={Math.PI / 2.5}
         maxPolarAngle={Math.PI / 2}
@@ -23,17 +22,7 @@ const HeroRoom = () => {
         maxAzimuthAngle={Math.PI / 2}
       />
       <ambientLight intensity={2.5} color="#fff8e1" />
-      {bulbPositions.map((pos, idx) => (
-        <pointLight
-          key={idx}
-          position={pos}
-          intensity={10}
-          distance={500}
-          color="#fff8e1"
-          castShadow
-        />
-      ))}
-      <group position={[0, -130, 0]}>
+      <group position={pos}>
         <Room />
       </group>
     </Canvas>
