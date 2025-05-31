@@ -1,10 +1,12 @@
 import HeroRoom from "../components/3dComponents/HeroRoom";
 import SearchButton from "../components/SearchButton";
+import { useMediaQuery } from "react-responsive";
 
 const Hero = () => {
+  const isSmallScreen = useMediaQuery({ maxWidth: 1800 });
   return (
     <section id="hero" className="relative overflow-hidden">
-      <div className="hero-layout">
+      <div className={`hero-layout ${isSmallScreen ? "h-[40vh]" : "h-[80vh]"}`}>
         {/* Left section */}
         <header className="flex flex-col md:items-start items-center md:justify-center md:w-full w-screen md:px-20 px-5">
           <div className="flex flex-col gap-7">
@@ -19,11 +21,13 @@ const Hero = () => {
           </div>
         </header>
         {/* RIGHT : 3D MODEL */}
-        <figure>
-          <div className="hero-3d-layout">
-            <HeroRoom />
-          </div>
-        </figure>
+        {!isSmallScreen && (
+          <figure>
+            <div className="hero-3d-layout">
+              <HeroRoom />
+            </div>
+          </figure>
+        )}
       </div>
     </section>
   );
