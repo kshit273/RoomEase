@@ -1,21 +1,67 @@
-import { div } from "three/tsl";
 import { about } from "../constants/Abt";
+import Leftabt from "../components/Leftabt";
+import RightAbt from "../components/RightAbt";
+import { useMediaQuery } from "react-responsive";
+import Smallabt from "../components/Smallabt";
 
 const About = () => {
+  const isMedScreen = useMediaQuery({ maxWidth: 1800 });
+  const isSmallScreen = useMediaQuery({ maxWidth: 1000 });
+
+  // Timeline position and height
+  const timelineLeft = isMedScreen ? "left-[40px]" : "left-[755px]";
+  const timelineHeight = isSmallScreen ? "h-[1100px]" : "h-[1500px]";
+
+  // Content margin and gap
+  const contentMarginGap = isSmallScreen
+    ? "ml-15 mt-20 gap-15"
+    : "ml-25 mt-32 gap-25";
+
   return (
-    <div>
-      {about.map((head, idx) => (
-        <div>
-          <h3 key={head.heading + idx}>{head.heading}</h3>
-          {head.inner.map((item, x) => (
-            <div key={item.subheading + x}>
-              <h2>{item.subheading}</h2>
-              <p>{item.para}</p>
+    <section id="about" className="relative">
+      {/* Timeline vertical red line */}
+      <div
+        className={`pointer-events-none absolute top-5 ${timelineLeft} ${timelineHeight} bg-[#D72638] w-[2px] z-0`}
+      />
+      {/* Content with circles */}
+      <div className={`flex flex-col ${contentMarginGap} relative z-10`}>
+        {about.map((item, idx) => (
+          <div key={idx} className="relative flex items-start">
+            {/* Circle on the timeline */}
+            <div
+              className={`absolute`}
+              style={{
+                left: isSmallScreen ? -34.5 : isMedScreen ? -82 : 633,
+                top: 5,
+                zIndex: 10,
+              }}
+            >
+              <div
+                className={`${
+                  isSmallScreen ? `w-[30px] h-[30px]` : `w-[45px] h-[45px]`
+                }  rounded-full bg-[#d9d9d9] flex items-center justify-center`}
+              >
+                <div
+                  className={`${
+                    isSmallScreen ? `w-[13px] h-[13px]` : `w-[18px] h-[18px]`
+                  } rounded-full bg-[#D72638]`}
+                ></div>
+              </div>
             </div>
-          ))}
-        </div>
-      ))}
-    </div>
+            {/* Section content */}
+            <div className="flex-1">
+              {isMedScreen ? (
+                <Smallabt heading={item.heading} inner={item.inner} />
+              ) : idx % 2 === 0 ? (
+                <Leftabt heading={item.heading} inner={item.inner} />
+              ) : (
+                <RightAbt heading={item.heading} inner={item.inner} />
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 };
 

@@ -19,13 +19,19 @@ section {
   width: 100dvw;
 }
 
+.gradient-line {
+  width: 2px;
+  height: 200px;
+  background: #d72638;
+}
+
 @theme {
   --container-tablet: 1024px;
   --font-sans: "Poppins", sans-serif;
   --color-focus-100: #d72638;
   --color-black-100: #000000;
-  --color-grey-50: #d9d9d9;
-  --color-grey-100: #1a1a1a;
+  --color-grey-50: #e8e8e8;
+  --color-grey-100: #d9d9d9;
 }
 
 @layer utilities {
@@ -79,8 +85,20 @@ section {
     @apply grid grid-cols-1 xl:grid-cols-12 gap-10;
   }
 
+  .timeline-wrapper {
+    @apply absolute top-0 xl:left-[35.5vw] md:left-10 left-5 h-full flex justify-center;
+  }
+
+  .timeline {
+    @apply absolute z-30 h-[110%] -top-10 w-14 md:w-28 bg-grey-50;
+  }
+
+  .timeline-logo {
+    @apply md:size-20 size-10 flex-none rounded-full flex justify-center items-center md:-translate-y-7 border border-grey-50 bg-grey-50;
+  }
+
   .hero-layout {
-    @apply relative z-10 xl:mt-20 mt-30 md:h-dvh h-[80vh] flex xl:items-center items-start justify-center;
+    @apply relative z-10 xl:mt-40 mt-30 flex xl:items-center items-start justify-center;
   }
 
   .hero-text {
@@ -92,7 +110,7 @@ section {
   }
 
   .hero-3d-layout {
-    @apply lg:w-[70%] w-full h-full min-h-[30vh] absolute lg:-top-20 top-60 lg:-right-20 right-0 z-1;
+    @apply lg:w-[70%] w-full h-[80vh] min-h-[30vh] absolute lg:-top-20 top-60 lg:-right-20 right-0 z-1;
   }
 
   .navbar {
