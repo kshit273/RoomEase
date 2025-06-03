@@ -52,4 +52,70 @@ const about = [
   },
 ];
 
-export { about };
+const tenantFeatureCards = [
+  {
+    titleStart: "Find Verified Rooms ",
+    titleMid: "in Seconds",
+    titleEnd: "",
+    img: "./images/feature-imgs/room.png",
+  },
+  {
+    titleStart: "Earn ",
+    titleMid: "gauranteed cashback",
+    titleEnd: " with Every Payment",
+    img: "./images/feature-imgs/money.png",
+  },
+  {
+    titleStart: "Only ",
+    titleMid: "Verified",
+    titleEnd: " PGs Listed",
+    img: "./images/feature-imgs/shield.png",
+  },
+  {
+    titleStart: "Join a ",
+    titleMid: "Community",
+    titleEnd: " of Thousands",
+    img: "./images/feature-imgs/people.png",
+  },
+  {
+    titleStart: "Find Rooms You’ll ",
+    titleMid: "Love",
+    titleEnd: "",
+    img: "./images/feature-imgs/heart.png",
+  },
+];
+
+const landlordFeatureCards = [
+  {
+    titleStart: "Boost Your ",
+    titleMid: " Earnings with Premium ",
+    titleEnd: "PG Listing",
+    img: "./images/feature-imgs/coinstack.png",
+  },
+  {
+    titleStart: "Just accept payments, let RoomEase ",
+    titleMid: "keep the record",
+    titleEnd: "",
+    img: "./images/feature-imgs/payment.png",
+  },
+  {
+    titleStart: "Get ",
+    titleMid: "Verified Tenants",
+    titleEnd: " Only",
+    img: "./images/feature-imgs/tenant.png",
+  },
+  {
+    titleStart: "Get",
+    titleMid: " Verified ",
+    titleEnd: "with a Badge",
+    img: "./images/feature-imgs/badge.png",
+  },
+  {
+    titleStart: "Let RoomEase ",
+    titleMid: "Advertise",
+    titleEnd: " Your PGs to the Right Audience",
+    img: "./images/feature-imgs/megaphone.png",
+  },
+];
+
+export { about, tenantFeatureCards, landlordFeatureCards };
