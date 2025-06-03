@@ -3,14 +3,20 @@ import Leftabt from "../components/Leftabt";
 import RightAbt from "../components/RightAbt";
 import { useMediaQuery } from "react-responsive";
 import Smallabt from "../components/Smallabt";
+import JoinAbt from "../components/JoinAbt";
 
 const About = () => {
   const isMedScreen = useMediaQuery({ maxWidth: 1800 });
-  const isSmallScreen = useMediaQuery({ maxWidth: 1000 });
+  const isSmallScreen = useMediaQuery({ maxWidth: 800 });
 
   // Timeline position and height
   const timelineLeft = isMedScreen ? "left-[40px]" : "left-[755px]";
-  const timelineHeight = isSmallScreen ? "h-[1100px]" : "h-[1500px]";
+  let timelineHeight = "h-[1070px]";
+  if (isSmallScreen) {
+    timelineHeight = "h-[1150px]";
+  } else if (isMedScreen) {
+    timelineHeight = "h-[1700px]";
+  }
 
   // Content margin and gap
   const contentMarginGap = isSmallScreen
@@ -60,6 +66,11 @@ const About = () => {
             </div>
           </div>
         ))}
+        {isSmallScreen || isMedScreen ? (
+          <JoinAbt isMedScreen={isMedScreen} isSmallScreen={isSmallScreen} />
+        ) : (
+          <></>
+        )}
       </div>
     </section>
   );
