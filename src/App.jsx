@@ -2,6 +2,7 @@ import About from "./sections/About";
 import Features from "./sections/Features";
 import Hero from "./sections/Hero";
 import Plans from "./sections/Plans";
+import Testimonials from "./sections/Testimonials";
 
 function App() {
   return (
@@ -13,6 +14,9 @@ function App() {
         <img src="/images/bgimg3.png" alt="background" />
       </div>
       <div className="absolute top-[3120px] left-[-20px] z-1 md:w-[512px] w-[256px]  md:h-[560px] h-[280px] ">
+        <img src="/images/bgimg3.png" alt="background" />
+      </div>
+      <div className="absolute top-[4720px] left-[-20px] z-1 md:w-[512px] w-[256px]  md:h-[560px] h-[280px] ">
         <img src="/images/bgimg3.png" alt="background" />
       </div>
       <div className="absolute bottom-[-250px] right-0 z-1 md:w-[512px] w-[256px]  md:h-[560px] h-[280px]">
@@ -28,6 +32,7 @@ function App() {
       <About />
       <Features />
       <Plans />
+      <Testimonials />
     </>
   );
 }
