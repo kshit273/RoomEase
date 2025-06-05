@@ -118,4 +118,30 @@ const landlordFeatureCards = [
   },
 ];
 
-export { about, tenantFeatureCards, landlordFeatureCards };
+const basicList = ["List your PG on RoomEase for FREE"];
+
+const popularList = [
+  "List your PG on RoomEase for FREE",
+  "Gauranted cashback for tenants",
+  "Rewards for tenants",
+  "We will handle student payment records",
+];
+
+const premiumList = [
+  "List your PG on RoomEase for FREE",
+  "Gauranted cashback for tenants",
+  "Rewards for tenants",
+  "We will handle student payment records",
+  "Premium badges for your PG",
+  "Priority listings (PGs with badges are ranked higher and verified thoroughly)",
+  "Run targeted ads if your PG rank higher",
+];
+
+export {
+  about,
+  tenantFeatureCards,
+  landlordFeatureCards,
+  basicList,
+  popularList,
+  premiumList,
+};

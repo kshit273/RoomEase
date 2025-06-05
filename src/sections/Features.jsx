@@ -7,7 +7,7 @@ const Features = () => {
   const isMedScreen = useMediaQuery({ maxWidth: 1800 });
   const isSmallScreen = useMediaQuery({ maxWidth: 800 });
   return (
-    <section id="features" className="relative mt-[100px]">
+    <section id="features" className="relative mt-[100px] z-2">
       <div
         className={`flex flex-col ${
           isSmallScreen ? `gap-[75px]` : `gap-[150px]`

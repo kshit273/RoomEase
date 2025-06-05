@@ -24,7 +24,7 @@ const About = () => {
     : "ml-25 mt-32 gap-25";
 
   return (
-    <section id="about" className="relative">
+    <section id="about" className="relative z-2">
       {/* Timeline vertical red line */}
       <div
         className={`pointer-events-none absolute top-5 ${timelineLeft} ${timelineHeight} bg-[#D72638] w-[2px] z-0`}
