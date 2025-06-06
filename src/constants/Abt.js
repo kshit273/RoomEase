@@ -142,9 +142,9 @@ const testimonials = [
     user: "Harry Potter",
     link: "@harry1273",
     image: "./images/PP4.png",
-    stars: 4,
+    stars: 5,
     review:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum omnis ex quo veritatis. Repellendus magnam incidunt beatae. Accusamus ab aut numquam, quidem mollitia eveniet, similique aliquam magni repellat tenetur recusandae provident debitis saepe? Eum dolor, ab quia delectus architecto corporis adipisci quis pariatur impedit doloribus eligendi officiis neque dolorem provident tempore aut similique debitis distinctio nemo ipsam est magni id placeat. Molestiae accusamus quisquam eligendi inventore est labore iure, facere placeat sed iusto laboriosam reiciendis atque possimus! Voluptas quos ea possimus eius sit animi nihil delectus aperiam vero recusandae voluptate, officiis",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum omnis ex quo veritatis. Repellendus magnam incidunt beatae. Accusamus ab aut numquam, quidem mollitia eveniet, similique aliquam magni repellat tenetur recusandae provident debitis saepe? Eum dolor, ab quia delectus architecto corporis adipisci quis pariatur impedit doloribus",
   },
   {
     user: "Harry Potter",
@@ -152,39 +152,23 @@ const testimonials = [
     image: "./images/PP4.png",
     stars: 4,
     review:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum omnis ex quo veritatis. Repellendus magnam incidunt beatae. Accusamus ab aut numquam, quidem mollitia eveniet, similique aliquam magni repellat tenetur recusandae provident debitis saepe? Eum dolor, ab quia delectus architecto corporis adipisci quis pariatur impedit doloribus eligendi officiis neque dolorem provident tempore aut similique debitis distinctio nemo ipsam est magni id placeat. Molestiae accusamus quisquam eligendi inventore est labore iure, facere placeat sed iusto laboriosam reiciendis atque possimus! Voluptas quos ea possimus eius sit animi nihil delectus aperiam vero recusandae voluptate, officiis",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum omnis ex quo veritatis. Repellendus magnam incidunt beatae. Accusamus ab aut numquam, quidem mollitia eveniet, similique aliquam magni repellat tenetur recusandae provident debitis saepe? Eum dolor, ab quia delectus architecto corporis adipisci quis pariatur impedit doloribus",
   },
   {
     user: "Harry Potter",
     link: "@harry1273",
     image: "./images/PP4.png",
-    stars: 4,
+    stars: 2,
     review:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum omnis ex quo veritatis. Repellendus magnam incidunt beatae. Accusamus ab aut numquam, quidem mollitia eveniet, similique aliquam magni repellat tenetur recusandae provident debitis saepe? Eum dolor, ab quia delectus architecto corporis adipisci quis pariatur impedit doloribus eligendi officiis neque dolorem provident tempore aut similique debitis distinctio nemo ipsam est magni id placeat. Molestiae accusamus quisquam eligendi inventore est labore iure, facere placeat sed iusto laboriosam reiciendis atque possimus! Voluptas quos ea possimus eius sit animi nihil delectus aperiam vero recusandae voluptate, officiis",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum omnis ex quo veritatis. Repellendus magnam incidunt beatae. Accusamus ab aut numquam, quidem mollitia eveniet, similique aliquam magni repellat tenetur recusandae provident debitis saepe? Eum dolor, ab quia delectus architecto corporis adipisci quis pariatur impedit doloribus",
   },
   {
     user: "Harry Potter",
     link: "@harry1273",
     image: "./images/PP4.png",
-    stars: 4,
+    stars: 3,
     review:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum omnis ex quo veritatis. Repellendus magnam incidunt beatae. Accusamus ab aut numquam, quidem mollitia eveniet, similique aliquam magni repellat tenetur recusandae provident debitis saepe? Eum dolor, ab quia delectus architecto corporis adipisci quis pariatur impedit doloribus eligendi officiis neque dolorem provident tempore aut similique debitis distinctio nemo ipsam est magni id placeat. Molestiae accusamus quisquam eligendi inventore est labore iure, facere placeat sed iusto laboriosam reiciendis atque possimus! Voluptas quos ea possimus eius sit animi nihil delectus aperiam vero recusandae voluptate, officiis",
-  },
-  {
-    user: "Harry Potter",
-    link: "@harry1273",
-    image: "./images/PP4.png",
-    stars: 4,
-    review:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum omnis ex quo veritatis. Repellendus magnam incidunt beatae. Accusamus ab aut numquam, quidem mollitia eveniet, similique aliquam magni repellat tenetur recusandae provident debitis saepe? Eum dolor, ab quia delectus architecto corporis adipisci quis pariatur impedit doloribus eligendi officiis neque dolorem provident tempore aut similique debitis distinctio nemo ipsam est magni id placeat. Molestiae accusamus quisquam eligendi inventore est labore iure, facere placeat sed iusto laboriosam reiciendis atque possimus! Voluptas quos ea possimus eius sit animi nihil delectus aperiam vero recusandae voluptate, officiis",
-  },
-  {
-    user: "Harry Potter",
-    link: "@harry1273",
-    image: "./images/PP4.png",
-    stars: 4,
-    review:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum omnis ex quo veritatis. Repellendus magnam incidunt beatae. Accusamus ab aut numquam, quidem mollitia eveniet, similique aliquam magni repellat tenetur recusandae provident debitis saepe? Eum dolor, ab quia delectus architecto corporis adipisci quis pariatur impedit doloribus eligendi officiis neque dolorem provident tempore aut similique debitis distinctio nemo ipsam est magni id placeat. Molestiae accusamus quisquam eligendi inventore est labore iure, facere placeat sed iusto laboriosam reiciendis atque possimus! Voluptas quos ea possimus eius sit animi nihil delectus aperiam vero recusandae voluptate, officiis",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum omnis ex quo veritatis. Repellendus magnam incidunt beatae. Accusamus ab aut numquam, quidem mollitia eveniet, similique aliquam magni repellat tenetur recusandae provident debitis saepe? Eum dolor, ab quia delectus architecto corporis adipisci quis pariatur impedit doloribus",
   },
 ];
 
@@ -195,4 +179,5 @@ export {
   basicList,
   popularList,
   premiumList,
+  testimonials,
 };
