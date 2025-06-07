@@ -172,6 +172,33 @@ const testimonials = [
   },
 ];
 
+const plans = [
+  {
+    title: "Basic",
+    price: "0",
+    priBg: "#d9d9d9",
+    secBg: "#1A1A1A",
+    line: "./images/b-line.png",
+    list: basicList,
+  },
+  {
+    title: "Popular",
+    price: "10",
+    priBg: "#dfd0d0",
+    secBg: "#D72638",
+    line: "./images/r-line.png",
+    list: popularList,
+  },
+  {
+    title: "Premium",
+    price: "25",
+    priBg: "#1A1A1A",
+    secBg: "#d9d9d9",
+    line: "./images/w-line.png",
+    list: premiumList,
+  },
+];
+
 export {
   about,
   tenantFeatureCards,
@@ -180,4 +207,5 @@ export {
   popularList,
   premiumList,
   testimonials,
+  plans,
 };

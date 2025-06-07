@@ -67,6 +67,14 @@ section {
   animation: marquee-right 30s linear infinite;
 }
 
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 @layer components {
   .padding-x {
     @apply px-5 md:px-10;
