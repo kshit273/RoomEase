@@ -27,7 +27,7 @@ const About = () => {
     <section id="about" className="relative z-2 pt-[100px]">
       {/* Timeline vertical red line */}
       <div
-        className={`pointer-events-none absolute top-5 ${timelineLeft} ${timelineHeight} bg-[#D72638] w-[2px] z-0`}
+        className={`pointer-events-none absolute top-5 ${timelineLeft} ${timelineHeight} bg-[#D72638] w-[2px] z-0 mt-[230px]`}
       />
       {/* Content with circles */}
       <div className={`flex flex-col ${contentMarginGap} relative z-10`}>

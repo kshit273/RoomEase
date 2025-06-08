@@ -77,6 +77,16 @@ body {
   scrollbar-width: none;
 }
 
+.footer-wrapper h6 {
+  font-size: 25px;
+  font-weight: 450;
+}
+
+.footer-wrapper p {
+  font-size: 20px;
+  font-weight: 300;
+}
+
 @layer components {
   .padding-x {
     @apply px-5 md:px-10;

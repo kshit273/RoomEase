@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar";
 import About from "./sections/About";
 import Contact from "./sections/Contact";
 import Features from "./sections/Features";
+import Footer from "./sections/Footer";
 import Hero from "./sections/Hero";
 import Plans from "./sections/Plans";
 import Testimonials from "./sections/Testimonials";
@@ -37,6 +38,7 @@ function App() {
       <Plans />
       <Testimonials />
       <Contact />
+      <Footer />
     </>
   );
 }

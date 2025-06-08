@@ -222,6 +222,14 @@ const navLinks = [
   },
 ];
 
+const socials = [
+  { name: "facebook", logo: "./images/feature-imgs/facebook.png", link: "#" },
+  { name: "x", logo: "./images/feature-imgs/x.png", link: "#" },
+  { name: "youtube", logo: "./images/feature-imgs/youtube.png", link: "#" },
+  { name: "instagram", logo: "./images/feature-imgs/instagram.png", link: "#" },
+  { name: "pinterest", logo: "./images/feature-imgs/pinterest.png", link: "#" },
+];
+
 export {
   about,
   tenantFeatureCards,
@@ -232,4 +240,5 @@ export {
   testimonials,
   plans,
   navLinks,
+  socials,
 };
