@@ -6,7 +6,7 @@ const Plans = () => {
   return (
     <section
       id="plans"
-      className={`relative ${isSmallScreen ? `mt-[100px]` : `mt-[200px]`}  z-2`}
+      className={`relative ${isSmallScreen ? `pt-[100px]` : `pt-[200px]`}  z-2`}
     >
       <div className="flex flex-col items-center ">
         <div

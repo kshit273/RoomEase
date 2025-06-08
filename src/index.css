@@ -5,18 +5,20 @@
   --gradient: radial-gradient(circle, #e8e8e8 0%, #fff 100%);
 }
 
+#root {
+  min-height: 100vh;
+}
+
 html,
 body {
-  width: 100dvw;
+  margin: 0;
+  padding: 0;
+  /* width: 100dvw; */
   overflow-x: hidden;
   background-color: #e8e8e8;
   color: black;
   scroll-behavior: smooth;
   font-family: "Poppins";
-}
-
-section {
-  width: 100dvw;
 }
 
 .gradient-line {
@@ -149,7 +151,7 @@ section {
     @apply fixed w-full left-1/2 py-5 px-5 md:px-20 -translate-x-1/2 z-[100] transition-all duration-300 ease-in-out;
 
     &.scrolled {
-      @apply top-0 bg-black-100;
+      @apply top-0 bg-[#e8e8e8];
     }
 
     &.not-scrolled {
@@ -161,7 +163,7 @@ section {
     }
 
     .logo {
-      @apply text-white text-xl md:text-2xl font-semibold transition-transform duration-300 hover:scale-105;
+      @apply text-[#1a1a1a] text-[50px] font-semibold transition-transform duration-300 hover:scale-105;
     }
 
     nav.desktop {
@@ -171,14 +173,14 @@ section {
         @apply flex space-x-8;
 
         li {
-          @apply text-white relative;
+          @apply text-[#1a1a1a] relative;
 
           span {
-            @apply transition-colors duration-300 hover:text-white;
+            @apply transition-colors duration-300 hover:text-[#2e2e2e];
           }
 
           .underline {
-            @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full;
+            @apply absolute -bottom-1 left-0 w-0 h-0.5 bg-[#d72638] transition-all duration-300 group-hover:w-full;
           }
         }
       }

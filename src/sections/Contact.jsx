@@ -3,7 +3,7 @@ import Form from "../components/Form";
 
 const Contact = () => {
   return (
-    <section id="contact" className="relative overflow-hidden mt-[100px]">
+    <section id="contact" className="relative overflow-hidden pt-[100px]">
       <div className="bg-[#1a1a1a] h-[1000px] w-full flex">
         <div className="flex flex-col flex-1">
           <div className="flex flex-col items-center">

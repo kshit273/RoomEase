@@ -199,6 +199,29 @@ const plans = [
   },
 ];
 
+const navLinks = [
+  {
+    name: "About",
+    link: "#about",
+  },
+  {
+    name: "Find Rooms",
+    link: "#rooms",
+  },
+  {
+    name: "Plans",
+    link: "#plans",
+  },
+  {
+    name: "Reviews",
+    link: "#testimonials",
+  },
+  {
+    name: "Contact",
+    link: "#contact",
+  },
+];
+
 export {
   about,
   tenantFeatureCards,
@@ -208,4 +231,5 @@ export {
   premiumList,
   testimonials,
   plans,
+  navLinks,
 };
