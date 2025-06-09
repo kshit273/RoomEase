@@ -1,10 +1,10 @@
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { Room } from "./Room";
+import Isometric from "./Isometric";
 import { useMediaQuery } from "react-responsive";
 
 const HeroRoom = () => {
-  let pos = [0, -130, 0];
+  let pos = [-2, -2, -2];
   const isSmallScreen = useMediaQuery({ maxWidth: 1800 });
 
   if (isSmallScreen) {
@@ -12,10 +12,8 @@ const HeroRoom = () => {
   }
 
   return (
-    <Canvas camera={{ position: [550, 550, 550], fov: 55 }}>
+    <Canvas camera={{ position: [30, 30, 30], fov: 45 }}>
       <OrbitControls
-        maxDistance={550}
-        minDistance={300}
         minPolarAngle={Math.PI / 2.5}
         maxPolarAngle={Math.PI / 2}
         minAzimuthAngle={-Math.PI / 2}
@@ -23,7 +21,7 @@ const HeroRoom = () => {
       />
       <ambientLight intensity={2.5} color="#fff8e1" />
       <group position={pos}>
-        <Room />
+        <Isometric />
       </group>
     </Canvas>
   );
