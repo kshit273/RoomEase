@@ -19,9 +19,9 @@ const Navbar = () => {
   }, []);
   return (
     <header
-      className={`navbar ${scrolled ? "scrolled " : "not-scrolled"} ${
+      className={`navbar ${scrolled ? "scrolled pb-[10px]" : "not-scrolled"} ${
         isSmallScreen
-          ? `py-[30px] px-5 mt-0 `
+          ? `py-[10px] px-5 mt-0 h-[50px]`
           : isMedScreen
           ? `pt-[30px] px-[50px] mt-0 `
           : `py-5 px-5 mt-0 `
@@ -31,7 +31,7 @@ const Navbar = () => {
         <a
           href="#hero"
           className={`logo ${
-            isSmallScreen ? `text-[30px]` : isMedScreen ? `text-[40px]` : ``
+            isSmallScreen ? `text-[25px]` : isMedScreen ? `text-[40px]` : ``
           }`}
         >
           RoomEase
