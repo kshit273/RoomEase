@@ -58,13 +58,13 @@ const About = () => {
         {
           scale: 1.2,
           opacity: 0,
-          duration: 2,
+          duration: 1.5,
           repeat: -1,
           ease: "power2.out",
           paused: false,
           scrollTrigger: {
             trigger: triggerRef.current,
-            start: "top 100%",
+            start: "top 85%",
             toggleActions: "play pause resume reset",
             once: false,
           },
