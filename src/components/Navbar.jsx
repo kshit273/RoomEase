@@ -9,6 +9,7 @@ const Navbar = () => {
   const isSmallScreen = useMediaQuery({ maxWidth: 769 });
   const isHam = useMediaQuery({ maxWidth: 1024 });
   const [scrolled, setScrolled] = useState(false);
+  const [showHamburger, setShowHamburger] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,8 +52,20 @@ const Navbar = () => {
             </ul>
           </nav>
         )}
-
-        {isHam ? <Hamburger /> : <JoinBtn />}
+        {isHam ? (
+          <div
+            className="h-[22px] w-[22px]"
+            onClick={() => setShowHamburger(true)}
+          >
+            <img src="./images/hamburger-imgs/menu.png" alt="menu" />
+          </div>
+        ) : (
+          <JoinBtn />
+        )}
+        <Hamburger
+          show={showHamburger}
+          onClose={() => setShowHamburger(false)}
+        />
       </div>
     </header>
   );

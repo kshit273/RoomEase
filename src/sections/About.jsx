@@ -11,11 +11,11 @@ const About = () => {
 
   // Timeline position and height
   const timelineLeft = isMedScreen ? "left-[40px]" : "left-[755px]";
-  let timelineHeight = "h-[1070px]";
+  let timelineHeight = "h-[1120px]";
   if (isSmallScreen) {
     timelineHeight = "h-[1150px]";
   } else if (isMedScreen) {
-    timelineHeight = "h-[1700px]";
+    timelineHeight = "h-[1750px]";
   }
 
   // Content margin and gap
@@ -63,11 +63,23 @@ const About = () => {
             {/* Section content */}
             <div className="flex-1">
               {isMedScreen ? (
-                <Smallabt heading={item.heading} inner={item.inner} />
+                <Smallabt
+                  heading={item.heading}
+                  inner={item.inner}
+                  imgpath={item.imgpath}
+                />
               ) : idx % 2 === 0 ? (
-                <Leftabt heading={item.heading} inner={item.inner} />
+                <Leftabt
+                  heading={item.heading}
+                  inner={item.inner}
+                  imgpath={item.imgpath}
+                />
               ) : (
-                <RightAbt heading={item.heading} inner={item.inner} />
+                <RightAbt
+                  heading={item.heading}
+                  inner={item.inner}
+                  imgpath={item.imgpath}
+                />
               )}
             </div>
           </div>

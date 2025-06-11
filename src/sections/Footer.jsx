@@ -9,12 +9,12 @@ const Footer = () => {
     ? "text-[18px] font-medium"
     : isMobile
     ? "text-[15px] font-medium"
-    : "text-[25px] font-medium";
+    : "text-[23px] font-medium";
   const para = isSmallScreen
     ? "text-[15px] font-light"
     : isMobile
     ? "text-[12px] font-light"
-    : "text-[20px] font-light";
+    : "text-[17px] font-light";
 
   return (
     <section id="footer" className="relative z-10">
@@ -28,7 +28,7 @@ const Footer = () => {
                 ? `h-[100px] w-[100px]`
                 : isMobile
                 ? `h-[100px] w-[100px]`
-                : `h-[225px] w-[225px]`
+                : `h-[200px] w-[200px]`
             }
           />
           <p

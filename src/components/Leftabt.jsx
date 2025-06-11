@@ -1,6 +1,4 @@
-import React from "react";
-
-const Leftabt = ({ heading, inner }) => {
+const Leftabt = ({ heading, inner, imgpath }) => {
   return (
     <div className="flex gap-30">
       <div className="flex flex-col gap-8">
@@ -15,6 +13,9 @@ const Leftabt = ({ heading, inner }) => {
       </div>
       <div>
         <h3 className="text-[45px] font-medium">{heading}</h3>
+        <div className="h-[400px] w-[400px]">
+          <img src={imgpath} alt="RoomImg" />
+        </div>
       </div>
     </div>
   );

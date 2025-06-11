@@ -1,10 +1,13 @@
 import React from "react";
 
-const RightAbt = ({ heading, inner }) => {
+const RightAbt = ({ heading, inner, imgpath }) => {
   return (
     <div className="flex gap-30 ">
-      <div className="w-[600px] flex justify-end">
+      <div className="w-[600px] flex flex-col justify-end">
         <h3 className="text-[45px] font-medium">{heading}</h3>
+        <div className="h-[400px] w-[400px]">
+          <img src={imgpath} alt="RoomImg" />
+        </div>
       </div>
       <div className="flex flex-col gap-8">
         {inner.map((item, x) => (

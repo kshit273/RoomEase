@@ -15,6 +15,7 @@ const about = [
         para: "Browse honest reviews from real users to make informed choices—or leave your own to help others.",
       },
     ],
+    imgpath: "./images/abt-imgs/room1.png",
   },
   {
     heading: "How It Works ?",
@@ -32,6 +33,7 @@ const about = [
         para: "Chat with verified hosts, schedule visits, and finalize your stay—everything within RoomEase.",
       },
     ],
+    imgpath: "./images/abt-imgs/room2.png",
   },
   {
     heading: "Why Choose RoomEase ?",
@@ -49,6 +51,7 @@ const about = [
         para: "Rely on honest feedback from previous tenants to make informed, confident decisions.",
       },
     ],
+    imgpath: "./images/abt-imgs/room3.png",
   },
 ];
 
@@ -201,22 +204,27 @@ const plans = [
 
 const navLinks = [
   {
+    img: "./images/hamburger-imgs/about.png",
     name: "About",
     link: "#about",
   },
   {
+    img: "./images/hamburger-imgs/search.png",
     name: "Find Rooms",
     link: "#rooms",
   },
   {
+    img: "./images/hamburger-imgs/plans.png",
     name: "Plans",
     link: "#plans",
   },
   {
+    img: "./images/hamburger-imgs/review.png",
     name: "Reviews",
     link: "#testimonials",
   },
   {
+    img: "./images/hamburger-imgs/contact.png",
     name: "Contact",
     link: "#contact",
   },
