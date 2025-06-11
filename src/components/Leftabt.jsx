@@ -1,6 +1,36 @@
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 const Leftabt = ({ heading, inner, imgpath }) => {
+  const ref = useRef();
+
+  useEffect(() => {
+    const elem = ref.current;
+    gsap.fromTo(
+      elem,
+      { opacity: 0, x: -100 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: elem,
+          start: "top 80%", // when top of elem hits 80% of viewport (20% from bottom)
+          toggleActions: "play none none none",
+        },
+      }
+    );
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
   return (
-    <div className="flex gap-30">
+    <div className="flex gap-30" ref={ref}>
       <div className="flex flex-col gap-8">
         {inner.map((item, x) => (
           <div key={item.subheading + x} className="w-[600px]">
