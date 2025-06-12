@@ -5,12 +5,13 @@ import Features from "./sections/Features";
 import Footer from "./sections/Footer";
 import Hero from "./sections/Hero";
 import Plans from "./sections/Plans";
+import Search from "./sections/Search";
 import Testimonials from "./sections/Testimonials";
 
 function App() {
   return (
     <>
-      <div className="absolute top-[-20px] left-[-20px] z-1 md:w-[512px] w-[256px]  md:h-[560px] h-[280px] pointer-events-none">
+      {/* <div className="absolute top-[-20px] left-[-20px] z-1 md:w-[512px] w-[256px]  md:h-[560px] h-[280px] pointer-events-none">
         <img src="/images/bgimg.png" alt="background" />
       </div>
       <div className="absolute top-[1720px] left-[-20px] z-1 md:w-[512px] w-[256px]  md:h-[560px] h-[280px] pointer-events-none">
@@ -38,7 +39,8 @@ function App() {
       <Plans />
       <Testimonials />
       <Contact />
-      <Footer />
+      <Footer /> */}
+      <Search />
     </>
   );
 }
