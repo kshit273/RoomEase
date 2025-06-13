@@ -1,8 +1,10 @@
 import { Search } from "lucide-react";
 
-const SearchButton = () => {
+const SearchButton = ({ width }) => {
   return (
-    <div className="flex items-center bg-[#e5e5e5] border border-gray-300 rounded-[15px] px-4 py-2 pr-1 w-full md:h-[60px] h-[40px] max-w-xl">
+    <div
+      className={`flex items-center bg-[#e5e5e5] border border-gray-300 rounded-[15px] px-4 py-2 pr-1 w-[${width}] md:h-[60px] h-[40px] shadow-2xl`}
+    >
       <input
         type="text"
         placeholder="Search about your area"
