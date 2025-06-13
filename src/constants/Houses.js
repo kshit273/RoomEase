@@ -5,6 +5,7 @@ const Recommended = [
     desc: "from ₹8,000/month",
     isVerified: 0,
     isLiked: 0,
+    review: 3,
   },
   {
     head: "Affordable PG in Sector 62 Noida",
@@ -12,6 +13,7 @@ const Recommended = [
     desc: "from ₹6,500/month",
     isVerified: 1,
     isLiked: 1,
+    review: 3,
   },
   {
     head: "Cozy Room near MG Road",
@@ -19,6 +21,7 @@ const Recommended = [
     desc: "from ₹9,000/month",
     isVerified: 1,
     isLiked: 0,
+    review: 3,
   },
   {
     head: "Studio Room in Pune",
@@ -26,6 +29,7 @@ const Recommended = [
     desc: "from ₹12,000/month",
     isVerified: 0,
     isLiked: 1,
+    review: 3,
   },
   {
     head: "Shared PG near DLF Cyber Hub",
@@ -33,6 +37,7 @@ const Recommended = [
     desc: "from ₹7,000/month",
     isVerified: 1,
     isLiked: 1,
+    review: 3,
   },
   {
     head: "Spacious Room in Saket",
@@ -40,6 +45,7 @@ const Recommended = [
     desc: "from ₹10,000/month",
     isVerified: 1,
     isLiked: 0,
+    review: 3,
   },
   {
     head: "Modern PG in Bangalore",
@@ -47,6 +53,7 @@ const Recommended = [
     desc: "from ₹11,000/month",
     isVerified: 0,
     isLiked: 1,
+    review: 3,
   },
   {
     head: "Furnished Room in Dehradun",
@@ -54,6 +61,7 @@ const Recommended = [
     desc: "from ₹6,000/month",
     isVerified: 1,
     isLiked: 0,
+    review: 3,
   },
   {
     head: "Budget PG in Rohini",
@@ -61,6 +69,7 @@ const Recommended = [
     desc: "from ₹5,500/month",
     isVerified: 0,
     isLiked: 0,
+    review: 3,
   },
   {
     head: "Room near Rajiv Chowk Metro",
@@ -68,6 +77,7 @@ const Recommended = [
     desc: "from ₹9,500/month",
     isVerified: 1,
     isLiked: 1,
+    review: 3,
   },
 ];
 
@@ -78,6 +88,7 @@ const InCity = [
     desc: "from ₹14,000/month",
     isVerified: 1,
     isLiked: 1,
+    review: 3,
   },
   {
     head: "PG for Girls in Karol Bagh",
@@ -85,6 +96,7 @@ const InCity = [
     desc: "from ₹8,500/month",
     isVerified: 1,
     isLiked: 0,
+    review: 3,
   },
   {
     head: "Room near Delhi University",
@@ -92,6 +104,7 @@ const InCity = [
     desc: "from ₹7,000/month",
     isVerified: 0,
     isLiked: 1,
+    review: 3,
   },
   {
     head: "AC Room in Laxmi Nagar",
@@ -99,6 +112,7 @@ const InCity = [
     desc: "from ₹9,500/month",
     isVerified: 1,
     isLiked: 1,
+    review: 3,
   },
   {
     head: "PG near Hauz Khas",
@@ -106,6 +120,7 @@ const InCity = [
     desc: "from ₹8,000/month",
     isVerified: 0,
     isLiked: 0,
+    review: 3,
   },
   {
     head: "Shared Room in South Delhi",
@@ -113,6 +128,7 @@ const InCity = [
     desc: "from ₹7,200/month",
     isVerified: 1,
     isLiked: 1,
+    review: 3,
   },
   {
     head: "Single Room in Janakpuri",
@@ -120,6 +136,7 @@ const InCity = [
     desc: "from ₹10,500/month",
     isVerified: 1,
     isLiked: 0,
+    review: 3,
   },
   {
     head: "Room in Uttam Nagar",
@@ -127,6 +144,7 @@ const InCity = [
     desc: "from ₹6,800/month",
     isVerified: 0,
     isLiked: 0,
+    review: 3,
   },
   {
     head: "Girls PG in Pitampura",
@@ -134,6 +152,7 @@ const InCity = [
     desc: "from ₹9,800/month",
     isVerified: 1,
     isLiked: 1,
+    review: 3,
   },
   {
     head: "PG in Rajouri Garden",
@@ -141,6 +160,7 @@ const InCity = [
     desc: "from ₹7,900/month",
     isVerified: 0,
     isLiked: 0,
+    review: 3,
   },
 ];
 
@@ -151,6 +171,7 @@ const NearArea = [
     desc: "from ₹6,500/month",
     isVerified: 1,
     isLiked: 1,
+    review: 3,
   },
   {
     head: "Room near ISBT Dehradun",
@@ -158,6 +179,7 @@ const NearArea = [
     desc: "from ₹8,000/month",
     isVerified: 0,
     isLiked: 0,
+    review: 3,
   },
   {
     head: "Room near Prem Nagar",
@@ -165,6 +187,7 @@ const NearArea = [
     desc: "from ₹5,500/month",
     isVerified: 1,
     isLiked: 0,
+    review: 3,
   },
   {
     head: "PG near Rajpur Road",
@@ -172,6 +195,7 @@ const NearArea = [
     desc: "from ₹7,800/month",
     isVerified: 0,
     isLiked: 1,
+    review: 3,
   },
   {
     head: "Room near Ballupur",
@@ -179,6 +203,7 @@ const NearArea = [
     desc: "from ₹6,000/month",
     isVerified: 1,
     isLiked: 1,
+    review: 3,
   },
   {
     head: "Single Room near Clock Tower",
@@ -186,6 +211,7 @@ const NearArea = [
     desc: "from ₹7,500/month",
     isVerified: 0,
     isLiked: 0,
+    review: 3,
   },
   {
     head: "PG near EC Road",
@@ -193,6 +219,7 @@ const NearArea = [
     desc: "from ₹8,200/month",
     isVerified: 1,
     isLiked: 1,
+    review: 3,
   },
   {
     head: "Room in Vasant Vihar",
@@ -200,6 +227,7 @@ const NearArea = [
     desc: "from ₹9,000/month",
     isVerified: 0,
     isLiked: 1,
+    review: 3,
   },
   {
     head: "PG in Jakhan",
@@ -207,6 +235,7 @@ const NearArea = [
     desc: "from ₹6,900/month",
     isVerified: 1,
     isLiked: 0,
+    review: 3,
   },
   {
     head: "Affordable Room near Kaulagarh",
@@ -214,6 +243,7 @@ const NearArea = [
     desc: "from ₹5,800/month",
     isVerified: 0,
     isLiked: 0,
+    review: 3,
   },
 ];
 

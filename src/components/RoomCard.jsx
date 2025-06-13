@@ -1,7 +1,7 @@
 import Verified from "./Verified";
 import Like from "./Like";
 
-const RoomCard = ({ head, imgPath, desc, isVerified, isLiked }) => {
+const RoomCard = ({ head, imgPath, desc, isVerified, isLiked, review }) => {
   return (
     <div className="h-[500px] w-[500px] bg-[#cecece] rounded-[10px]">
       <div className="h-[370px] w-[500px] flex items-center justify-center relative">
@@ -22,6 +22,25 @@ const RoomCard = ({ head, imgPath, desc, isVerified, isLiked }) => {
       <div className="mx-[10px] my-[8px]">
         <p className="text-[28px] font-medium text-[#1a1a1a]">{head}</p>
         <p className="text-[23px] text-[#919191]">{desc}</p>
+      </div>
+      <div className="mx-[10px] flex items-center gap-1">
+        {[...Array(5)].map((_, i) =>
+          i < review ? (
+            <img
+              key={i}
+              src="./images/star-filled.png"
+              alt="star"
+              className="w-[20px] h-[20px]"
+            />
+          ) : (
+            <img
+              key={i}
+              src="./images/star-empty.png"
+              alt="star-empty"
+              className="w-[20px] h-[20px]"
+            />
+          )
+        )}
       </div>
     </div>
   );

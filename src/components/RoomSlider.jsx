@@ -45,7 +45,7 @@ const RoomSlider = ({ list, heading }) => {
           className="flex gap-[25px] overflow-x-auto scroll-smooth w-full no-scrollbar"
           style={{ scrollBehavior: "smooth" }}
         >
-          {list.map(({ head, imgPath, desc, isVerified, isLiked }) => (
+          {list.map(({ head, imgPath, desc, isVerified, isLiked, review }) => (
             <RoomCard
               key={head}
               head={head}
@@ -53,6 +53,7 @@ const RoomSlider = ({ list, heading }) => {
               desc={desc}
               isVerified={isVerified}
               isLiked={isLiked}
+              review={review}
             />
           ))}
         </div>
