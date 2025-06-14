@@ -3,7 +3,8 @@ import { Search } from "lucide-react";
 const SearchButton = ({ width }) => {
   return (
     <div
-      className={`flex items-center bg-[#e5e5e5] border border-gray-300 rounded-[15px] px-4 py-2 pr-1 w-[${width}] md:h-[60px] h-[40px] shadow-2xl`}
+      className="flex items-center bg-[#e5e5e5] border border-gray-300 rounded-[15px] px-4 py-2 pr-1 md:h-[60px] h-[40px] shadow-2xl"
+      style={{ width: width ? `${width}px` : undefined }}
     >
       <input
         type="text"
