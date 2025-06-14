@@ -4,7 +4,7 @@ import JoinBtn from "./JoinBtn";
 import Hamburger from "./Hamburger";
 import { useMediaQuery } from "react-responsive";
 
-const Navbar = ({ onNavLinkClick }) => {
+const Navbar = () => {
   const isMedScreen = useMediaQuery({ minWidth: 770, maxWidth: 1800 });
   const isSmallScreen = useMediaQuery({ maxWidth: 769 });
   const isHam = useMediaQuery({ maxWidth: 1024 });
@@ -34,7 +34,6 @@ const Navbar = ({ onNavLinkClick }) => {
           className={`logo ${
             isSmallScreen ? `text-[25px]` : isMedScreen ? `text-[40px]` : ``
           }`}
-          onClick={() => onNavLinkClick && onNavLinkClick("Hero")}
         >
           RoomEase
         </a>
@@ -44,20 +43,7 @@ const Navbar = ({ onNavLinkClick }) => {
             <ul>
               {navLinks.map(({ link, name }) => (
                 <li key={name} className="group px-5">
-                  <a
-                    href={link}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      onNavLinkClick && onNavLinkClick(name);
-                      // Scroll to section if not "Find Rooms"
-                      if (link && link.startsWith("#")) {
-                        const el = document.querySelector(link);
-                        if (el) {
-                          el.scrollIntoView({ behavior: "smooth" });
-                        }
-                      }
-                    }}
-                  >
+                  <a href={link}>
                     <span className="text-[22px]">{name}</span>
                     <span className="underline" />
                   </a>

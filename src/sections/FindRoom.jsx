@@ -2,7 +2,7 @@ import RoomSlider from "../components/RoomSlider";
 import SearchButton from "../components/SearchButton";
 import { NearArea, Recommended, InCity } from "../constants/Houses";
 
-const Search = () => {
+const FindRoom = () => {
   return (
     <section id="about" className="relative z-2 pt-[100px]">
       <div className="w-full h-[2700px] flex justify-center mt-[100px]">
@@ -27,4 +27,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default FindRoom;
