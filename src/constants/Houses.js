@@ -1,5 +1,6 @@
 const Recommended = [
   {
+    RID: "DEHDITbc51ed",
     head: "PG near DIT UNIVERSITY",
     imgPath: "./images/house-imgs/house.jpg",
     desc: "from ₹8,000/month",
@@ -8,6 +9,7 @@ const Recommended = [
     review: 3,
   },
   {
+    RID: "NOISEC7eb4aa",
     head: "Affordable PG in Sector 62 Noida",
     imgPath: "./images/house-imgs/house7.jpg",
     desc: "from ₹6,500/month",
@@ -16,6 +18,7 @@ const Recommended = [
     review: 3,
   },
   {
+    RID: "GURMG c68efd",
     head: "Cozy Room near MG Road",
     imgPath: "./images/house-imgs/house18.jpg",
     desc: "from ₹9,000/month",
@@ -24,6 +27,7 @@ const Recommended = [
     review: 3,
   },
   {
+    RID: "PUNCENadd957",
     head: "Studio Room in Pune",
     imgPath: "./images/house-imgs/house22.jpg",
     desc: "from ₹12,000/month",
@@ -32,6 +36,7 @@ const Recommended = [
     review: 3,
   },
   {
+    RID: "GURDLF10e38d",
     head: "Shared PG near DLF Cyber Hub",
     imgPath: "./images/house-imgs/house15.jpg",
     desc: "from ₹7,000/month",
@@ -40,6 +45,7 @@ const Recommended = [
     review: 3,
   },
   {
+    RID: "DELSAKa4aaf9",
     head: "Spacious Room in Saket",
     imgPath: "./images/house-imgs/house4.jpg",
     desc: "from ₹10,000/month",
@@ -48,6 +54,7 @@ const Recommended = [
     review: 3,
   },
   {
+    RID: "BANCENfa17ea",
     head: "Modern PG in Bangalore",
     imgPath: "./images/house-imgs/house12.jpg",
     desc: "from ₹11,000/month",
@@ -56,6 +63,7 @@ const Recommended = [
     review: 3,
   },
   {
+    RID: "DEHCIT80e5d6",
     head: "Furnished Room in Dehradun",
     imgPath: "./images/house-imgs/house29.jpg",
     desc: "from ₹6,000/month",
@@ -64,6 +72,7 @@ const Recommended = [
     review: 3,
   },
   {
+    RID: "DELROHebe203",
     head: "Budget PG in Rohini",
     imgPath: "./images/house-imgs/house9.jpg",
     desc: "from ₹5,500/month",
@@ -72,6 +81,7 @@ const Recommended = [
     review: 3,
   },
   {
+    RID: "DELRAJ49ba4f",
     head: "Room near Rajiv Chowk Metro",
     imgPath: "./images/house-imgs/house21.jpg",
     desc: "from ₹9,500/month",
@@ -83,6 +93,7 @@ const Recommended = [
 
 const InCity = [
   {
+    RID: "DELCONa05b3c",
     head: "Luxury PG in Connaught Place",
     imgPath: "./images/house-imgs/house11.jpg",
     desc: "from ₹14,000/month",
@@ -91,6 +102,7 @@ const InCity = [
     review: 3,
   },
   {
+    RID: "DELKAR460774",
     head: "PG for Girls in Karol Bagh",
     imgPath: "./images/house-imgs/house17.jpg",
     desc: "from ₹8,500/month",
@@ -99,6 +111,7 @@ const InCity = [
     review: 3,
   },
   {
+    RID: "DELDELaffb3f",
     head: "Room near Delhi University",
     imgPath: "./images/house-imgs/house2.jpg",
     desc: "from ₹7,000/month",
@@ -107,6 +120,7 @@ const InCity = [
     review: 3,
   },
   {
+    RID: "DELLAX011fd9",
     head: "AC Room in Laxmi Nagar",
     imgPath: "./images/house-imgs/house14.jpg",
     desc: "from ₹9,500/month",
@@ -115,6 +129,7 @@ const InCity = [
     review: 3,
   },
   {
+    RID: "DELHAU41563c",
     head: "PG near Hauz Khas",
     imgPath: "./images/house-imgs/house28.jpg",
     desc: "from ₹8,000/month",
@@ -123,6 +138,7 @@ const InCity = [
     review: 3,
   },
   {
+    RID: "DELSOU1c73d9",
     head: "Shared Room in South Delhi",
     imgPath: "./images/house-imgs/house23.jpg",
     desc: "from ₹7,200/month",
@@ -131,6 +147,7 @@ const InCity = [
     review: 3,
   },
   {
+    RID: "DELJAN645459",
     head: "Single Room in Janakpuri",
     imgPath: "./images/house-imgs/house5.jpg",
     desc: "from ₹10,500/month",
@@ -139,6 +156,7 @@ const InCity = [
     review: 3,
   },
   {
+    RID: "DELUTTb8ce4d",
     head: "Room in Uttam Nagar",
     imgPath: "./images/house-imgs/house8.jpg",
     desc: "from ₹6,800/month",
@@ -147,6 +165,7 @@ const InCity = [
     review: 3,
   },
   {
+    RID: "DELPIT4a9e78",
     head: "Girls PG in Pitampura",
     imgPath: "./images/house-imgs/house27.jpg",
     desc: "from ₹9,800/month",
@@ -155,6 +174,7 @@ const InCity = [
     review: 3,
   },
   {
+    RID: "DELRAJa2668e",
     head: "PG in Rajouri Garden",
     imgPath: "./images/house-imgs/house30.jpg",
     desc: "from ₹7,900/month",
@@ -166,6 +186,7 @@ const InCity = [
 
 const NearArea = [
   {
+    RID: "DEHGRA2dedf3",
     head: "PG near Graphic Era",
     imgPath: "./images/house-imgs/house10.jpg",
     desc: "from ₹6,500/month",
@@ -174,6 +195,7 @@ const NearArea = [
     review: 3,
   },
   {
+    RID: "DEHISBf76856",
     head: "Room near ISBT Dehradun",
     imgPath: "./images/house-imgs/house13.jpg",
     desc: "from ₹8,000/month",
@@ -182,6 +204,7 @@ const NearArea = [
     review: 3,
   },
   {
+    RID: "DEHPRE411cbd",
     head: "Room near Prem Nagar",
     imgPath: "./images/house-imgs/house24.jpg",
     desc: "from ₹5,500/month",
@@ -190,6 +213,7 @@ const NearArea = [
     review: 3,
   },
   {
+    RID: "DEHRAJeb8b39",
     head: "PG near Rajpur Road",
     imgPath: "./images/house-imgs/house6.jpg",
     desc: "from ₹7,800/month",
@@ -198,6 +222,7 @@ const NearArea = [
     review: 3,
   },
   {
+    RID: "DEHBAL14b20c",
     head: "Room near Ballupur",
     imgPath: "./images/house-imgs/house16.jpg",
     desc: "from ₹6,000/month",
@@ -206,6 +231,7 @@ const NearArea = [
     review: 3,
   },
   {
+    RID: "DEHCLOcd5f86",
     head: "Single Room near Clock Tower",
     imgPath: "./images/house-imgs/house20.jpg",
     desc: "from ₹7,500/month",
@@ -214,6 +240,7 @@ const NearArea = [
     review: 3,
   },
   {
+    RID: "DEHEC 0a4560",
     head: "PG near EC Road",
     imgPath: "./images/house-imgs/house19.jpg",
     desc: "from ₹8,200/month",
@@ -222,6 +249,7 @@ const NearArea = [
     review: 3,
   },
   {
+    RID: "DELVASbed996",
     head: "Room in Vasant Vihar",
     imgPath: "./images/house-imgs/house25.jpg",
     desc: "from ₹9,000/month",
@@ -230,6 +258,7 @@ const NearArea = [
     review: 3,
   },
   {
+    RID: "DEHJAK56a797",
     head: "PG in Jakhan",
     imgPath: "./images/house-imgs/house26.jpg",
     desc: "from ₹6,900/month",
@@ -238,6 +267,7 @@ const NearArea = [
     review: 3,
   },
   {
+    RID: "DEHKAUfb8e1d",
     head: "Affordable Room near Kaulagarh",
     imgPath: "./images/house-imgs/house3.jpg",
     desc: "from ₹5,800/month",
