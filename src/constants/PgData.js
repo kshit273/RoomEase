@@ -2,7 +2,8 @@ const RecommendedDetails = [
   {
     RID: "DEHDITbc51ed",
     PgName: "Hill View PG",
-    Address: "123 DIT Road, Dehradun, Uttarakhand",
+    Address:
+      "C33J+88Q Maya PG,Bagryal,village, near DIT college, oppostie Mega county,Salan Gaon,Bhagwant Pur, Dehradun",
     Landmark: "Near DIT University Gate",
     LandlordContactNum: "9876543210",
     LandlordContactMail: "hillviewpg@hostelmail.com",
@@ -501,3 +502,5 @@ const NearAreaDetails = [
     SecurityDeposit: "8800",
   },
 ];
+
+export { NearAreaDetails, RecommendedDetails, InCityDetails };

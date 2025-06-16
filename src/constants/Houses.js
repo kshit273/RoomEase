@@ -4,9 +4,11 @@ const Recommended = [
     head: "PG near DIT UNIVERSITY",
     imgPath: "./images/house-imgs/house.jpg",
     desc: "from ₹8,000/month",
+    description:
+      "Welcome to ComfortNest PG, your ideal home away from home! Located in the heart of the city, just a 5-minute walk from major colleges and tech hubs, this PG blends comfort, safety, and convenience. We offer fully furnished rooms with high-speed Wi-Fi, daily housekeeping, and nutritious home-cooked meals. Whether you're a student or a working professional, our peaceful environment, 24/7 security, and friendly community make it the perfect place to live, learn, and grow. Come experience hassle-free living with all modern amenities under one roof!",
     isVerified: 0,
     isLiked: 0,
-    review: 3,
+    review: 3.9,
   },
   {
     RID: "NOISEC7eb4aa",
