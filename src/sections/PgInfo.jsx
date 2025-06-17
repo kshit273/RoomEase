@@ -1,9 +1,17 @@
+import MapComp from "../components/MapComp";
+import OwnerCard from "../components/OwnerCard";
 import { Recommended, InCity, NearArea } from "../constants/Houses";
 import {
   RecommendedDetails,
   InCityDetails,
   NearAreaDetails,
 } from "../constants/PgData";
+import {
+  RecommendedPgServices,
+  InCityPgServices,
+  NearAreaPgServices,
+  services,
+} from "../constants/Services";
 
 const PgInfo = ({ RID }) => {
   const house =
@@ -15,6 +23,11 @@ const PgInfo = ({ RID }) => {
     RecommendedDetails.find((item) => item.RID === RID) ||
     InCityDetails.find((item) => item.RID === RID) ||
     NearAreaDetails.find((item) => item.RID === RID);
+
+  const PgServices =
+    RecommendedPgServices.find((item) => item.RID === RID) ||
+    InCityPgServices.find((item) => item.RID === RID) ||
+    NearAreaPgServices.find((item) => item.RID === RID);
 
   return (
     <section id="PgInfo" className="relative z-2 pt-[100px] px-6">
@@ -60,8 +73,8 @@ const PgInfo = ({ RID }) => {
           </div>
         </div>
       </div>
-      <div className="info w-[1300px]">
-        <div className="leftInfo ml-[60px]">
+      <div className="info flex  justify-between">
+        <div className="leftInfo ml-[60px] w-[1300px]">
           <div className="main ">
             <div className="head text-[45px] font-medium text-[#1a1a1a] mb-[5px]">
               {house?.head || details?.PgName || "PG Info"}
@@ -116,11 +129,34 @@ const PgInfo = ({ RID }) => {
             <div className="head text-[35px] font-medium">
               Services provided
             </div>
+            {(() => {
+              const matchedServices = PgServices.services
+                .map((service) => services.find((s) => s.name === service))
+                .filter(Boolean)
+                .slice(0, 10);
+
+              return (
+                <div className="grid grid-cols-2 gap-x-10 gap-y-5 mt-[20px] max-w-[400px]">
+                  {matchedServices.map((matchedService, idx) => (
+                    <div key={idx} className="flex items-center gap-[15px]">
+                      <img
+                        src={matchedService.imgPath}
+                        alt={matchedService.name}
+                        className="h-[35px] w-[35px]"
+                      />
+                      <div className="text-[#6c6c6c] text-[19px]">
+                        {matchedService.name}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              );
+            })()}
           </div>
         </div>
-        <div className="rightInfo">
-          <div className="card"></div>
-          <div className="map"></div>
+        <div className="rightInfo mr-[60px] flex flex-col gap-[20px]">
+          <OwnerCard RID={RID} />
+          <MapComp RID={RID} />
         </div>
       </div>
     </section>

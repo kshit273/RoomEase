@@ -1,20 +1,37 @@
 const services = [
-  { name: "Wifi", imgPath: "./images/wifi-signal.png" },
-  { name: "Power Backup", imgPath: "./images/thunderbolt.png" },
-  { name: "Washing Machine", imgPath: "./images/washing-machine.png" },
-  { name: "Geyser", imgPath: "./images/hot.png" },
-  { name: "Air Conditioner", imgPath: "./images/air-conditioner.png" },
-  { name: "Drinking Water", imgPath: "./images/water.png" },
-  { name: "CCTV", imgPath: "./images/cctv.png" },
-  { name: "Parking", imgPath: "./images/car-parking.png" },
-  { name: "Fridge", imgPath: "./images/fridge.png" },
-  { name: "Kitchen", imgPath: "./images/spatula.png" },
+  { name: "Wifi", imgPath: "./images/serviceImgs/wifi-signal.png" },
+  { name: "Power Backup", imgPath: "./images/serviceImgs/thunderbolt.png" },
+  {
+    name: "Washing Machine",
+    imgPath: "./images/serviceImgs/washing-machine.png",
+  },
+  { name: "Geyser", imgPath: "./images/serviceImgs/hot.png" },
+  {
+    name: "Air Conditioner",
+    imgPath: "./images/serviceImgs/air-conditioner.png",
+  },
+  { name: "Drinking Water", imgPath: "./images/serviceImgs/water.png" },
+  { name: "CCTV", imgPath: "./images/serviceImgs/cctv.png" },
+  { name: "Parking", imgPath: "./images/serviceImgs/car-parking.png" },
+  { name: "Fridge", imgPath: "./images/serviceImgs/fridge.png" },
+  { name: "Kitchen", imgPath: "./images/serviceImgs/spatula.png" },
 ];
 
 const RecommendedPgServices = [
   {
     RID: "DEHDITbc51ed",
-    services: ["Wifi", "CCTV", "Geyser", "Washing Machine", "Fridge"],
+    services: [
+      "Wifi",
+      "CCTV",
+      "Geyser",
+      "Washing Machine",
+      "Fridge",
+      "Parking",
+      "Kitchen",
+      "Power Backup",
+      "Drinking Water",
+      "Air Conditioner",
+    ],
   },
   {
     RID: "NOISEC7eb4aa",
@@ -187,3 +204,10 @@ const NearAreaPgServices = [
     services: ["Fridge", "Wifi", "Kitchen", "Power Backup", "CCTV"],
   },
 ];
+
+export {
+  RecommendedPgServices,
+  InCityPgServices,
+  NearAreaPgServices,
+  services,
+};

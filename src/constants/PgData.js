@@ -5,8 +5,6 @@ const RecommendedDetails = [
     Address:
       "C33J+88Q Maya PG,Bagryal,village, near DIT college, oppostie Mega county,Salan Gaon,Bhagwant Pur, Dehradun",
     Landmark: "Near DIT University Gate",
-    LandlordContactNum: "9876543210",
-    LandlordContactMail: "hillviewpg@hostelmail.com",
     PgType: "Boys",
     Rooms: [
       { RoomNo: "101", Type: "Single", Rent: "8000", AvailFrom: "2025-07-01" },
@@ -20,8 +18,6 @@ const RecommendedDetails = [
     PgName: "Sector 62 Homestay",
     Address: "Block A, Sector 62, Noida",
     Landmark: "Near Fortis Hospital",
-    LandlordContactNum: "9812233445",
-    LandlordContactMail: "noidapg@rentmail.com",
     PgType: "Co-ed",
     Rooms: [
       { RoomNo: "201", Type: "Double", Rent: "6500", AvailFrom: "2025-07-03" },
@@ -35,8 +31,6 @@ const RecommendedDetails = [
     PgName: "MG Comfort PG",
     Address: "Near MG Road Metro, Gurgaon",
     Landmark: "Opposite MGF Mall",
-    LandlordContactNum: "9898989898",
-    LandlordContactMail: "mgcomfortpg@rentals.com",
     PgType: "Girls",
     Rooms: [
       { RoomNo: "B1", Type: "Single", Rent: "9000", AvailFrom: "2025-07-15" },
@@ -50,8 +44,6 @@ const RecommendedDetails = [
     PgName: "Pune Central Studio",
     Address: "Plot 77, Central Street, Pune",
     Landmark: "Near Shivaji Nagar",
-    LandlordContactNum: "9001112233",
-    LandlordContactMail: "punepg@stayhouse.in",
     PgType: "Studio",
     Rooms: [
       { RoomNo: "S1", Type: "Single", Rent: "12000", AvailFrom: "2025-07-01" },
@@ -65,8 +57,6 @@ const RecommendedDetails = [
     PgName: "DLF Sharing PG",
     Address: "DLF Phase 3, Gurgaon",
     Landmark: "Near Cyber Hub",
-    LandlordContactNum: "9811223344",
-    LandlordContactMail: "dlfpg@liveplace.com",
     PgType: "Boys",
     Rooms: [
       { RoomNo: "G1", Type: "Double", Rent: "7000", AvailFrom: "2025-07-02" },
@@ -80,8 +70,6 @@ const RecommendedDetails = [
     PgName: "Saket Stay PG",
     Address: "H-Block, Saket, New Delhi",
     Landmark: "Near PVR Saket",
-    LandlordContactNum: "9977886655",
-    LandlordContactMail: "saketstay@homemail.in",
     PgType: "Girls",
     Rooms: [
       { RoomNo: "SK1", Type: "Single", Rent: "10000", AvailFrom: "2025-07-04" },
@@ -95,8 +83,6 @@ const RecommendedDetails = [
     PgName: "Bangalore Modern PG",
     Address: "4th Main Road, Indiranagar, Bangalore",
     Landmark: "Near Metro Station",
-    LandlordContactNum: "9911882299",
-    LandlordContactMail: "blrpcitypg@mailer.com",
     PgType: "Co-ed",
     Rooms: [
       {
@@ -120,8 +106,6 @@ const RecommendedDetails = [
     PgName: "City PG Dehradun",
     Address: "Clement Town, Dehradun",
     Landmark: "Opposite Pacific Mall",
-    LandlordContactNum: "8800556611",
-    LandlordContactMail: "citypg@ddnmail.com",
     PgType: "Girls",
     Rooms: [
       { RoomNo: "CT1", Type: "Single", Rent: "6000", AvailFrom: "2025-07-03" },
@@ -135,8 +119,6 @@ const RecommendedDetails = [
     PgName: "Rohini Budget PG",
     Address: "Sector 7, Rohini, Delhi",
     Landmark: "Near Rohini West Metro",
-    LandlordContactNum: "7004567890",
-    LandlordContactMail: "rohini@budgetstays.com",
     PgType: "Boys",
     Rooms: [
       { RoomNo: "R1", Type: "Triple", Rent: "5500", AvailFrom: "2025-07-10" },
@@ -150,8 +132,6 @@ const RecommendedDetails = [
     PgName: "Rajiv Chowk Stay",
     Address: "Connaught Place, New Delhi",
     Landmark: "Near Metro Gate No. 5",
-    LandlordContactNum: "9990008887",
-    LandlordContactMail: "rajivstay@metrohostel.com",
     PgType: "Co-ed",
     Rooms: [
       { RoomNo: "RC1", Type: "Single", Rent: "9500", AvailFrom: "2025-07-07" },
@@ -168,8 +148,6 @@ const InCityDetails = [
     PgName: "Sector 45 Residency",
     Address: "Plot 89, Sector 45, Gurgaon",
     Landmark: "Near Huda City Centre",
-    LandlordContactNum: "9876543100",
-    LandlordContactMail: "sec45@gurgaonpg.com",
     PgType: "Boys",
     Rooms: [
       { RoomNo: "101", Type: "Single", Rent: "8500", AvailFrom: "2025-07-01" },
@@ -183,8 +161,6 @@ const InCityDetails = [
     PgName: "Janakpuri Comfort PG",
     Address: "C-Block, Janakpuri, Delhi",
     Landmark: "Near Janakpuri West Metro",
-    LandlordContactNum: "9711122233",
-    LandlordContactMail: "janakstay@delhipg.com",
     PgType: "Girls",
     Rooms: [
       { RoomNo: "J1", Type: "Single", Rent: "9000", AvailFrom: "2025-07-03" },
@@ -198,8 +174,6 @@ const InCityDetails = [
     PgName: "Noida House PG",
     Address: "Sector 50, Noida",
     Landmark: "Near Sector 50 Market",
-    LandlordContactNum: "8822993344",
-    LandlordContactMail: "noidahouse@noidapg.in",
     PgType: "Co-ed",
     Rooms: [
       { RoomNo: "NH1", Type: "Single", Rent: "7000", AvailFrom: "2025-07-02" },
@@ -213,8 +187,6 @@ const InCityDetails = [
     PgName: "Electronic City PG",
     Address: "Phase 1, Electronic City, Bangalore",
     Landmark: "Beside Infosys Campus",
-    LandlordContactNum: "9888777666",
-    LandlordContactMail: "elecpghome@bangaloreroom.com",
     PgType: "Boys",
     Rooms: [
       { RoomNo: "EC1", Type: "Single", Rent: "8000", AvailFrom: "2025-07-06" },
@@ -228,8 +200,6 @@ const InCityDetails = [
     PgName: "Prince Town PG",
     Address: "Prince Chowk, Dehradun",
     Landmark: "Near Railway Station",
-    LandlordContactNum: "9898123456",
-    LandlordContactMail: "princetown@ddnpghome.com",
     PgType: "Girls",
     Rooms: [
       { RoomNo: "PT1", Type: "Single", Rent: "6200", AvailFrom: "2025-07-04" },
@@ -243,8 +213,6 @@ const InCityDetails = [
     PgName: "Kothrud Elite PG",
     Address: "Kothrud Main Road, Pune",
     Landmark: "Near MIT College",
-    LandlordContactNum: "7777888899",
-    LandlordContactMail: "kothrudelite@punehost.com",
     PgType: "Co-ed",
     Rooms: [
       { RoomNo: "KT1", Type: "Single", Rent: "9000", AvailFrom: "2025-07-05" },
@@ -258,8 +226,6 @@ const InCityDetails = [
     PgName: "Gopal Krishna PG",
     Address: "Rajajinagar, Bangalore",
     Landmark: "Near Orion Mall",
-    LandlordContactNum: "9090901122",
-    LandlordContactMail: "gkpghome@blrhomes.in",
     PgType: "Boys",
     Rooms: [
       { RoomNo: "GK1", Type: "Single", Rent: "8700", AvailFrom: "2025-07-02" },
@@ -273,8 +239,6 @@ const InCityDetails = [
     PgName: "Rajpur Road Stays",
     Address: "Rajpur Road, Dehradun",
     Landmark: "Opposite Pacific Hotel",
-    LandlordContactNum: "7000111122",
-    LandlordContactMail: "rajpurstay@pgddn.in",
     PgType: "Girls",
     Rooms: [
       { RoomNo: "RR1", Type: "Single", Rent: "5800", AvailFrom: "2025-07-01" },
@@ -288,8 +252,6 @@ const InCityDetails = [
     PgName: "Sec 18 Noida PG",
     Address: "Sector 18, Noida",
     Landmark: "Near Atta Market",
-    LandlordContactNum: "9666884455",
-    LandlordContactMail: "sec18noida@pgliving.com",
     PgType: "Co-ed",
     Rooms: [
       {
@@ -318,8 +280,6 @@ const InCityDetails = [
     PgName: "Uttam Nagar Gents PG",
     Address: "Uttam Nagar East, Delhi",
     Landmark: "Near Metro Pillar 689",
-    LandlordContactNum: "9988776655",
-    LandlordContactMail: "uttampg@delhihomes.com",
     PgType: "Boys",
     Rooms: [
       { RoomNo: "UN1", Type: "Single", Rent: "6000", AvailFrom: "2025-07-09" },
@@ -336,8 +296,6 @@ const NearAreaDetails = [
     PgName: "DLF Phase 3 PG",
     Address: "U Block, DLF Phase 3, Gurgaon",
     Landmark: "Near Cyber City",
-    LandlordContactNum: "9811123456",
-    LandlordContactMail: "dlf3stay@gurgaonpghomes.com",
     PgType: "Co-ed",
     Rooms: [
       {
@@ -356,8 +314,6 @@ const NearAreaDetails = [
     PgName: "ISBT Area PG",
     Address: "ISBT Road, Dehradun",
     Landmark: "Near Bus Terminal",
-    LandlordContactNum: "8899001122",
-    LandlordContactMail: "isbthostel@dehradunpghome.in",
     PgType: "Boys",
     Rooms: [
       { RoomNo: "IS1", Type: "Single", Rent: "6000", AvailFrom: "2025-07-05" },
@@ -371,8 +327,6 @@ const NearAreaDetails = [
     PgName: "Nash Market PG",
     Address: "Nash Market, Delhi Cantt",
     Landmark: "Near Army Base Hospital",
-    LandlordContactNum: "7000123456",
-    LandlordContactMail: "nashtownstay@delhipghome.in",
     PgType: "Girls",
     Rooms: [
       { RoomNo: "NS1", Type: "Single", Rent: "7200", AvailFrom: "2025-07-01" },
@@ -386,8 +340,6 @@ const NearAreaDetails = [
     PgName: "Shivaji Nagar PG",
     Address: "Lane 3, Shivaji Nagar, Pune",
     Landmark: "Near Shivajinagar Bus Stand",
-    LandlordContactNum: "9666778899",
-    LandlordContactMail: "shivpg@punerooms.com",
     PgType: "Co-ed",
     Rooms: [
       { RoomNo: "SN1", Type: "Single", Rent: "8700", AvailFrom: "2025-07-04" },
@@ -401,8 +353,6 @@ const NearAreaDetails = [
     PgName: "Marathahalli Comfort PG",
     Address: "Outer Ring Road, Marathahalli, Bangalore",
     Landmark: "Opposite Innovative Multiplex",
-    LandlordContactNum: "8000111222",
-    LandlordContactMail: "marathahalli@blrpgstay.com",
     PgType: "Girls",
     Rooms: [
       { RoomNo: "MH1", Type: "Single", Rent: "9100", AvailFrom: "2025-07-03" },
@@ -416,8 +366,6 @@ const NearAreaDetails = [
     PgName: "Noida Sector 62 PG",
     Address: "B-15, Sector 62, Noida",
     Landmark: "Near Jaypee Institute",
-    LandlordContactNum: "9990011001",
-    LandlordContactMail: "sec62stay@noidapghub.com",
     PgType: "Boys",
     Rooms: [
       {
@@ -446,8 +394,6 @@ const NearAreaDetails = [
     PgName: "Gottigere PG",
     Address: "Bannerghatta Road, Gottigere, Bangalore",
     Landmark: "Near NICE Road Junction",
-    LandlordContactNum: "8123456780",
-    LandlordContactMail: "gottigerehomes@blrstay.in",
     PgType: "Co-ed",
     Rooms: [
       { RoomNo: "GT1", Type: "Single", Rent: "8600", AvailFrom: "2025-07-07" },
@@ -461,8 +407,6 @@ const NearAreaDetails = [
     PgName: "Saharanpur Road PG",
     Address: "Saharanpur Road, Dehradun",
     Landmark: "Opposite Coca Cola Factory",
-    LandlordContactNum: "9898998989",
-    LandlordContactMail: "saranpghome@ddnstay.com",
     PgType: "Girls",
     Rooms: [
       { RoomNo: "SR1", Type: "Single", Rent: "6000", AvailFrom: "2025-07-06" },
@@ -476,8 +420,6 @@ const NearAreaDetails = [
     PgName: "Patel Nagar PG",
     Address: "Patel Nagar, Dehradun",
     Landmark: "Near Hotel Ajanta",
-    LandlordContactNum: "7011122233",
-    LandlordContactMail: "patelpg@ddnlocalstay.in",
     PgType: "Boys",
     Rooms: [
       { RoomNo: "PN1", Type: "Single", Rent: "5700", AvailFrom: "2025-07-04" },
@@ -491,8 +433,6 @@ const NearAreaDetails = [
     PgName: "Sadashiv Peth Stay",
     Address: "Sadashiv Peth, Pune",
     Landmark: "Near SP College",
-    LandlordContactNum: "7088996655",
-    LandlordContactMail: "sadashivstay@punepghub.com",
     PgType: "Co-ed",
     Rooms: [
       { RoomNo: "SP1", Type: "Single", Rent: "8800", AvailFrom: "2025-07-09" },
