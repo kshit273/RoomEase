@@ -170,15 +170,18 @@ const ShowRooms = ({ RID }) => {
                 }`}
               />
             </div>
-            <div className="flex justify-between mt-[10px] max-w-[300px]">
+            <div className="flex justify-between mt-[10px] max-w-[250px]">
               <div className="left">
                 <div className="roomnum text-[#1a1a1a] text-[28px] font-medium">
                   Room {Room.RoomNo}
                 </div>
-                <div className="properties text-[#464646] text-[18px]">
+                {/* <div className="properties text-[#464646] text-[18px]">
                   <ul>
                     <li>{Room.Type} room</li>
                   </ul>
+                </div> */}
+                <div className="price text-[#1a1a1a] text-[19px]">
+                  ₹{Room.Rent}/mo
                 </div>
               </div>
               <div className="right flex flex-col gap-[10px]">
@@ -189,9 +192,6 @@ const ShowRooms = ({ RID }) => {
                     className="w-[15px] h-[15px]"
                   />
                   <p>{Room.Rating}</p>
-                </div>
-                <div className="price text-[#1a1a1a] text-[19px]">
-                  ₹{Room.Rent}/mo
                 </div>
               </div>
             </div>
