@@ -35,9 +35,9 @@ const OwnerCard = ({ RID }) => {
           />
         </div>
         <div className="flex flex-col justify-center">
-          <p className="text-[21px] text-[#9f9f9f] ">{Owner.name}</p>
-          <p className="text-[21px] text-[#9f9f9f] ">+91 {Owner.mobile}</p>
-          <p className="text-[21px] text-[#9f9f9f] ">{Owner.mail}</p>
+          <p className="text-[21px] text-[#8a8a8a] ">{Owner.name}</p>
+          <p className="text-[21px] text-[#8a8a8a] ">+91 {Owner.mobile}</p>
+          <p className="text-[21px] text-[#8a8a8a] ">{Owner.mail}</p>
         </div>
       </div>
     </div>

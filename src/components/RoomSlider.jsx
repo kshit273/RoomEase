@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import RoomCard from "../components/RoomCard";
 
-const RoomSlider = ({ list, heading }) => {
+const RoomSlider = ({ list, heading, onRoomClick }) => {
   const scrollRef = useRef();
   const [isRightHovered, setIsRightHovered] = useState(false);
   const [isLeftHovered, setIsLeftHovered] = useState(false);
@@ -45,17 +45,26 @@ const RoomSlider = ({ list, heading }) => {
           className="flex gap-[25px] overflow-x-auto scroll-smooth w-full no-scrollbar"
           style={{ scrollBehavior: "smooth" }}
         >
-          {list.map(({ head, imgPath, desc, isVerified, isLiked, review }) => (
-            <RoomCard
-              key={head}
-              head={head}
-              imgPath={imgPath}
-              desc={desc}
-              isVerified={isVerified}
-              isLiked={isLiked}
-              review={review}
-            />
-          ))}
+          {list.map(
+            ({ RID, head, imgPath, desc, isVerified, isLiked, review }) => (
+              <div
+                key={head}
+                onClick={() => onRoomClick && onRoomClick(RID)}
+                style={{ cursor: "pointer" }}
+              >
+                <RoomCard
+                  RID={RID}
+                  key={head}
+                  head={head}
+                  imgPath={imgPath}
+                  desc={desc}
+                  isVerified={isVerified}
+                  isLiked={isLiked}
+                  review={review}
+                />
+              </div>
+            )
+          )}
         </div>
         <button
           className="flex items-center justify-center absolute right-[-5%] h-[100px] w-[100px] z-10 bg-[#e8e8e8] rounded-full shadow p-2 hover:bg-[#b9b9b9]  transition duration-400"

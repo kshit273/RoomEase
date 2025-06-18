@@ -1,7 +1,15 @@
 import Verified from "./Verified";
 import Like from "./Like";
 
-const RoomCard = ({ head, imgPath, desc, isVerified, isLiked, review }) => {
+const RoomCard = ({
+  RID,
+  head,
+  imgPath,
+  desc,
+  isVerified,
+  isLiked,
+  review,
+}) => {
   return (
     <div className="h-[500px] w-[500px] bg-[#cecece] rounded-[10px]">
       <div className="h-[370px] w-[500px] flex items-center justify-center relative">

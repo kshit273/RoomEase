@@ -17,7 +17,8 @@ const services = [
   { name: "Kitchen", imgPath: "./images/serviceImgs/spatula.png" },
 ];
 
-const RecommendedPgServices = [
+const Services = [
+  // --- RecommendedPgServices ---
   {
     RID: "DEHDITbc51ed",
     services: [
@@ -81,9 +82,8 @@ const RecommendedPgServices = [
     RID: "DELRAJ49ba4f",
     services: ["Kitchen", "Wifi", "Parking", "Power Backup", "Fridge"],
   },
-];
 
-const InCityPgServices = [
+  // --- InCityPgServices ---
   {
     RID: "DELCONa05b3c",
     services: ["Wifi", "Air Conditioner", "Fridge", "CCTV", "Kitchen"],
@@ -136,9 +136,8 @@ const InCityPgServices = [
     RID: "DELRAJa2668e",
     services: ["Wifi", "CCTV", "Drinking Water", "Fridge", "Kitchen"],
   },
-];
 
-const NearAreaPgServices = [
+  // --- NearAreaPgServices ---
   {
     RID: "DEHGRA2dedf3",
     services: ["Wifi", "Kitchen", "Parking", "Washing Machine", "Geyser"],
@@ -205,9 +204,4 @@ const NearAreaPgServices = [
   },
 ];
 
-export {
-  RecommendedPgServices,
-  InCityPgServices,
-  NearAreaPgServices,
-  services,
-};
+export { Services, services };

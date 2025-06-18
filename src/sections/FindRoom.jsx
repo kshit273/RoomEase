@@ -1,8 +1,8 @@
 import RoomSlider from "../components/RoomSlider";
 import SearchButton from "../components/SearchButton";
-import { NearArea, Recommended, InCity } from "../constants/Houses";
+import { Houses } from "../constants/Houses";
 
-const FindRoom = () => {
+const FindRoom = ({ activeRID, setActiveRID }) => {
   return (
     <section id="about" className="relative z-2 pt-[100px]">
       <div className="w-full h-[2700px] flex justify-center mt-[100px]">
@@ -18,9 +18,21 @@ const FindRoom = () => {
               <SearchButton width={800} />
             </div>
           </div>
-          <RoomSlider list={NearArea} heading={"Rooms in Dehradun"} />
-          <RoomSlider list={Recommended} heading={"PGs in your area"} />
-          <RoomSlider list={InCity} heading={"You may also like"} />
+          <RoomSlider
+            list={Houses}
+            heading={"Rooms in Dehradun"}
+            onRoomClick={setActiveRID}
+          />
+          <RoomSlider
+            list={Houses}
+            heading={"PGs in your area"}
+            onRoomClick={setActiveRID}
+          />
+          <RoomSlider
+            list={Houses}
+            heading={"You may also like"}
+            onRoomClick={setActiveRID}
+          />
         </div>
       </div>
     </section>

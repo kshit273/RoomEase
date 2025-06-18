@@ -1,33 +1,17 @@
 import MapComp from "../components/MapComp";
 import OwnerCard from "../components/OwnerCard";
-import { Recommended, InCity, NearArea } from "../constants/Houses";
-import {
-  RecommendedDetails,
-  InCityDetails,
-  NearAreaDetails,
-} from "../constants/PgData";
-import {
-  RecommendedPgServices,
-  InCityPgServices,
-  NearAreaPgServices,
-  services,
-} from "../constants/Services";
+import PgReview from "../components/PgReview";
+import ShowRooms from "../components/ShowRooms";
+import { Houses } from "../constants/Houses";
+import { Details } from "../constants/PgData";
+import { services, Services } from "../constants/Services";
 
 const PgInfo = ({ RID }) => {
-  const house =
-    Recommended.find((item) => item.RID === RID) ||
-    InCity.find((item) => item.RID === RID) ||
-    NearArea.find((item) => item.RID === RID);
+  const house = Houses.find((item) => item.RID === RID);
 
-  const details =
-    RecommendedDetails.find((item) => item.RID === RID) ||
-    InCityDetails.find((item) => item.RID === RID) ||
-    NearAreaDetails.find((item) => item.RID === RID);
+  const details = Details.find((item) => item.RID === RID);
 
-  const PgServices =
-    RecommendedPgServices.find((item) => item.RID === RID) ||
-    InCityPgServices.find((item) => item.RID === RID) ||
-    NearAreaPgServices.find((item) => item.RID === RID);
+  const PgServices = Services.find((item) => item.RID === RID);
 
   return (
     <section id="PgInfo" className="relative z-2 pt-[100px] px-6">
@@ -125,6 +109,21 @@ const PgInfo = ({ RID }) => {
               {house.description}
             </div>
           </div>
+          <div className="desc flex flex-col gap-[5px] mt-[30px]">
+            <div className="head text-[35px] font-medium ">
+              Things to be kept in mind
+            </div>
+            <div className="para flex flex-col gap-[10px]">
+              {house.extras.map((prop, idx) => (
+                <div className="flex gap-[10px] items-center">
+                  <div className="h-[10px] w-[10px] rounded-full bg-[#1a1a1a]"></div>
+                  <div key={idx} className="text-[19px] text-[#6c6c6c]">
+                    {prop}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
           <div className="services mt-[30px]">
             <div className="head text-[35px] font-medium">
               Services provided
@@ -135,6 +134,25 @@ const PgInfo = ({ RID }) => {
                 .filter(Boolean)
                 .slice(0, 10);
 
+              // Use grid only if more than 4, else use flex-col for compactness
+              if (matchedServices.length <= 4) {
+                return (
+                  <div className="flex flex-col gap-y-5 mt-[20px] max-w-[400px]">
+                    {matchedServices.map((matchedService, idx) => (
+                      <div key={idx} className="flex items-center gap-[15px]">
+                        <img
+                          src={matchedService.imgPath}
+                          alt={matchedService.name}
+                          className="h-[35px] w-[35px]"
+                        />
+                        <div className="text-[#6c6c6c] text-[19px]">
+                          {matchedService.name}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                );
+              }
               return (
                 <div className="grid grid-cols-2 gap-x-10 gap-y-5 mt-[20px] max-w-[400px]">
                   {matchedServices.map((matchedService, idx) => (
@@ -158,6 +176,12 @@ const PgInfo = ({ RID }) => {
           <OwnerCard RID={RID} />
           <MapComp RID={RID} />
         </div>
+      </div>
+      <div className="rooms ml-[60px] mt-[30px]">
+        <ShowRooms RID={RID} />
+      </div>
+      <div>
+        <PgReview />
       </div>
     </section>
   );
