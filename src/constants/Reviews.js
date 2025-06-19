@@ -1,9 +1,9 @@
-const PGReviews = [
+export const PGReviews = [
   // DEHDITbc51ed
   {
     RID: "DEHDITbc51ed",
     review:
-      "Loved my stay here during college. Super close to DIT and the environment is peaceful — perfect for studying.",
+      "I couldn’t have asked for a better place to stay during my internship. The rooms are spacious, and the beds are super comfy. The food is just like home — healthy and not too spicy. The staff is polite, and the best part is that everything is cleaned regularly. There's even a small balcony where I used to chill in the evenings. Highly recommended for working professionals!",
     finalRating: 4.3,
     communityAndEnvironmentRating: 4.5,
     valueForMoneyRating: 4.2,
@@ -16,8 +16,8 @@ const PGReviews = [
   {
     RID: "DEHDITbc51ed",
     review:
-      "Rooms are spacious and cleaned regularly. The staff is friendly, especially the warden uncle!",
-    finalRating: 4.3,
+      "The crowd here is amazing — mostly students from nearby colleges, so it has a very chill and productive vibe. The Wi-Fi is strong, and the study area is quiet and perfect for group studies. The food is okay, could be improved slightly. Overall, it's a solid PG with good vibes and great facilities.",
+    finalRating: 3.9,
     communityAndEnvironmentRating: 4.5,
     valueForMoneyRating: 4.2,
     locationRating: 4.7,
@@ -29,8 +29,8 @@ const PGReviews = [
   {
     RID: "DEHDITbc51ed",
     review:
-      "Food is homely but gets a little repetitive. Still better than most PGs I've seen in Dehradun.",
-    finalRating: 4.3,
+      "The place is affordable and close to the metro, which was a big plus. The rooms are average-sized, but the walls are a bit thin, so you can hear noise from next door. Food is fine for the price, but I’d recommend eating out sometimes. Good for short stays or those on a tight budget.",
+    finalRating: 3.1,
     communityAndEnvironmentRating: 4.5,
     valueForMoneyRating: 4.2,
     locationRating: 4.7,
@@ -42,8 +42,8 @@ const PGReviews = [
   {
     RID: "DEHDITbc51ed",
     review:
-      "Wi-Fi is decent. Faced a few power cuts during monsoon but they have a backup generator now.",
-    finalRating: 4.3,
+      "One of the safest girls’ PGs I’ve stayed in. 24/7 female staff, CCTV surveillance, and biometric entry made us feel secure. The food was always fresh, and they even had special weekend meals. Rooms are cozy with good ventilation. I would totally recommend it to any girl moving to Gurgaon for studies or work.",
+    finalRating: 2.9,
     communityAndEnvironmentRating: 4.5,
     valueForMoneyRating: 4.2,
     locationRating: 4.7,
@@ -55,7 +55,7 @@ const PGReviews = [
   {
     RID: "DEHDITbc51ed",
     review:
-      "Perfect for DIT students. Walkable distance and very safe locality. Would recommend 100%.",
+      "This place has the vibe of a serviced apartment. Interiors are modern, with a mini fridge, attached bathroom, and AC in every room. The common area is like a co-living lounge with bean bags, Netflix, and a mini library. Totally worth the rent if you want comfort + community.",
     finalRating: 4.3,
     communityAndEnvironmentRating: 4.5,
     valueForMoneyRating: 4.2,
@@ -68,7 +68,7 @@ const PGReviews = [
   {
     RID: "DEHDITbc51ed",
     review:
-      "Shared room felt a bit cramped at first but it’s well-managed and affordable for students.",
+      "Honestly, I expected more based on the pictures. The rooms were smaller than shown, and the Wi-Fi barely worked during peak hours. The food was repetitive, and once the geyser didn’t work for 2 days. The only plus is its walking distance from college. Needs serious maintenance.",
     finalRating: 4.3,
     communityAndEnvironmentRating: 4.5,
     valueForMoneyRating: 4.2,
@@ -81,7 +81,7 @@ const PGReviews = [
   {
     RID: "DEHDITbc51ed",
     review:
-      "Laundry service is available and works fine. Wish they had a small gym though!",
+      "If you're a serious student, this is the PG for you. Super silent, Wi-Fi doesn’t lag during Zoom classes or online tests. Food is healthy, less oily. They even provide boiled eggs and fruits for breakfast. A great place for focused preparation. Would’ve been 5 stars if they had a small gym.",
     finalRating: 4.3,
     communityAndEnvironmentRating: 4.5,
     valueForMoneyRating: 4.2,
@@ -94,7 +94,7 @@ const PGReviews = [
   {
     RID: "DEHDITbc51ed",
     review:
-      "Stayed here for 1.5 years. It really felt like a second home. Clean and calm atmosphere.",
+      "I stayed here for a month while shifting jobs, and I was really impressed. The check-in process was smooth, no deposit needed, and they provided fresh bedding and daily cleaning. Food was simple but tasty. Ideal for short-term working professionals or interns.",
     finalRating: 4.3,
     communityAndEnvironmentRating: 4.5,
     valueForMoneyRating: 4.2,
@@ -109,7 +109,7 @@ const PGReviews = [
   {
     RID: "NOISEC7eb4aa",
     review:
-      "Modern PG with great facilities. AC, RO water, even a mini fridge in the room!",
+      "I loved the peaceful environment here. The interiors are minimal and soothing — very different from the usual cramped PGs. Wi-Fi, laundry, and 24/7 water supply — all top-notch. Also, the rooftop common area is the best part — you can study, chill, or do yoga with a view.",
     finalRating: 4.6,
     communityAndEnvironmentRating: 4.8,
     valueForMoneyRating: 4.4,
@@ -122,7 +122,7 @@ const PGReviews = [
   {
     RID: "NOISEC7eb4aa",
     review:
-      "Bit expensive but you get what you pay for. Close to metro station and IT parks.",
+      "Facilities are excellent — food variety, regular cleaning, and even Netflix in the common area. But honestly, the rent feels a bit high compared to similar PGs nearby. If you don’t mind paying a premium for good service and convenience, this might be the one for you.",
     finalRating: 4.6,
     communityAndEnvironmentRating: 4.8,
     valueForMoneyRating: 4.4,

@@ -3,18 +3,17 @@ import OwnerCard from "../components/OwnerCard";
 import PgReview from "../components/PgReview";
 import ShowRooms from "../components/ShowRooms";
 import { Houses } from "../constants/Houses";
+import Footer from "./Footer";
 import { Details } from "../constants/PgData";
 import { services, Services } from "../constants/Services";
 
 const PgInfo = ({ RID }) => {
   const house = Houses.find((item) => item.RID === RID);
-
   const details = Details.find((item) => item.RID === RID);
-
   const PgServices = Services.find((item) => item.RID === RID);
 
   return (
-    <section id="PgInfo" className="relative z-2 pt-[100px] px-6">
+    <section id="PgInfo" className="relative z-2 pt-[100px] px-6 ">
       <div className="flex items-center justify-center">
         <div className="grid grid-cols-5 grid-rows-2 gap-8  p-4 rounded-2xl w-[95%] h-[800px]">
           <div className="col-span-3 row-span-2 rounded-2xl overflow-hidden">
@@ -57,7 +56,7 @@ const PgInfo = ({ RID }) => {
           </div>
         </div>
       </div>
-      <div className="info flex  justify-between">
+      <div className="info flex justify-between items-start">
         <div className="leftInfo ml-[60px] w-[1300px]">
           <div className="main ">
             <div className="head text-[45px] font-medium text-[#1a1a1a] mb-[5px]">
@@ -172,17 +171,23 @@ const PgInfo = ({ RID }) => {
             })()}
           </div>
         </div>
-        <div className="rightInfo mr-[60px] flex flex-col gap-[20px]">
-          <OwnerCard RID={RID} />
-          <MapComp RID={RID} />
+        <div className="sticky top-[100px] h-fit z-10 mr-[60px]">
+          <div className="flex flex-col gap-[20px]">
+            <OwnerCard RID={RID} />
+            <MapComp RID={RID} />
+          </div>
         </div>
       </div>
       <div className="rooms ml-[60px] mt-[30px]">
         <ShowRooms RID={RID} />
       </div>
       <div>
-        <PgReview />
+        <PgReview RID={RID} />
       </div>
+      <div className="w-[100vw] flex items-center justify-center my-[20px]">
+        <div className="h-[1.5px] w-[80vw] bg-[#a4a4a4]"></div>
+      </div>
+      <Footer />
     </section>
   );
 };
