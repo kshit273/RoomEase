@@ -1,24 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import "tailwindcss";
 
-:root {
-  --gradient: radial-gradient(circle, #e8e8e8 0%, #fff 100%);
-}
-
-#root {
-  min-height: 100vh;
-}
-
 html,
-body {
+body,
+#root {
   margin: 0;
   padding: 0;
-  /* width: 100dvw; */
-  overflow-x: hidden;
+  width: 100%;
+  min-height: 100vh;
+  /* overflow-x: hidden; */
+  font-family: "Poppins", sans-serif;
   background-color: #e8e8e8;
-  color: black;
   scroll-behavior: smooth;
-  font-family: "Poppins";
 }
 
 .gradient-line {

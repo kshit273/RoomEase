@@ -13,7 +13,7 @@ const PgInfo = ({ RID }) => {
   const PgServices = Services.find((item) => item.RID === RID);
 
   return (
-    <section id="PgInfo" className="relative z-2 pt-[100px] px-6 ">
+    <section id="PgInfo" className="relative z-2 pt-[100px]  ">
       <div className="flex items-center justify-center">
         <div className="grid grid-cols-5 grid-rows-2 gap-8  p-4 rounded-2xl w-[95%] h-[800px]">
           <div className="col-span-3 row-span-2 rounded-2xl overflow-hidden">
@@ -56,87 +56,105 @@ const PgInfo = ({ RID }) => {
           </div>
         </div>
       </div>
-      <div className="info flex justify-between items-start">
-        <div className="leftInfo ml-[60px] w-[1300px]">
-          <div className="main ">
-            <div className="head text-[45px] font-medium text-[#1a1a1a] mb-[5px]">
-              {house?.head || details?.PgName || "PG Info"}
-            </div>
-            <div className="address font-normal text-[22px] w-[500px] text-[#2a2a2a] ">
-              {details?.Address}
-            </div>
-            <div className="rating mb-[40px] flex items-center gap-[10px]">
-              <div className="stars flex items-center gap-1 py-[8px]">
-                {[...Array(5)].map((_, i) =>
-                  i < house.review ? (
-                    <img
-                      key={i}
-                      src="./images/star-filled.png"
-                      alt="star"
-                      className="w-[20px] h-[20px]"
-                    />
-                  ) : (
-                    <img
-                      key={i}
-                      src="./images/star-empty.png"
-                      alt="star-empty"
-                      className="w-[20px] h-[20px]"
-                    />
-                  )
-                )}
+      <div className="flex gap-[60px] justify-between">
+        <div className="info flex flex-col ">
+          <div className="leftInfo ml-[60px] w-[1300px]">
+            <div className="main ">
+              <div className="head text-[45px] font-medium text-[#1a1a1a] mb-[5px]">
+                {house?.head || details?.PgName || "PG Info"}
               </div>
-              <div className="ratingNumber text-[20px] text-[#4d4d4d] flex items-center justify-center pt-[5px] font-medium">
-                <p>({house.review})</p>
+              <div className="address font-normal text-[22px] w-[500px] text-[#2a2a2a] ">
+                {details?.Address}
               </div>
-            </div>
-            <div className="buttons flex gap-[15px]">
-              <button className="h-[60px] w-[240px] bg-gradient-to-r from-[#d72638] to-[#ff0084] text-[20px] text-white font-medium rounded-full shadow">
-                Save for later
-              </button>
-              <button className="h-[60px] w-[60px] bg-[#d9d9d9] rounded-full flex items-center justify-center">
-                <img
-                  src="./images/send.png"
-                  alt="share"
-                  className="h-[25px] w-[25px]"
-                />
-              </button>
-            </div>
-          </div>
-          <div className="desc flex flex-col gap-[5px] mt-[30px]">
-            <div className="head text-[35px] font-medium">Description</div>
-            <div className="para text-[19px] text-[#6c6c6c] ">
-              {house.description}
-            </div>
-          </div>
-          <div className="desc flex flex-col gap-[5px] mt-[30px]">
-            <div className="head text-[35px] font-medium ">
-              Things to be kept in mind
-            </div>
-            <div className="para flex flex-col gap-[10px]">
-              {house.extras.map((prop, idx) => (
-                <div className="flex gap-[10px] items-center">
-                  <div className="h-[10px] w-[10px] rounded-full bg-[#1a1a1a]"></div>
-                  <div key={idx} className="text-[19px] text-[#6c6c6c]">
-                    {prop}
-                  </div>
+              <div className="rating mb-[40px] flex items-center gap-[10px]">
+                <div className="stars flex items-center gap-1 py-[8px]">
+                  {[...Array(5)].map((_, i) =>
+                    i < house.review ? (
+                      <img
+                        key={i}
+                        src="./images/star-filled.png"
+                        alt="star"
+                        className="w-[20px] h-[20px]"
+                      />
+                    ) : (
+                      <img
+                        key={i}
+                        src="./images/star-empty.png"
+                        alt="star-empty"
+                        className="w-[20px] h-[20px]"
+                      />
+                    )
+                  )}
                 </div>
-              ))}
+                <div className="ratingNumber text-[20px] text-[#4d4d4d] flex items-center justify-center pt-[5px] font-medium">
+                  <p>({house.review})</p>
+                </div>
+              </div>
+              <div className="buttons flex gap-[15px]">
+                <button className="h-[60px] w-[240px] bg-gradient-to-r from-[#d72638] to-[#ff0084] text-[20px] text-white font-medium rounded-full shadow">
+                  Save for later
+                </button>
+                <button className="h-[60px] w-[60px] bg-[#d9d9d9] rounded-full flex items-center justify-center">
+                  <img
+                    src="./images/send.png"
+                    alt="share"
+                    className="h-[25px] w-[25px]"
+                  />
+                </button>
+              </div>
             </div>
-          </div>
-          <div className="services mt-[30px]">
-            <div className="head text-[35px] font-medium">
-              Services provided
+            <div className="desc flex flex-col gap-[5px] mt-[30px]">
+              <div className="head text-[35px] font-medium">Description</div>
+              <div className="para text-[19px] text-[#6c6c6c] ">
+                {house.description}
+              </div>
             </div>
-            {(() => {
-              const matchedServices = PgServices.services
-                .map((service) => services.find((s) => s.name === service))
-                .filter(Boolean)
-                .slice(0, 10);
+            <div className="desc flex flex-col gap-[5px] mt-[30px]">
+              <div className="head text-[35px] font-medium ">
+                Things to be kept in mind
+              </div>
+              <div className="para flex flex-col gap-[10px]">
+                {house.extras.map((prop, idx) => (
+                  <div className="flex gap-[10px] items-center">
+                    <div className="h-[10px] w-[10px] rounded-full bg-[#1a1a1a]"></div>
+                    <div key={idx} className="text-[19px] text-[#6c6c6c]">
+                      {prop}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="services mt-[30px]">
+              <div className="head text-[35px] font-medium">
+                Services provided
+              </div>
+              {(() => {
+                const matchedServices = PgServices.services
+                  .map((service) => services.find((s) => s.name === service))
+                  .filter(Boolean)
+                  .slice(0, 10);
 
-              // Use grid only if more than 4, else use flex-col for compactness
-              if (matchedServices.length <= 4) {
+                // Use grid only if more than 4, else use flex-col for compactness
+                if (matchedServices.length <= 4) {
+                  return (
+                    <div className="flex flex-col gap-y-5 mt-[20px] max-w-[400px]">
+                      {matchedServices.map((matchedService, idx) => (
+                        <div key={idx} className="flex items-center gap-[15px]">
+                          <img
+                            src={matchedService.imgPath}
+                            alt={matchedService.name}
+                            className="h-[35px] w-[35px]"
+                          />
+                          <div className="text-[#6c6c6c] text-[19px]">
+                            {matchedService.name}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  );
+                }
                 return (
-                  <div className="flex flex-col gap-y-5 mt-[20px] max-w-[400px]">
+                  <div className="grid grid-cols-2 gap-x-10 gap-y-5 mt-[20px] max-w-[400px]">
                     {matchedServices.map((matchedService, idx) => (
                       <div key={idx} className="flex items-center gap-[15px]">
                         <img
@@ -151,36 +169,22 @@ const PgInfo = ({ RID }) => {
                     ))}
                   </div>
                 );
-              }
-              return (
-                <div className="grid grid-cols-2 gap-x-10 gap-y-5 mt-[20px] max-w-[400px]">
-                  {matchedServices.map((matchedService, idx) => (
-                    <div key={idx} className="flex items-center gap-[15px]">
-                      <img
-                        src={matchedService.imgPath}
-                        alt={matchedService.name}
-                        className="h-[35px] w-[35px]"
-                      />
-                      <div className="text-[#6c6c6c] text-[19px]">
-                        {matchedService.name}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              );
-            })()}
+              })()}
+            </div>
+          </div>
+
+          <div className="rooms ml-[60px] mt-[30px]">
+            <ShowRooms RID={RID} />
           </div>
         </div>
-        <div className="sticky top-[100px] h-fit z-10 mr-[60px]">
-          <div className="flex flex-col gap-[20px]">
+        <div className="min-w-[565px] max-w-[565px]">
+          <div className="sticky top-[150px] flex flex-col gap-[20px]">
             <OwnerCard RID={RID} />
             <MapComp RID={RID} />
           </div>
         </div>
       </div>
-      <div className="rooms ml-[60px] mt-[30px]">
-        <ShowRooms RID={RID} />
-      </div>
+
       <div>
         <PgReview RID={RID} />
       </div>
