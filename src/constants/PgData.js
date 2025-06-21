@@ -7,6 +7,16 @@ export const Details = [
       "C33J+88Q Maya PG, Bagryal, village, near DIT college, opposite Mega county, Salan Gaon, Bhagwant Pur, Dehradun",
     Landmark: "Near DIT University Gate",
     PgType: "Boys",
+    imgPaths: [
+      "./images/PgInfoImgs/DEHDITbc51ed/mainImg.jpg",
+      "./images/PgInfoImgs/DEHDITbc51ed/img1.jpg",
+      "./images/PgInfoImgs/DEHDITbc51ed/img2.jpg",
+      "./images/PgInfoImgs/DEHDITbc51ed/img3.jpg",
+      "./images/PgInfoImgs/DEHDITbc51ed/img4.jpg",
+      "./images/PgInfoImgs/DEHDITbc51ed/img4.jpg",
+      "./images/PgInfoImgs/DEHDITbc51ed/img4.jpg",
+      "./images/PgInfoImgs/DEHDITbc51ed/img4.jpg",
+    ],
     Rooms: [
       {
         RoomNo: "101",

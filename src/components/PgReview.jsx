@@ -8,6 +8,80 @@ const PgReview = ({ RID }) => {
 
   const visibleReviews = showAll ? reviewsForPG : reviewsForPG.slice(0, 4);
 
+  let communityAndEnvironmentRating = 0;
+  let valueForMoneyRating = 0;
+  let locationRating = 0;
+  let foodRating = 0;
+  let landlordRating = 0;
+
+  if (reviewsForPG.length > 0) {
+    const totalcommunityAndEnvironmentRating = reviewsForPG.reduce(
+      (sum, review) => sum + review.communityAndEnvironmentRating,
+      0
+    );
+    const totalvalueForMoneyRating = reviewsForPG.reduce(
+      (sum, review) => sum + review.valueForMoneyRating,
+      0
+    );
+    const totallocationRating = reviewsForPG.reduce(
+      (sum, review) => sum + review.locationRating,
+      0
+    );
+    const totalfoodRating = reviewsForPG.reduce(
+      (sum, review) => sum + review.foodRating,
+      0
+    );
+    const totallandlordRating = reviewsForPG.reduce(
+      (sum, review) => sum + review.landlordRating,
+      0
+    );
+
+    communityAndEnvironmentRating =
+      Math.round(
+        (totalcommunityAndEnvironmentRating / reviewsForPG.length) * 10
+      ) / 10;
+    valueForMoneyRating =
+      Math.round((totalvalueForMoneyRating / reviewsForPG.length) * 10) / 10;
+    locationRating =
+      Math.round((totallocationRating / reviewsForPG.length) * 10) / 10;
+    foodRating = Math.round((totalfoodRating / reviewsForPG.length) * 10) / 10;
+    landlordRating =
+      Math.round((totallandlordRating / reviewsForPG.length) * 10) / 10;
+  }
+
+  let finRating =
+    Math.round(
+      ((communityAndEnvironmentRating +
+        valueForMoneyRating +
+        locationRating +
+        foodRating +
+        landlordRating) /
+        5) *
+        10
+    ) / 10;
+
+  const getTimeAgo = (dateString) => {
+    const now = new Date();
+    const reviewDate = new Date(dateString);
+    const diffInMs = now - reviewDate;
+    const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+
+    if (diffInDays === 0) return "today";
+    if (diffInDays === 1) return "yesterday";
+    if (diffInDays < 7) return `${diffInDays} days ago`;
+    if (diffInDays < 30) {
+      const weeks = Math.floor(diffInDays / 7);
+      return weeks === 1 ? "a week ago" : `${weeks} weeks ago`;
+    }
+    if (diffInDays < 365) {
+      const months = Math.floor(diffInDays / 30);
+      return months === 1 ? "a month ago" : `${months} months ago`;
+    }
+
+    const years = Math.floor(diffInDays / 365);
+    return years === 1 ? "a year ago" : `${years} years ago`;
+  };
+
   return (
     <div className="w-full flex flex-col items-center pt-[100px]">
       <div className="head">
@@ -18,7 +92,9 @@ const PgReview = ({ RID }) => {
       <div className="pict flex gap-[30px] items-center">
         <div className="finRating flex flex-col items-center justify-center gap-[10px] ">
           <p className="text-[20px] text-[#464646] ">Overall rating</p>
-          <div className="text-[#464646] text-[50px] font-medium">4.1</div>
+          <div className="text-[#464646] text-[50px] font-medium">
+            {finRating}
+          </div>
           <img src="./images/finRating.png" alt="" className="w-[100px]" />
         </div>
 
@@ -28,8 +104,10 @@ const PgReview = ({ RID }) => {
           <p className="text-[20px] text-[#464646]">
             Community and environment
           </p>
-          <img src="./images/group.png" alt="" className="h-[60px] w-[60px]" />
-          <div className="text-[#464646] text-[20px] font-medium">4.1</div>
+          <img src="/images/group.png" alt="" className="h-[60px] w-[60px]" />
+          <div className="text-[#464646] text-[20px] font-medium">
+            {communityAndEnvironmentRating}
+          </div>
         </div>
 
         <div className="h-[80px] w-[1px] bg-[#c4c4c4]"></div>
@@ -37,11 +115,13 @@ const PgReview = ({ RID }) => {
         <div className="val flex flex-col items-center justify-center gap-[10px]">
           <p className="text-[20px] text-[#464646]">Value for money</p>
           <img
-            src="./images/bar-chart.png"
+            src="/images/bar-chart.png"
             alt=""
             className="h-[60px] w-[60px]"
           />
-          <div className="text-[#464646] text-[20px] font-medium">4.1</div>
+          <div className="text-[#464646] text-[20px] font-medium">
+            {valueForMoneyRating}
+          </div>
         </div>
 
         <div className="h-[80px] w-[1px] bg-[#c4c4c4]"></div>
@@ -49,42 +129,40 @@ const PgReview = ({ RID }) => {
         <div className="location flex flex-col items-center justify-center gap-[10px]">
           <p className="text-[20px] text-[#464646]">Location</p>
           <img
-            src="./images/finLocation.png"
+            src="/images/finLocation.png"
             alt=""
             className="h-[60px] w-[60px]"
           />
-          <div className="text-[#464646] text-[20px] font-medium">4.1</div>
+          <div className="text-[#464646] text-[20px] font-medium">
+            {locationRating}
+          </div>
         </div>
 
         <div className="h-[80px] w-[1px] bg-[#c4c4c4]"></div>
 
         <div className="food flex flex-col items-center justify-center gap-[10px]">
           <p className="text-[20px] text-[#464646]">Food</p>
-          <img
-            src="./images/spatula.png"
-            alt=""
-            className="h-[60px] w-[60px]"
-          />
-          <div className="text-[#464646] text-[20px] font-medium">4.1</div>
+          <img src="/images/spatula.png" alt="" className="h-[60px] w-[60px]" />
+          <div className="text-[#464646] text-[20px] font-medium">
+            {foodRating}
+          </div>
         </div>
 
         <div className="h-[80px] w-[1px] bg-[#c4c4c4]"></div>
 
         <div className="landlord flex flex-col items-center justify-center gap-[10px]">
           <p className="text-[20px] text-[#464646]">Landlord</p>
-          <img
-            src="./images/finUser.png"
-            alt=""
-            className="h-[60px] w-[60px]"
-          />
-          <div className="text-[#464646] text-[20px] font-medium">4.1</div>
+          <img src="/images/finUser.png" alt="" className="h-[60px] w-[60px]" />
+          <div className="text-[#464646] text-[20px] font-medium">
+            {landlordRating}
+          </div>
         </div>
       </div>
       <div className="cards grid grid-cols-2 gap-x-[20px] gap-y-[20px] auto-rows-auto mt-[30px]">
         {visibleReviews.map((review, idx) => (
           <RoomReviewCard
             username={review.username}
-            date={review.date}
+            date={getTimeAgo(review.date)}
             rating={review.finalRating}
             review={review.review}
             key={idx}

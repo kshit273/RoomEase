@@ -12,14 +12,14 @@ const OwnerCard = ({ RID }) => {
         <div className="buttons flex gap-[10px]">
           <button className="call w-[40px] h-[40px] hover:bg-[#b3b3b3] rounded-full flex items-center justify-center duration-300">
             <img
-              src="./images/call.png"
+              src="/images/call.png"
               alt="call"
               className="h-[27px] w-[27px]"
             />
           </button>
           <button className="message w-[40px] h-[40px] hover:bg-[#b3b3b3] rounded-full flex items-center justify-center duration-300">
             <img
-              src="./images/message.png"
+              src="/images/message.png"
               alt="message"
               className="h-[27px] w-[27px]"
             />
@@ -29,7 +29,7 @@ const OwnerCard = ({ RID }) => {
       <div className="flex gap-[20px] mt-[15px]">
         <div className="img">
           <img
-            src={`./images/PgInfoImgs/${RID}/profile.jpg`}
+            src={`/images/PgInfoImgs/${RID}/profile.jpg`}
             alt=""
             className="h-[110px] w-[110px] rounded-full"
           />

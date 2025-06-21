@@ -161,7 +161,7 @@ const ShowRooms = ({ RID }) => {
           <div key={idx}>
             <div className="">
               <img
-                src={`./images/PgInfoImgs/${RID}/${Room.RoomNo}/mainImg.jpg`}
+                src={`/images/PgInfoImgs/${RID}/${Room.RoomNo}/mainImg.jpg`}
                 alt={Room.RoomNo}
                 className={`w-[250px] h-[250px] object-cover rounded-[20px] ${
                   Room.AvailFrom === 0
@@ -175,11 +175,6 @@ const ShowRooms = ({ RID }) => {
                 <div className="roomnum text-[#1a1a1a] text-[28px] font-medium">
                   Room {Room.RoomNo}
                 </div>
-                {/* <div className="properties text-[#464646] text-[18px]">
-                  <ul>
-                    <li>{Room.Type} room</li>
-                  </ul>
-                </div> */}
                 <div className="price text-[#1a1a1a] text-[19px]">
                   ₹{Room.Rent}/mo
                 </div>
@@ -187,7 +182,7 @@ const ShowRooms = ({ RID }) => {
               <div className="right flex flex-col gap-[10px]">
                 <div className="rating flex items-center justify-end gap-[7px] text-[#464646] text-[18px]">
                   <img
-                    src="./images/star-filled.png"
+                    src="/images/star-filled.png"
                     alt="rating"
                     className="w-[15px] h-[15px]"
                   />

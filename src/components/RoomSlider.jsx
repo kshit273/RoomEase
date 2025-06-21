@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import RoomCard from "../components/RoomCard";
+import { Link } from "react-router-dom";
 
 const RoomSlider = ({ list, heading, onRoomClick }) => {
   const scrollRef = useRef();
@@ -47,22 +48,24 @@ const RoomSlider = ({ list, heading, onRoomClick }) => {
         >
           {list.map(
             ({ RID, head, imgPath, desc, isVerified, isLiked, review }) => (
-              <div
-                key={head}
-                onClick={() => onRoomClick && onRoomClick(RID)}
-                style={{ cursor: "pointer" }}
-              >
-                <RoomCard
-                  RID={RID}
+              <Link key={RID} to={`/pg/${RID}`}>
+                <div
                   key={head}
-                  head={head}
-                  imgPath={imgPath}
-                  desc={desc}
-                  isVerified={isVerified}
-                  isLiked={isLiked}
-                  review={review}
-                />
-              </div>
+                  onClick={() => onRoomClick && onRoomClick(RID)}
+                  style={{ cursor: "pointer" }}
+                >
+                  <RoomCard
+                    RID={RID}
+                    key={head}
+                    head={head}
+                    imgPath={imgPath}
+                    desc={desc}
+                    isVerified={isVerified}
+                    isLiked={isLiked}
+                    review={review}
+                  />
+                </div>
+              </Link>
             )
           )}
         </div>

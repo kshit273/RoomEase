@@ -11,7 +11,7 @@ export const PGReviews = [
     foodRating: 3.9,
     landlordRating: 4.3,
     username: "ritik_dit22",
-    date: "2025-05-11",
+    date: "2025-06-06",
   },
   {
     RID: "DEHDITbc51ed",

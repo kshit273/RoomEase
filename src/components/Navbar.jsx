@@ -3,6 +3,7 @@ import { navLinks } from "../constants/Abt";
 import JoinBtn from "./JoinBtn";
 import Hamburger from "./Hamburger";
 import { useMediaQuery } from "react-responsive";
+import { Link, Link as RouterLink } from "react-router-dom";
 
 const Navbar = () => {
   const isMedScreen = useMediaQuery({ minWidth: 770, maxWidth: 1800 });
@@ -18,6 +19,12 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const scrollToSection = (hash) => {
+    const id = hash.replace("#", "");
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <header
       className={`navbar ${scrolled ? "scrolled pb-[10px]" : "not-scrolled"} ${
@@ -43,10 +50,17 @@ const Navbar = () => {
             <ul>
               {navLinks.map(({ link, name }) => (
                 <li key={name} className="group px-5">
-                  <a href={link}>
-                    <span className="text-[22px]">{name}</span>
-                    <span className="underline" />
-                  </a>
+                  {link === "#rooms" ? (
+                    <RouterLink to="/search">
+                      <span className="text-[22px]">{name}</span>
+                      <span className="underline" />
+                    </RouterLink>
+                  ) : (
+                    <Link to="/" onClick={() => scrollToSection(link)}>
+                      <span className="text-[22px]">{name}</span>
+                      <span className="underline" />
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>

@@ -21,7 +21,7 @@ const Footer = () => {
       <div className={`flex ${isMobile ? ` flex-col` : ``} min-h-[300px]`}>
         <div className={`flex flex-1 flex-col items-start ml-[20px] mt-[10px]`}>
           <img
-            src="./images/logo.png"
+            src="/images/logo.png"
             alt="RoomEase"
             className={
               isSmallScreen
@@ -105,7 +105,11 @@ const Footer = () => {
               >
                 <a href={item.link}>
                   <img
-                    src={item.logo}
+                    src={
+                      item.logo.startsWith("./")
+                        ? item.logo.replace("./", "/")
+                        : item.logo
+                    }
                     alt={item.name}
                     className={
                       isSmallScreen
