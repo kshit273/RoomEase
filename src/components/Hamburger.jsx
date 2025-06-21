@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { navLinks } from "../constants/Abt";
+import { Link, Link as RouterLink } from "react-router-dom";
 
 const Hamburger = ({ show, onClose }) => {
   useEffect(() => {
@@ -15,6 +16,12 @@ const Hamburger = ({ show, onClose }) => {
       document.body.style.touchAction = "";
     };
   }, [show]);
+
+  const scrollToSection = (hash) => {
+    const id = hash.replace("#", "");
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
   return (
     <div
       className={`fixed h-[105vh] w-[300px] right-0 top-0 flex flex-col bg-[#1a1a1a] shadow-2xl z-50 transition-transform duration-300 ${
@@ -29,15 +36,21 @@ const Hamburger = ({ show, onClose }) => {
           </div>
         </div>
         <div className="h-[20px] w-[20px] cursor-pointer" onClick={onClose}>
-          <img src="./images/cross.png" alt="cross" />
+          <img src="/images/cross.png" alt="cross" />
         </div>
       </div>
       <ul>
         {navLinks.map(({ link, name }) => (
           <li key={name} className="group px-5 pb-[30px]">
-            <a href={link}>
-              <span className="text-[12px] text-[#d7d7d7]">{name}</span>
-            </a>
+            {link === "#rooms" ? (
+              <RouterLink to="/search">
+                <span className="text-[12px] text-[#d7d7d7]">{name}</span>
+              </RouterLink>
+            ) : (
+              <Link to="/" onClick={() => scrollToSection(link)}>
+                <span className="text-[12px] text-[#d7d7d7]">{name}</span>
+              </Link>
+            )}
           </li>
         ))}
       </ul>

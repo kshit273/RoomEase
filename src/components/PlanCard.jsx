@@ -70,6 +70,7 @@ const PlanCard = ({ title, price, list, priBg, secBg, line }) => {
         >
           {premiumList.map((item, idx) => (
             <div
+              key={idx}
               className={`${
                 isMedScreen
                   ? `gap-[10px]`
@@ -79,7 +80,6 @@ const PlanCard = ({ title, price, list, priBg, secBg, line }) => {
               } flex`}
             >
               <div
-                key={idx}
                 style={{ color: "#747474" }}
                 className={
                   isMedScreen

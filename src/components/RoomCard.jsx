@@ -13,11 +13,9 @@ const RoomCard = ({
   return (
     <div className="h-[500px] w-[500px] bg-[#cecece] rounded-[10px]">
       <div className="h-[370px] w-[500px] flex items-center justify-center relative">
-        {/* Verified icon at top-left */}
         <div className="absolute top-[15px] left-[10px] z-10 flex gap-[5px]">
           {isVerified ? <Verified /> : null}
         </div>
-        {/* Like icon at top-right */}
         <div className="absolute top-[15px] right-[20px] z-10">
           <Like isLiked={isLiked} />
         </div>

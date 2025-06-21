@@ -14,7 +14,6 @@ const About = () => {
   const isMedScreen = useMediaQuery({ maxWidth: 1800 });
   const isSmallScreen = useMediaQuery({ maxWidth: 800 });
 
-  // Timeline position and height
   const timelineLeft = isMedScreen ? "left-[40px]" : "left-[755px]";
   let timelineHeight = "h-[1120px]";
   if (isSmallScreen) {
@@ -23,7 +22,6 @@ const About = () => {
     timelineHeight = "h-[1750px]";
   }
 
-  // Content margin and gap
   const contentMarginGap = isSmallScreen
     ? "ml-15 mt-20 gap-15"
     : "ml-25 mt-32 gap-25";
@@ -90,7 +88,6 @@ const About = () => {
 
   return (
     <section id="about" className="relative z-2 pt-[100px]">
-      {/* Timeline vertical red line */}
       <div
         ref={timelineRef}
         className={`pointer-events-none absolute top-5 origin-top ${timelineLeft} ${timelineHeight} bg-[#D72638] w-[2px] z-0 ${
@@ -101,14 +98,12 @@ const About = () => {
             : ` mt-[230px]`
         }`}
       />
-      {/* Content with circles */}
 
       <div className={`flex flex-col ${contentMarginGap} relative z-10`}>
         {about.map((item, idx) => {
           const outerCircleRef = useRef(null);
           return (
             <div key={idx} className="relative flex items-start">
-              {/* Circle on the timeline */}
               <div
                 ref={outerCircleRef}
                 className={`absolute`}
@@ -132,7 +127,6 @@ const About = () => {
                   ></div>
                 </div>
               </div>
-              {/* Section content */}
               <div className="flex-1">
                 {isMedScreen ? (
                   <Smallabt

@@ -127,6 +127,16 @@ export const Details = [
       "B12K+22P Sunrise PG, Sector 62, block A, near City Center, opposite Green Park, Noida, Uttar Pradesh",
     Landmark: "Near Fortis Hospital",
     PgType: "Co-ed",
+    imgPaths: [
+      "./images/PgInfoImgs/NOISEC7eb4aa/mainImg.jpg",
+      "./images/PgInfoImgs/NOISEC7eb4aa/img1.jpg",
+      "./images/PgInfoImgs/NOISEC7eb4aa/img2.jpg",
+      "./images/PgInfoImgs/NOISEC7eb4aa/img3.jpg",
+      "./images/PgInfoImgs/NOISEC7eb4aa/img4.jpg",
+      "./images/PgInfoImgs/NOISEC7eb4aa/img4.jpg",
+      "./images/PgInfoImgs/NOISEC7eb4aa/img4.jpg",
+      "./images/PgInfoImgs/NOISEC7eb4aa/img4.jpg",
+    ],
     Rooms: [
       {
         RoomNo: "201",

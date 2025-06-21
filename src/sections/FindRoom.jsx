@@ -33,6 +33,16 @@ const FindRoom = ({ activeRID, setActiveRID }) => {
             heading={"You may also like"}
             onRoomClick={setActiveRID}
           />
+          <RoomSlider
+            list={Houses}
+            heading={"You may also like"}
+            onRoomClick={setActiveRID}
+          />
+          <RoomSlider
+            list={Houses}
+            heading={"You may also like"}
+            onRoomClick={setActiveRID}
+          />
         </div>
       </div>
     </section>

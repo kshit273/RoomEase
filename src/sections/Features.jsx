@@ -1,4 +1,3 @@
-import { div } from "three/tsl";
 import { landlordFeatureCards, tenantFeatureCards } from "../constants/Abt";
 import { useMediaQuery } from "react-responsive";
 import Cards from "../components/Cards";

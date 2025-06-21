@@ -13,14 +13,12 @@ import Navbar from "../components/Navbar";
 
 const PgInfo = () => {
   const { RID } = useParams();
-  console.log(RID);
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
   const [zoomImg, setZoomImg] = useState(null);
 
   const house = Houses.find((item) => item.RID === RID);
   const details = Details.find((item) => item.RID === RID);
   const PgServices = Services.find((item) => item.RID === RID);
-  console.log(house.imgPath);
 
   useEffect(() => {
     if (isOverlayOpen) {
@@ -49,15 +47,24 @@ const PgInfo = () => {
     }
   }, [isOverlayOpen]);
 
+  if (!house) {
+    return (
+      <div className="text-center text-lg text-red-500 pt-10">
+        PG not found.
+      </div>
+    );
+  }
+
   return (
     <>
       <Navbar />
+
       <div className="w-full h-[50px] flex justify-start items-center mt-[110px] pl-[30px] ">
         <Link to={"/search"}>
           <img
             src="/images/backArrow.png"
             alt=""
-            className="h-[35px] w-[35px] cursor-pointer hover:scale-120 duration-300"
+            className="h-[30px] w-[30px] cursor-pointer hover:scale-120 duration-300"
           />
         </Link>
       </div>
@@ -119,23 +126,18 @@ const PgInfo = () => {
                 </div>
                 <div className="rating mb-[40px] flex items-center gap-[10px]">
                   <div className="stars flex items-center gap-1 py-[8px]">
-                    {[...Array(5)].map((_, i) =>
-                      i < Math.round(house.review) ? (
-                        <img
-                          key={i}
-                          src="/images/star-filled.png"
-                          alt="star"
-                          className="w-[20px] h-[20px]"
-                        />
-                      ) : (
-                        <img
-                          key={i}
-                          src="/images/star-empty.png"
-                          alt="star-empty"
-                          className="w-[20px] h-[20px]"
-                        />
-                      )
-                    )}
+                    {[...Array(5)].map((_, i) => (
+                      <img
+                        key={i}
+                        src={
+                          i < Math.round(house?.review ?? 0)
+                            ? "/images/star-filled.png"
+                            : "/images/star-empty.png"
+                        }
+                        alt="star"
+                        className="w-[20px] h-[20px]"
+                      />
+                    ))}
                   </div>
                   <div className="ratingNumber text-[20px] text-[#4d4d4d] flex items-center justify-center pt-[5px] font-medium">
                     <p>({house.review})</p>
@@ -166,11 +168,9 @@ const PgInfo = () => {
                 </div>
                 <div className="para flex flex-col gap-[10px]">
                   {house.extras.map((prop, idx) => (
-                    <div className="flex gap-[10px] items-center">
+                    <div className="flex gap-[10px] items-center" key={idx}>
                       <div className="h-[10px] w-[10px] rounded-full bg-[#1a1a1a]"></div>
-                      <div key={idx} className="text-[19px] text-[#6c6c6c]">
-                        {prop}
-                      </div>
+                      <div className="text-[19px] text-[#6c6c6c]">{prop}</div>
                     </div>
                   ))}
                 </div>
@@ -185,7 +185,6 @@ const PgInfo = () => {
                     .filter(Boolean)
                     .slice(0, 10);
 
-                  // Use grid only if more than 4, else use flex-col for compactness
                   if (matchedServices.length <= 4) {
                     return (
                       <div className="flex flex-col gap-y-5 mt-[20px] max-w-[400px]">

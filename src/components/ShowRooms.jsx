@@ -61,7 +61,6 @@ const ShowRooms = ({ RID }) => {
 
   const Data = Details.find((data) => data.RID === RID);
 
-  // Determine filtered rooms based on filters
   const isSingleRoomFilterActive = activeIdxs.includes(
     filters.indexOf("Single room")
   );
@@ -73,7 +72,6 @@ const ShowRooms = ({ RID }) => {
   );
   const isPriceFilterActive = activeIdxs.includes(filters.indexOf("Price"));
 
-  // Price range filter logic
   const priceRangeFilters = [
     { min: 0, max: 4999 },
     { min: 5000, max: 7500 },

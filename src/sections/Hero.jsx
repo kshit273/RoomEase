@@ -7,7 +7,6 @@ const Hero = () => {
   return (
     <section id="hero" className="relative overflow-hidden z-2">
       <div className={`hero-layout ${isSmallScreen ? "h-[]" : "h-[80vh]"}`}>
-        {/* Left section */}
         <header className="flex flex-col md:items-start items-center md:justify-center md:w-full w-screen md:px-25 px-5">
           <div className="flex flex-col gap-7">
             <div className="hero-text text-[clamp(2.5rem,8vw,6rem)]">
@@ -20,7 +19,6 @@ const Hero = () => {
             <SearchButton width={600} />
           </div>
         </header>
-        {/* RIGHT : 3D MODEL */}
         {!isSmallScreen && (
           <figure>
             <div className="hero-3d-layout">

@@ -95,7 +95,7 @@ const PgReview = ({ RID }) => {
           <div className="text-[#464646] text-[50px] font-medium">
             {finRating}
           </div>
-          <img src="./images/finRating.png" alt="" className="w-[100px]" />
+          <img src="/images/finRating.png" alt="" className="w-[100px]" />
         </div>
 
         <div className="h-[80px] w-[1px] bg-[#c4c4c4]"></div>

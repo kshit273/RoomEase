@@ -57,7 +57,7 @@ const PlanSlider = () => {
           }`}
           style={{
             scrollSnapAlign: "center",
-            touchAction: "manipulation", // fixes swipe issue on card
+            touchAction: "manipulation",
           }}
         >
           <PlanCard {...plan} />
