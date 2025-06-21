@@ -15,10 +15,43 @@ const PgInfo = () => {
   const { RID } = useParams();
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
   const [zoomImg, setZoomImg] = useState(null);
+  const [zoomImgIndex, setZoomImgIndex] = useState(null);
 
   const house = Houses.find((item) => item.RID === RID);
   const details = Details.find((item) => item.RID === RID);
   const PgServices = Services.find((item) => item.RID === RID);
+
+  const handleNext = () => {
+    if (zoomImgIndex < details.imgPaths.length - 1) {
+      const nextIndex = zoomImgIndex + 1;
+      setZoomImgIndex(nextIndex);
+      setZoomImg(details.imgPaths[nextIndex]);
+    }
+  };
+
+  const handlePrev = () => {
+    if (zoomImgIndex > 0) {
+      const prevIndex = zoomImgIndex - 1;
+      setZoomImgIndex(prevIndex);
+      setZoomImg(details.imgPaths[prevIndex]);
+    }
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (zoomImgIndex !== null) {
+        if (e.key === "ArrowRight") handleNext();
+        if (e.key === "ArrowLeft") handlePrev();
+        if (e.key === "Escape") {
+          setZoomImg(null);
+          setZoomImgIndex(null);
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [zoomImgIndex]);
 
   useEffect(() => {
     if (isOverlayOpen) {
@@ -58,7 +91,6 @@ const PgInfo = () => {
   return (
     <>
       <Navbar />
-
       <div className="w-full h-[50px] flex justify-start items-center mt-[110px] pl-[30px] ">
         <Link to={"/search"}>
           <img
@@ -278,7 +310,10 @@ const PgInfo = () => {
                         className={`w-full h-full object-cover rounded-lg cursor-pointer ${
                           i === 0 ? "col-span-2 row-span-2" : ""
                         }`}
-                        onClick={() => setZoomImg(img)}
+                        onClick={() => {
+                          setZoomImg(img);
+                          setZoomImgIndex(i);
+                        }}
                       />
                     ))}
                   </div>
@@ -295,8 +330,25 @@ const PgInfo = () => {
                     className="max-w-[85vw] max-h-[75vh] object-contain rounded-lg"
                   />
                   <button
+                    onClick={handlePrev}
+                    className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-white text-black px-3 py-2 rounded-full shadow-md"
+                    disabled={zoomImgIndex === 0}
+                  >
+                    ←
+                  </button>
+                  <button
+                    onClick={handleNext}
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/70 hover:bg-white text-black px-3 py-2 rounded-full shadow-md"
+                    disabled={zoomImgIndex === details.imgPaths.length - 1}
+                  >
+                    →
+                  </button>
+                  <button
                     className="text-[#d7d7d7] font-medium underline"
-                    onClick={() => setZoomImg(null)}
+                    onClick={() => {
+                      setZoomImg(null);
+                      setZoomImgIndex(null);
+                    }}
                   >
                     Back to all photos
                   </button>

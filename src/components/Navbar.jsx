@@ -36,14 +36,15 @@ const Navbar = () => {
       }`}
     >
       <div className={`inner `}>
-        <a
-          href="#hero"
-          className={`logo ${
-            isSmallScreen ? `text-[25px]` : isMedScreen ? `text-[40px]` : ``
-          }`}
-        >
-          RoomEase
-        </a>
+        <Link to="/" onClick={() => scrollToSection("hero")}>
+          <div
+            className={`logo ${
+              isSmallScreen ? `text-[25px]` : isMedScreen ? `text-[40px]` : ``
+            }`}
+          >
+            RoomEase
+          </div>
+        </Link>
 
         {isMedScreen ? null : (
           <nav className="desktop">
