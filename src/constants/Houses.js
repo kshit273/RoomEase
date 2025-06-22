@@ -91,7 +91,7 @@ const Houses = [
     review: 3.5,
   },
   {
-    RID: "DEHCIT80e5d6",
+    RID: "NOICIT80e5d6",
     head: "Furnished Room in Dehradun",
     imgPath: "./images/house-imgs/house29.jpg",
     desc: "from ₹6,000/month",
@@ -111,7 +111,7 @@ const Houses = [
     review: 2.9,
   },
   {
-    RID: "DELRAJ49ba4f",
+    RID: "NOIRAJ49ba4f",
     head: "Room near Rajiv Chowk Metro",
     imgPath: "./images/house-imgs/house21.jpg",
     desc: "from ₹9,500/month",
@@ -151,7 +151,7 @@ const Houses = [
     review: 4.1,
   },
   {
-    RID: "DELLAX011fd9",
+    RID: "NOILAX011fd9",
     head: "AC Room in Laxmi Nagar",
     imgPath: "./images/house-imgs/house14.jpg",
     desc: "from ₹9,500/month",
@@ -191,7 +191,7 @@ const Houses = [
     review: 4.2,
   },
   {
-    RID: "DELUTTb8ce4d",
+    RID: "NOIUTTb8ce4d",
     head: "Room in Uttam Nagar",
     imgPath: "./images/house-imgs/house8.jpg",
     desc: "from ₹6,800/month",
@@ -241,7 +241,7 @@ const Houses = [
     review: 3.1,
   },
   {
-    RID: "DEHPRE411cbd",
+    RID: "NOIPRE411cbd",
     head: "Room near Prem Nagar",
     imgPath: "./images/house-imgs/house24.jpg",
     desc: "from ₹5,500/month",
@@ -301,7 +301,7 @@ const Houses = [
     review: 4.2,
   },
   {
-    RID: "DEHJAK56a797",
+    RID: "NOIJAK56a797",
     head: "PG in Jakhan",
     imgPath: "./images/house-imgs/house26.jpg",
     desc: "from ₹6,900/month",

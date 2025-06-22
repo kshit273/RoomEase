@@ -3,12 +3,17 @@ import FindRoom from "../../sections/FindRoom.jsx";
 import PgInfo from "../../sections/PgInfo.jsx";
 import Navbar from "../../components/Navbar.jsx";
 
-const Search = () => {
+const Search = ({ cityName, nearbyPGs }) => {
   const [activeRID, setActiveRID] = useState(null);
   return (
     <>
       <Navbar />
-      <FindRoom activeRID={activeRID} setActiveRID={setActiveRID} />
+      <FindRoom
+        activeRID={activeRID}
+        setActiveRID={setActiveRID}
+        cityName={cityName}
+        nearbyPGs={nearbyPGs}
+      />
       {activeRID && <PgInfo RID={activeRID} />}
     </>
   );

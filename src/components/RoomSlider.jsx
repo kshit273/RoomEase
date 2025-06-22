@@ -3,6 +3,7 @@ import RoomCard from "../components/RoomCard";
 import { Link } from "react-router-dom";
 
 const RoomSlider = ({ list, heading, onRoomClick }) => {
+  console.log(list);
   const scrollRef = useRef();
   const [isRightHovered, setIsRightHovered] = useState(false);
   const [isLeftHovered, setIsLeftHovered] = useState(false);
@@ -18,13 +19,13 @@ const RoomSlider = ({ list, heading, onRoomClick }) => {
     }
   };
   return (
-    <div className="mt-[100px]  w-[90%]">
-      <p className="text-[#1a1a1a] text-[45px] font-medium mb-[15px]">
+    <div className="mt-[80px]  w-[90%]">
+      <p className="text-[#1a1a1a] text-[38px] font-medium mb-[15px]">
         {heading}
       </p>
       <div className=" flex items-center relative">
         <button
-          className="flex items-center justify-center absolute left-[-5%] z-10 h-[100px] w-[100px] bg-[#e8e8e8] rounded-full shadow p-2 hover:bg-[#b9b9b9]  transition duration-400"
+          className="flex items-center justify-center absolute left-[-5%] z-10 h-[70px] w-[70px] bg-[#e8e8e8] rounded-full shadow p-2 hover:bg-[#b9b9b9]  transition duration-400"
           onClick={() => scroll("left")}
           aria-label="Scroll left"
           type="button"
@@ -38,7 +39,7 @@ const RoomSlider = ({ list, heading, onRoomClick }) => {
                 : "./images/arrowBlack.png"
             }
             alt="arrow-right"
-            className="h-[35px] w-[35px] rotate-180"
+            className="h-[27px] w-[27px] rotate-180"
           />
         </button>
         <div
@@ -70,7 +71,7 @@ const RoomSlider = ({ list, heading, onRoomClick }) => {
           )}
         </div>
         <button
-          className="flex items-center justify-center absolute right-[-5%] h-[100px] w-[100px] z-10 bg-[#e8e8e8] rounded-full shadow p-2 hover:bg-[#b9b9b9]  transition duration-400"
+          className="flex items-center justify-center absolute right-[-5%] h-[70px] w-[70px] z-10 bg-[#e8e8e8] rounded-full shadow p-2 hover:bg-[#b9b9b9]  transition duration-400"
           onClick={() => scroll("right")}
           aria-label="Scroll right"
           type="button"
@@ -84,7 +85,7 @@ const RoomSlider = ({ list, heading, onRoomClick }) => {
                 : "./images/arrowBlack.png"
             }
             alt="arrow-right"
-            className="h-[35px] w-[35px]"
+            className="h-[27px] w-[27px]"
           />
         </button>
       </div>

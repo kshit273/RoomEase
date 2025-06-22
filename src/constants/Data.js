@@ -35,3 +35,12 @@ const allRIDs = [
   "DEHJAK56a797",
   "DEHKAUfb8e1d",
 ];
+
+export const supportedCities = [
+  { name: "Dehradun", code: "DEH", lat: 30.3165, lng: 78.0322 },
+  { name: "Delhi", code: "DEL", lat: 28.6139, lng: 77.209 },
+  { name: "Noida", code: "NOI", lat: 28.5355, lng: 77.391 },
+  { name: "Gurgaon", code: "GUR", lat: 28.4595, lng: 77.0266 },
+  { name: "Pune", code: "PUN", lat: 18.5204, lng: 73.8567 },
+  { name: "Bangalore", code: "BAN", lat: 12.9716, lng: 77.5946 },
+];

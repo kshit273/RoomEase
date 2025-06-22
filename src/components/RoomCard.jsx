@@ -11,8 +11,8 @@ const RoomCard = ({
   review,
 }) => {
   return (
-    <div className="h-[500px] w-[500px] bg-[#cecece] rounded-[10px]">
-      <div className="h-[370px] w-[500px] flex items-center justify-center relative">
+    <div className="h-[355px] w-[400px] bg-[#cecece] rounded-[10px]">
+      <div className="h-[275px] w-[400px] flex items-center justify-center relative">
         <div className="absolute top-[15px] left-[10px] z-10 flex gap-[5px]">
           {isVerified ? <Verified /> : null}
         </div>
@@ -22,12 +22,12 @@ const RoomCard = ({
         <img
           src={imgPath}
           alt=""
-          className="rounded-[10px] w-[480px] h-[360px]"
+          className="rounded-[10px] w-[380px] h-[260px]"
         />
       </div>
-      <div className="mx-[10px] my-[8px]">
-        <p className="text-[28px] font-medium text-[#1a1a1a]">{head}</p>
-        <p className="text-[23px] text-[#919191]">{desc}</p>
+      <div className="mx-[10px] ">
+        <p className="text-[22px] font-medium text-[#1a1a1a]">{head}</p>
+        <p className="text-[17px] text-[#919191]">{desc}</p>
       </div>
       <div className="mx-[10px] flex items-center gap-1">
         {[...Array(5)].map((_, i) =>
@@ -36,14 +36,14 @@ const RoomCard = ({
               key={i}
               src="./images/star-filled.png"
               alt="star"
-              className="w-[20px] h-[20px]"
+              className="w-[13px] h-[13px]"
             />
           ) : (
             <img
               key={i}
               src="./images/star-empty.png"
               alt="star-empty"
-              className="w-[20px] h-[20px]"
+              className="w-[13px] h-[13px]"
             />
           )
         )}
