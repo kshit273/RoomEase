@@ -7,7 +7,7 @@ const Houses = [
     description:
       "Welcome to ComfortNest PG, your ideal home away from home! Located in the heart of the city, just a 5-minute walk from major colleges and tech hubs, this PG blends comfort, safety, and convenience. We offer fully furnished rooms with high-speed Wi-Fi, daily housekeeping, and nutritious home-cooked meals. Whether you're a student or a working professional, our peaceful environment, 24/7 security, and friendly community make it the perfect place to live, learn, and grow. Come experience hassle-free living with all modern amenities under one roof!",
     isVerified: 1,
-    review: 3.9,
+    review: 1,
     extras: [
       "No entry and exit after 10:00 pm",
       "No smoking or drinking allowed",
@@ -91,7 +91,7 @@ const Houses = [
     review: 3.5,
   },
   {
-    RID: "NOICIT80e5d6",
+    RID: "DEHCIT80e5d6",
     head: "Furnished Room in Dehradun",
     imgPath: "./images/house-imgs/house29.jpg",
     desc: "from ₹6,000/month",
@@ -111,7 +111,7 @@ const Houses = [
     review: 2.9,
   },
   {
-    RID: "NOIRAJ49ba4f",
+    RID: "DELRAJ49ba4f",
     head: "Room near Rajiv Chowk Metro",
     imgPath: "./images/house-imgs/house21.jpg",
     desc: "from ₹9,500/month",
@@ -121,7 +121,7 @@ const Houses = [
     review: 4.4,
   },
   {
-    RID: "DELCONa05b3c",
+    RID: "GURSECb5b54d",
     head: "Luxury PG in Connaught Place",
     imgPath: "./images/house-imgs/house11.jpg",
     desc: "from ₹14,000/month",
@@ -131,7 +131,7 @@ const Houses = [
     review: 4.8,
   },
   {
-    RID: "DELKAR460774",
+    RID: "DELJAN04b237",
     head: "PG for Girls in Karol Bagh",
     imgPath: "./images/house-imgs/house17.jpg",
     desc: "from ₹8,500/month",
@@ -141,8 +141,8 @@ const Houses = [
     review: 3.6,
   },
   {
-    RID: "DELDELaffb3f",
-    head: "Room near Delhi University",
+    RID: "NOINOH2761fd",
+    head: "Room in Noida",
     imgPath: "./images/house-imgs/house2.jpg",
     desc: "from ₹7,000/month",
     description:
@@ -151,7 +151,7 @@ const Houses = [
     review: 4.1,
   },
   {
-    RID: "NOILAX011fd9",
+    RID: "BANELE18eac4",
     head: "AC Room in Laxmi Nagar",
     imgPath: "./images/house-imgs/house14.jpg",
     desc: "from ₹9,500/month",
@@ -161,7 +161,7 @@ const Houses = [
     review: 3.3,
   },
   {
-    RID: "DELHAU41563c",
+    RID: "DEHPRT6d7391",
     head: "PG near Hauz Khas",
     imgPath: "./images/house-imgs/house28.jpg",
     desc: "from ₹8,000/month",
@@ -171,7 +171,7 @@ const Houses = [
     review: 4.7,
   },
   {
-    RID: "DELSOU1c73d9",
+    RID: "PUNKOT358ea0",
     head: "Shared Room in South Delhi",
     imgPath: "./images/house-imgs/house23.jpg",
     desc: "from ₹7,200/month",
@@ -181,7 +181,7 @@ const Houses = [
     review: 3.0,
   },
   {
-    RID: "DELJAN645459",
+    RID: "DEHRAJ1f123a",
     head: "Single Room in Janakpuri",
     imgPath: "./images/house-imgs/house5.jpg",
     desc: "from ₹10,500/month",
@@ -191,7 +191,7 @@ const Houses = [
     review: 4.2,
   },
   {
-    RID: "NOIUTTb8ce4d",
+    RID: "NOISECb46ac9",
     head: "Room in Uttam Nagar",
     imgPath: "./images/house-imgs/house8.jpg",
     desc: "from ₹6,800/month",
@@ -201,7 +201,7 @@ const Houses = [
     review: 2.7,
   },
   {
-    RID: "DELPIT4a9e78",
+    RID: "DELUTT3db2ee",
     head: "Girls PG in Pitampura",
     imgPath: "./images/house-imgs/house27.jpg",
     desc: "from ₹9,800/month",
@@ -211,7 +211,7 @@ const Houses = [
     review: 4.0,
   },
   {
-    RID: "DELRAJa2668e",
+    RID: "GURDLFa12cf0",
     head: "PG in Rajouri Garden",
     imgPath: "./images/house-imgs/house30.jpg",
     desc: "from ₹7,900/month",
@@ -221,7 +221,7 @@ const Houses = [
     review: 3.4,
   },
   {
-    RID: "DEHGRA2dedf3",
+    RID: "DEHISBr324a1",
     head: "PG near Graphic Era",
     imgPath: "./images/house-imgs/house10.jpg",
     desc: "from ₹6,500/month",
@@ -231,7 +231,7 @@ const Houses = [
     review: 4.5,
   },
   {
-    RID: "DEHISBf76856",
+    RID: "DELNAS88c3ab",
     head: "Room near ISBT Dehradun",
     imgPath: "./images/house-imgs/house13.jpg",
     desc: "from ₹8,000/month",
@@ -241,7 +241,7 @@ const Houses = [
     review: 3.1,
   },
   {
-    RID: "NOIPRE411cbd",
+    RID: "PUNSHIb7c865",
     head: "Room near Prem Nagar",
     imgPath: "./images/house-imgs/house24.jpg",
     desc: "from ₹5,500/month",
@@ -251,7 +251,7 @@ const Houses = [
     review: 3.8,
   },
   {
-    RID: "DEHRAJeb8b39",
+    RID: "BANMAR0a97ae",
     head: "PG near Rajpur Road",
     imgPath: "./images/house-imgs/house6.jpg",
     desc: "from ₹7,800/month",
@@ -261,7 +261,7 @@ const Houses = [
     review: 4.6,
   },
   {
-    RID: "DEHBAL14b20c",
+    RID: "NOISEC4a2f69",
     head: "Room near Ballupur",
     imgPath: "./images/house-imgs/house16.jpg",
     desc: "from ₹6,000/month",
@@ -271,7 +271,7 @@ const Houses = [
     review: 3.3,
   },
   {
-    RID: "DEHCLOcd5f86",
+    RID: "BANGOTbcfa65",
     head: "Single Room near Clock Tower",
     imgPath: "./images/house-imgs/house20.jpg",
     desc: "from ₹7,500/month",
@@ -281,17 +281,17 @@ const Houses = [
     review: 4.0,
   },
   {
-    RID: "DEHEC 0a4560",
+    RID: "DEHSAR203a0d",
     head: "PG near EC Road",
     imgPath: "./images/house-imgs/house19.jpg",
     desc: "from ₹8,200/month",
     description:
       "Modern PG near EC Road with all amenities. Spacious rooms, high-speed internet, and a peaceful environment.",
     isVerified: 0,
-    review: 3.7,
+    review: 5,
   },
   {
-    RID: "DELVASbed996",
+    RID: "DEHPAT9f9431",
     head: "Room in Vasant Vihar",
     imgPath: "./images/house-imgs/house25.jpg",
     desc: "from ₹9,000/month",
@@ -301,7 +301,7 @@ const Houses = [
     review: 4.2,
   },
   {
-    RID: "NOIJAK56a797",
+    RID: "PUNSAD890e07",
     head: "PG in Jakhan",
     imgPath: "./images/house-imgs/house26.jpg",
     desc: "from ₹6,900/month",

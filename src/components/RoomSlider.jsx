@@ -1,17 +1,21 @@
 import React, { useRef, useState } from "react";
 import RoomCard from "../components/RoomCard";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const RoomSlider = ({ list, heading, onRoomClick }) => {
-  console.log(list);
   const scrollRef = useRef();
+  const navigate = useNavigate();
+
+  const handleCardClick = (RID) => {
+    navigate(`/pg/${RID}`);
+  };
   const [isRightHovered, setIsRightHovered] = useState(false);
   const [isLeftHovered, setIsLeftHovered] = useState(false);
 
   // Scroll handler
   const scroll = (direction) => {
     if (scrollRef.current) {
-      const scrollAmount = 1000;
+      const scrollAmount = 700;
       scrollRef.current.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",
@@ -20,12 +24,12 @@ const RoomSlider = ({ list, heading, onRoomClick }) => {
   };
   return (
     <div className="mt-[80px]  w-[90%]">
-      <p className="text-[#1a1a1a] text-[38px] font-medium mb-[15px]">
+      <p className="text-[#1a1a1a] text-[35px] font-medium mb-[5px]">
         {heading}
       </p>
       <div className=" flex items-center relative">
         <button
-          className="flex items-center justify-center absolute left-[-5%] z-10 h-[70px] w-[70px] bg-[#e8e8e8] rounded-full shadow p-2 hover:bg-[#b9b9b9]  transition duration-400"
+          className="flex items-center justify-center absolute left-[-4%] bottom-[50%] z-10 h-[65px] w-[65px] bg-[#e8e8e8] rounded-full shadow p-2 hover:bg-[#b9b9b9]  transition duration-400"
           onClick={() => scroll("left")}
           aria-label="Scroll left"
           type="button"
@@ -39,39 +43,40 @@ const RoomSlider = ({ list, heading, onRoomClick }) => {
                 : "./images/arrowBlack.png"
             }
             alt="arrow-right"
-            className="h-[27px] w-[27px] rotate-180"
+            className="h-[20px] w-[20px] rotate-180"
           />
         </button>
         <div
           ref={scrollRef}
-          className="flex gap-[25px] overflow-x-auto scroll-smooth w-full no-scrollbar"
+          className="flex gap-[10px] overflow-x-auto scroll-smooth w-full no-scrollbar"
           style={{ scrollBehavior: "smooth" }}
         >
           {list.map(
             ({ RID, head, imgPath, desc, isVerified, isLiked, review }) => (
-              <Link key={RID} to={`/pg/${RID}`}>
-                <div
+              <div
+                key={head}
+                onClick={() => {
+                  onRoomClick && onRoomClick(RID);
+                  handleCardClick(RID);
+                }}
+                style={{ cursor: "pointer" }}
+              >
+                <RoomCard
+                  RID={RID}
                   key={head}
-                  onClick={() => onRoomClick && onRoomClick(RID)}
-                  style={{ cursor: "pointer" }}
-                >
-                  <RoomCard
-                    RID={RID}
-                    key={head}
-                    head={head}
-                    imgPath={imgPath}
-                    desc={desc}
-                    isVerified={isVerified}
-                    isLiked={isLiked}
-                    review={review}
-                  />
-                </div>
-              </Link>
+                  head={head}
+                  imgPath={imgPath}
+                  desc={desc}
+                  isVerified={isVerified}
+                  isLiked={isLiked}
+                  review={review}
+                />
+              </div>
             )
           )}
         </div>
         <button
-          className="flex items-center justify-center absolute right-[-5%] h-[70px] w-[70px] z-10 bg-[#e8e8e8] rounded-full shadow p-2 hover:bg-[#b9b9b9]  transition duration-400"
+          className="flex items-center justify-center absolute right-[-5%] bottom-[50%] h-[70px] w-[70px] z-10 bg-[#e8e8e8] rounded-full shadow p-2 hover:bg-[#b9b9b9]  transition duration-400"
           onClick={() => scroll("right")}
           aria-label="Scroll right"
           type="button"
@@ -85,7 +90,7 @@ const RoomSlider = ({ list, heading, onRoomClick }) => {
                 : "./images/arrowBlack.png"
             }
             alt="arrow-right"
-            className="h-[27px] w-[27px]"
+            className="h-[20px] w-[20px]"
           />
         </button>
       </div>

@@ -16,6 +16,7 @@ const PgInfo = () => {
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
   const [zoomImg, setZoomImg] = useState(null);
   const [zoomImgIndex, setZoomImgIndex] = useState(null);
+  const [selectedRoom, setSelectedRoom] = useState(null);
 
   const house = Houses.find((item) => item.RID === RID);
   const details = Details.find((item) => item.RID === RID);

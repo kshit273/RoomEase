@@ -2,13 +2,7 @@ import { useState } from "react";
 import { Details } from "../constants/PgData";
 
 const ShowRooms = ({ RID }) => {
-  const filters = [
-    "Price",
-    "Air conditioned",
-    "Single room",
-    "Shared room",
-    "Available",
-  ];
+  const filters = ["Price", "Single room", "Shared room", "Available"];
 
   const priceRange = [
     "less than ₹5,000",

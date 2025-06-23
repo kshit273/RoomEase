@@ -9,14 +9,26 @@ const FindRoom = ({ activeRID, setActiveRID, nearbyPGs, cityName }) => {
     Details.forEach((pg) => {
       pgTypeMap[pg.RID] = pg.PgType.toLowerCase();
     });
-    console.log(pgTypeMap);
 
     const filtered = Houses.filter(
       (pg) => pgTypeMap[pg.RID] === gender.toLowerCase()
     );
-    console.log(filtered);
 
     return filtered;
+  }
+
+  function sortScore(list) {
+    const PGs = list
+      .map((pg) => {
+        const verifiedPoints = pg.isVerified ? 25 : 0;
+        const ratingPoints = Math.min(pg.review * 10, 50);
+        const totalPoints = verifiedPoints + ratingPoints;
+
+        return { ...pg, score: totalPoints };
+      })
+      .sort((a, b) => b.score - a.score);
+
+    return PGs;
   }
 
   return (
@@ -36,14 +48,14 @@ const FindRoom = ({ activeRID, setActiveRID, nearbyPGs, cityName }) => {
           </div>
           {nearbyPGs.length > 0 && (
             <RoomSlider
-              list={nearbyPGs}
+              list={sortScore(nearbyPGs)}
               heading={`Top rated in ${cityName ? `${cityName}` : ""}`}
               onRoomClick={setActiveRID}
             />
           )}
 
           <RoomSlider
-            list={Houses.filter(
+            list={sortScore(Houses).filter(
               (pg) => pg.isVerified == 1 && pg.RID.startsWith("DEH")
             )}
             heading="Verified By RoomEase"
@@ -52,20 +64,20 @@ const FindRoom = ({ activeRID, setActiveRID, nearbyPGs, cityName }) => {
 
           {nearbyPGs.length > 0 && (
             <RoomSlider
-              list={nearbyPGs}
+              list={sortScore(nearbyPGs)}
               heading={`Popular in ${cityName ? `${cityName}` : ""}`}
               onRoomClick={setActiveRID}
             />
           )}
 
           <RoomSlider
-            list={Houses.filter((pg) => pg.RID.startsWith("NOI"))}
+            list={sortScore(Houses).filter((pg) => pg.RID.startsWith("NOI"))}
             heading="Rooms in Noida"
             onRoomClick={setActiveRID}
           />
 
           <RoomSlider
-            list={filterPGsByGender("girls")}
+            list={sortScore(filterPGsByGender("girls"))}
             heading="Rooms for Girls"
             onRoomClick={setActiveRID}
           />

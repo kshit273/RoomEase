@@ -53,8 +53,6 @@ function App() {
             `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyDFEAxMgUN22BvusiI6TPPOdzPVKTGeQa0`
           );
 
-          console.log(res);
-
           const nearestCity = findNearestCity(lat, lng);
 
           if (nearestCity) {
