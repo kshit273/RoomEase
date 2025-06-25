@@ -58,7 +58,16 @@ const RoomSlider = ({ list, heading, onRoomClick, desc }) => {
           style={{ scrollBehavior: "smooth" }}
         >
           {list.map(
-            ({ RID, head, imgPath, desc, isVerified, isLiked, review }) => (
+            ({
+              RID,
+              head,
+              imgPath,
+              desc,
+              isVerified,
+              isLiked,
+              review,
+              isPremium,
+            }) => (
               <div
                 key={head}
                 onClick={() => {
@@ -76,6 +85,7 @@ const RoomSlider = ({ list, heading, onRoomClick, desc }) => {
                   isVerified={isVerified}
                   isLiked={isLiked}
                   review={review}
+                  isPremium={isPremium}
                 />
               </div>
             )

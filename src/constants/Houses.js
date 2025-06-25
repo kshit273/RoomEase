@@ -7,6 +7,7 @@ const Houses = [
     description:
       "Welcome to ComfortNest PG, your ideal home away from home! Located in the heart of the city, just a 5-minute walk from major colleges and tech hubs, this PG blends comfort, safety, and convenience. We offer fully furnished rooms with high-speed Wi-Fi, daily housekeeping, and nutritious home-cooked meals. Whether you're a student or a working professional, our peaceful environment, 24/7 security, and friendly community make it the perfect place to live, learn, and grow. Come experience hassle-free living with all modern amenities under one roof!",
     isVerified: 1,
+    isPremium: 0,
     review: 1,
     extras: [
       "No entry and exit after 10:00 pm",
@@ -24,6 +25,7 @@ const Houses = [
     description:
       "A budget-friendly PG located in Sector 62, Noida. Enjoy easy access to public transport, nearby IT parks, and shopping centers. The property offers clean, well-ventilated rooms, daily cleaning, and a secure environment for students and professionals.",
     isVerified: 0,
+    isPremium: 0,
     review: 3.2,
     extras: [
       "No entry and exit after 10:00 pm",
@@ -41,6 +43,7 @@ const Houses = [
     description:
       "Stay close to the action at MG Road with this cozy PG. Perfect for working professionals, it features modern interiors, high-speed internet, and a peaceful neighborhood. Walk to the metro and major offices in minutes.",
     isVerified: 1,
+    isPremium: 0,
     review: 4.1,
     extras: [
       "No entry and exit after 10:00 pm",
@@ -58,6 +61,7 @@ const Houses = [
     description:
       "A stylish studio PG in Pune’s central area. Enjoy privacy, a compact kitchenette, and proximity to major colleges and business hubs. Ideal for students and solo professionals seeking comfort and convenience.",
     isVerified: 0,
+    isPremium: 0,
     review: 4.6,
   },
   {
@@ -68,6 +72,7 @@ const Houses = [
     description:
       "Affordable shared accommodation just steps from DLF Cyber Hub. The PG offers spacious rooms, regular cleaning, and a friendly community. Perfect for those working in Gurgaon’s business district.",
     isVerified: 1,
+    isPremium: 0,
     review: 3.7,
   },
   {
@@ -78,6 +83,7 @@ const Houses = [
     description:
       "Live in the heart of Saket with this spacious PG. Enjoy large rooms, ample storage, and easy access to malls, parks, and metro stations. A great choice for students and professionals alike.",
     isVerified: 1,
+    isPremium: 0,
     review: 4.3,
   },
   {
@@ -88,6 +94,7 @@ const Houses = [
     description:
       "Experience modern living in Bangalore with this fully furnished PG. Features include Wi-Fi, laundry, and a vibrant community. Located near tech parks and major transit routes.",
     isVerified: 0,
+    isPremium: 0,
     review: 3.5,
   },
   {
@@ -98,6 +105,7 @@ const Houses = [
     description:
       "A well-furnished PG in Dehradun’s peaceful Clement Town. Enjoy a serene environment, daily housekeeping, and proximity to shopping and educational institutions.",
     isVerified: 1,
+    isPremium: 0,
     review: 4.0,
   },
   {
@@ -108,6 +116,7 @@ const Houses = [
     description:
       "This budget PG in Rohini offers value for money with basic amenities, clean rooms, and a safe locality. Close to metro stations and local markets.",
     isVerified: 0,
+    isPremium: 1,
     review: 2.9,
   },
   {
@@ -118,6 +127,7 @@ const Houses = [
     description:
       "Stay at the center of Delhi with this PG near Rajiv Chowk. Enjoy quick access to Connaught Place, metro connectivity, and a lively neighborhood.",
     isVerified: 1,
+    isPremium: 0,
     review: 4.4,
   },
   {
@@ -128,6 +138,7 @@ const Houses = [
     description:
       "A luxury PG in Connaught Place with premium furnishings, daily housekeeping, and all modern amenities. Perfect for those who want to live in style in the city center.",
     isVerified: 1,
+    isPremium: 0,
     review: 4.8,
   },
   {
@@ -138,6 +149,7 @@ const Houses = [
     description:
       "Safe and secure girls’ PG in Karol Bagh. Features include CCTV, nutritious meals, and easy access to shopping and metro. Ideal for students and working women.",
     isVerified: 0,
+    isPremium: 0,
     review: 3.6,
   },
   {
@@ -148,6 +160,7 @@ const Houses = [
     description:
       "A student-friendly PG near Delhi University. Enjoy a study-friendly environment, Wi-Fi, and proximity to campus and cafes.",
     isVerified: 1,
+    isPremium: 0,
     review: 4.1,
   },
   {
@@ -158,6 +171,7 @@ const Houses = [
     description:
       "Beat the heat with this AC PG in Laxmi Nagar. Spacious rooms, regular cleaning, and close to coaching centers and metro.",
     isVerified: 0,
+    isPremium: 0,
     review: 3.3,
   },
   {
@@ -168,6 +182,7 @@ const Houses = [
     description:
       "A lively PG near Hauz Khas, perfect for students and young professionals. Enjoy the vibrant social scene, parks, and easy metro access.",
     isVerified: 1,
+    isPremium: 1,
     review: 4.7,
   },
   {
@@ -178,6 +193,7 @@ const Houses = [
     description:
       "Affordable shared accommodation in South Delhi. Clean rooms, friendly roommates, and a safe neighborhood make this a great choice.",
     isVerified: 0,
+    isPremium: 0,
     review: 3.0,
   },
   {
@@ -188,6 +204,7 @@ const Houses = [
     description:
       "Enjoy privacy and comfort in this single room PG in Janakpuri. Close to metro, markets, and parks.",
     isVerified: 1,
+    isPremium: 0,
     review: 4.2,
   },
   {
@@ -198,6 +215,7 @@ const Houses = [
     description:
       "A budget PG in Uttam Nagar with all basic amenities. Well-connected by metro and bus routes.",
     isVerified: 0,
+    isPremium: 0,
     review: 2.7,
   },
   {
@@ -208,6 +226,7 @@ const Houses = [
     description:
       "Girls-only PG in Pitampura with secure entry, home-cooked meals, and a supportive environment. Close to colleges and shopping.",
     isVerified: 1,
+    isPremium: 0,
     review: 4.0,
   },
   {
@@ -218,6 +237,7 @@ const Houses = [
     description:
       "A well-maintained PG in Rajouri Garden. Enjoy easy access to malls, eateries, and public transport.",
     isVerified: 0,
+    isPremium: 0,
     review: 3.4,
   },
   {
@@ -228,6 +248,7 @@ const Houses = [
     description:
       "Located near Graphic Era University, this PG is ideal for students. Peaceful surroundings, Wi-Fi, and regular cleaning included.",
     isVerified: 1,
+    isPremium: 0,
     review: 4.5,
   },
   {
@@ -238,6 +259,7 @@ const Houses = [
     description:
       "Conveniently located near ISBT, this PG offers quick access to transport, clean rooms, and a friendly atmosphere.",
     isVerified: 0,
+    isPremium: 1,
     review: 3.1,
   },
   {
@@ -248,6 +270,7 @@ const Houses = [
     description:
       "Affordable PG near Prem Nagar, Dehradun. Ideal for students, with all essential amenities and a peaceful environment.",
     isVerified: 1,
+    isPremium: 0,
     review: 3.8,
   },
   {
@@ -258,6 +281,7 @@ const Houses = [
     description:
       "Stay close to Rajpur Road with this comfortable PG. Enjoy easy access to cafes, shops, and public transport.",
     isVerified: 1,
+    isPremium: 1,
     review: 4.6,
   },
   {
@@ -268,6 +292,7 @@ const Houses = [
     description:
       "A cozy PG near Ballupur, Dehradun. Features include Wi-Fi, daily cleaning, and a friendly landlord.",
     isVerified: 0,
+    isPremium: 0,
     review: 3.3,
   },
   {
@@ -278,6 +303,7 @@ const Houses = [
     description:
       "Single occupancy PG near Clock Tower, Dehradun. Walk to markets, eateries, and major bus stops.",
     isVerified: 1,
+    isPremium: 0,
     review: 4.0,
   },
   {
@@ -288,6 +314,7 @@ const Houses = [
     description:
       "Modern PG near EC Road with all amenities. Spacious rooms, high-speed internet, and a peaceful environment.",
     isVerified: 0,
+    isPremium: 1,
     review: 5,
   },
   {
@@ -298,6 +325,7 @@ const Houses = [
     description:
       "Live in Vasant Vihar with this well-furnished PG. Enjoy a prime location, security, and all essential facilities.",
     isVerified: 1,
+    isPremium: 0,
     review: 4.2,
   },
   {
@@ -308,6 +336,7 @@ const Houses = [
     description:
       "Affordable PG in Jakhan, Dehradun. Clean rooms, Wi-Fi, and a supportive community for students and professionals.",
     isVerified: 0,
+    isPremium: 0,
     review: 3.0,
   },
   {
@@ -318,6 +347,7 @@ const Houses = [
     description:
       "Budget-friendly room near Kaulagarh. Ideal for students and professionals seeking affordable accommodation with essential amenities.",
     isVerified: 0,
+    isPremium: 1,
     review: 3.5,
   },
 ];

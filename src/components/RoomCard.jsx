@@ -1,7 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import Like from "../components/Like";
 
-const RoomCard = ({ RID, head, imgPath, desc, isVerified, review }) => {
+const RoomCard = ({
+  RID,
+  head,
+  imgPath,
+  desc,
+  isVerified,
+  review,
+  isPremium,
+}) => {
   const [islikeHovered, setIsLikeHovered] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [isMoreClicked, setMoreClicked] = useState(false);
@@ -32,13 +40,19 @@ const RoomCard = ({ RID, head, imgPath, desc, isVerified, review }) => {
           alt=""
           className="rounded-[20px] w-[330px] h-[260px]"
         />
-        <div className="absolute inset-0 flex gap-[5px]  bg-[#e8e8e8] w-[185px] h-[30px] rounded-[20px] p-[5px] m-[20px] font-medium">
-          <img src="/images/verify2.png" alt="verified" />
-          <p className="text-[#383838] text-[15px]">RoomEase Verified</p>
-        </div>
-        <div className="absolute inset-0 flex gap-[5px]  bg-[#1a1a1a] w-[115px] h-[30px] rounded-[20px] p-[5px] m-[20px] mt-[60px] font-medium">
-          <img src="/images/crown.png" alt="verified" />
-          <p className="text-[#d8d8d8] text-[15px]">Premium</p>
+        <div className="absolute inset-0 m-[20px]">
+          {isVerified ? (
+            <div className=" flex gap-[5px]  bg-[#e8e8e8] w-[185px] h-[30px] rounded-[20px] p-[5px] mb-[10px] font-medium">
+              <img src="/images/verify2.png" alt="verified" />
+              <p className="text-[#383838] text-[15px]">RoomEase Verified</p>
+            </div>
+          ) : null}
+          {isPremium ? (
+            <div className=" flex gap-[5px]  bg-[#1a1a1a] w-[115px] h-[30px] rounded-[20px] p-[5px]  font-medium">
+              <img src="/images/crown.png" alt="verified" />
+              <p className="text-[#d8d8d8] text-[15px]">Premium</p>
+            </div>
+          ) : null}
         </div>
       </div>
       <div className="mx-[10px]">
