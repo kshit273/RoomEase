@@ -51,6 +51,9 @@ const FindRoom = ({ activeRID, setActiveRID, nearbyPGs, cityName }) => {
               list={sortScore(nearbyPGs)}
               heading={`Top rated in ${cityName ? `${cityName}` : ""}`}
               onRoomClick={setActiveRID}
+              desc={
+                "Find Dehradun’s highest-rated PGs, trusted by students and working professionals alike."
+              }
             />
           )}
 
@@ -60,6 +63,9 @@ const FindRoom = ({ activeRID, setActiveRID, nearbyPGs, cityName }) => {
             )}
             heading="Verified By RoomEase"
             onRoomClick={setActiveRID}
+            desc={
+              "Stay stress-free with PGs officially verified for quality, comfort, and trust by RoomEase."
+            }
           />
 
           {nearbyPGs.length > 0 && (
@@ -67,6 +73,9 @@ const FindRoom = ({ activeRID, setActiveRID, nearbyPGs, cityName }) => {
               list={sortScore(nearbyPGs)}
               heading={`Popular in ${cityName ? `${cityName}` : ""}`}
               onRoomClick={setActiveRID}
+              desc={
+                "These PGs are trending! Most viewed, most loved, and highly recommended by locals."
+              }
             />
           )}
 
@@ -74,12 +83,18 @@ const FindRoom = ({ activeRID, setActiveRID, nearbyPGs, cityName }) => {
             list={sortScore(Houses).filter((pg) => pg.RID.startsWith("NOI"))}
             heading="Rooms in Noida"
             onRoomClick={setActiveRID}
+            desc={
+              "Explore handpicked rooms in Noida, perfect for techies, interns, and students."
+            }
           />
 
           <RoomSlider
             list={sortScore(filterPGsByGender("girls"))}
             heading="Rooms for Girls"
             onRoomClick={setActiveRID}
+            desc={
+              "Safe, secure, and convenient PGs tailored specifically for girl students and working women."
+            }
           />
         </div>
       </div>

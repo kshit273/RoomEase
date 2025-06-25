@@ -27,8 +27,8 @@ const Like = () => {
 const StyledWrapper = styled.div`
   .ui-like {
     --icon-size: 24px;
-    --icon-secondary-color: rgb(255, 255, 255);
-    --icon-hover-color: rgb(255, 255, 255);
+    --icon-secondary-color: rgb(238, 238, 238);
+    --icon-hover-color: rgb(238, 238, 238);
     --icon-primary-color: rgb(215, 38, 56);
     --icon-circle-border: 1px solid var(--icon-primary-color);
     --icon-circle-size: 35px;

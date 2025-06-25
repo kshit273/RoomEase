@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import RoomCard from "../components/RoomCard";
 import { useNavigate } from "react-router-dom";
 
-const RoomSlider = ({ list, heading, onRoomClick }) => {
+const RoomSlider = ({ list, heading, onRoomClick, desc }) => {
   const scrollRef = useRef();
   const navigate = useNavigate();
 
@@ -23,10 +23,16 @@ const RoomSlider = ({ list, heading, onRoomClick }) => {
     }
   };
   return (
-    <div className="mt-[80px]  w-[90%]">
-      <p className="text-[#1a1a1a] text-[35px] font-medium mb-[5px]">
-        {heading}
-      </p>
+    <div className="mt-[50px]  w-[90%]">
+      <div className="flex gap-[20px] items-center">
+        <p className="text-[#1a1a1a] text-[35px] font-medium ">{heading}</p>
+        <img
+          src="/images/arrowBlack.png"
+          alt=""
+          className="h-[20px] cursor-pointer hover:translate-x-2 duration-300"
+        />
+      </div>
+      <p className="text-[#969696] text-[20px] mb-[5px]">{desc}</p>
       <div className=" flex items-center relative">
         <button
           className="flex items-center justify-center absolute left-[-4%] bottom-[50%] z-10 h-[65px] w-[65px] bg-[#e8e8e8] rounded-full shadow p-2 hover:bg-[#b9b9b9]  transition duration-400"

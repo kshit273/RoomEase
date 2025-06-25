@@ -104,7 +104,7 @@ const PgInfo = () => {
       <section id="PgInfo" className="relative z-2 ">
         <div className="flex items-center justify-center">
           <div className="grid grid-cols-5 grid-rows-2 gap-8  p-4 rounded-2xl w-[95%] h-[800px]">
-            <div className="col-span-3 row-span-2 rounded-2xl overflow-hidden">
+            <div className="col-span-3 row-span-2 rounded-2xl overflow-hidden ">
               <img
                 src={`/images/PgInfoImgs/${RID}/mainImg.jpg`}
                 alt="Main"
