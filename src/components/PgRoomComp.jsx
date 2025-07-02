@@ -26,19 +26,18 @@ const PgRoomComp = ({ room, onClose, RID }) => {
 
         <div className="flex items-center justify-between gap-[20px]">
           <div className="w-3/5 h-[750px] relative flex items-center justify-center">
-            {/* Left Arrow */}
             <button
               onClick={prev}
-              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/70 rounded-full p-2 hover:bg-white"
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 bg-white/70 rounded-full p-3 hover:bg-white cursor-pointer"
               aria-label="Previous"
             >
               <img
                 src="/images/arrowBlack.png"
                 alt="prev"
-                className="w-8 h-8 rotate-180"
+                className="w-5 h-5 rotate-180 "
               />
             </button>
-            {/* Image */}
+
             <img
               src={images[current]}
               alt={`room-${current + 1}`}
@@ -46,25 +45,25 @@ const PgRoomComp = ({ room, onClose, RID }) => {
                 room.AvailFrom === 0 ? `grayscale brightness-45 opacity-60` : ``
               }`}
             />
-            {/* Right Arrow */}
+
             <button
               onClick={next}
-              className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/70 rounded-full p-2 hover:bg-white"
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-10 bg-white/70 rounded-full p-3 hover:bg-white cursor-pointer"
               aria-label="Next"
             >
               <img
                 src="/images/arrowBlack.png"
                 alt="next"
-                className="w-8 h-8"
+                className="w-5 h-5 "
               />
             </button>
-            {/* Dots */}
+
             <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
               {images.map((_, idx) => (
                 <span
                   key={idx}
-                  className={`inline-block w-3 h-3 rounded-full ${
-                    idx === current ? "bg-[#1a1a1a]" : "bg-[#bdbdbd]"
+                  className={`inline-block items-center rounded-full bg-[#e2e2e2] duration-200 ${
+                    idx === current ? "w-4 h-4" : "w-3 h-3"
                   }`}
                   onClick={() => setCurrent(idx)}
                   style={{ cursor: "pointer" }}
@@ -98,7 +97,7 @@ const PgRoomComp = ({ room, onClose, RID }) => {
               </button>
               <div className=" h-[40px] w-[130px] bg-gradient-to-r from-[#d72638] to-[#ff0084]  rounded-full grid items-center justify-center">
                 <div className=" h-[35px] w-[125px] bg-[#e8e8e8] rounded-full grid items-center justify-center">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d72638] to-[#ff007f] font-medium text-[13px]">
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d72638] to-[#ff007f] font-medium text-[14px]">
                     ₹{room.Rent}/month
                   </span>
                 </div>

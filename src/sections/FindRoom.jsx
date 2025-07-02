@@ -89,11 +89,38 @@ const FindRoom = ({ activeRID, setActiveRID, nearbyPGs, cityName }) => {
           />
 
           <RoomSlider
+            list={sortScore(Houses).filter((pg) => pg.RID.startsWith("GUR"))}
+            heading="Rooms in Gurugram"
+            onRoomClick={setActiveRID}
+            desc={
+              "Explore handpicked rooms in Gurugram, perfect for techies, interns, and students."
+            }
+          />
+
+          <RoomSlider
+            list={sortScore(Houses).filter((pg) => pg.RID.startsWith("DEL"))}
+            heading="Rooms in Delhi"
+            onRoomClick={setActiveRID}
+            desc={
+              "Explore handpicked rooms in Delhi, perfect for techies, interns, and students."
+            }
+          />
+
+          <RoomSlider
             list={sortScore(filterPGsByGender("girls"))}
             heading="Rooms for Girls"
             onRoomClick={setActiveRID}
             desc={
               "Safe, secure, and convenient PGs tailored specifically for girl students and working women."
+            }
+          />
+
+          <RoomSlider
+            list={sortScore(filterPGsByGender("boys"))}
+            heading="Rooms for Boys"
+            onRoomClick={setActiveRID}
+            desc={
+              "Safe, secure, and convenient PGs tailored specifically for boy students and working men."
             }
           />
         </div>

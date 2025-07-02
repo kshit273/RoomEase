@@ -8,7 +8,7 @@ const RoomFeatures = ({ features }) => {
         {uniqueFeatures.map((feature, index) => (
           <div
             key={index}
-            className="bg-[#d7d7d7] text-[#4b4b4b] text-[12px] px-4 py-2 rounded-full font-medium"
+            className="bg-[#d7d7d7] text-[#4b4b4b] text-[14px] px-4 py-2 rounded-full font-medium"
           >
             {feature}
           </div>
