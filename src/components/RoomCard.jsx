@@ -66,14 +66,14 @@ const RoomCard = ({
               i < review ? (
                 <img
                   key={i}
-                  src="./images/star-filled.png"
+                  src="/images/star-filled.png"
                   alt="star"
                   className="w-[13px] h-[13px]"
                 />
               ) : (
                 <img
                   key={i}
-                  src="./images/star-empty.png"
+                  src="/images/star-empty.png"
                   alt="star-empty"
                   className="w-[13px] h-[13px]"
                 />

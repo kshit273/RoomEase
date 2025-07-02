@@ -8,11 +8,12 @@ import { Details } from "../constants/PgData";
 import { services, Services } from "../constants/Services";
 import { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
 const PgInfo = () => {
   const { RID } = useParams();
+  const navigate = useNavigate();
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
   const [zoomImg, setZoomImg] = useState(null);
   const [zoomImgIndex, setZoomImgIndex] = useState(null);
@@ -23,6 +24,7 @@ const PgInfo = () => {
   const PgServices = Services.find((item) => item.RID === RID);
 
   const handleNext = () => {
+    if (!details?.imgPaths || zoomImgIndex === null) return;
     if (zoomImgIndex < details.imgPaths.length - 1) {
       const nextIndex = zoomImgIndex + 1;
       setZoomImgIndex(nextIndex);
@@ -31,6 +33,7 @@ const PgInfo = () => {
   };
 
   const handlePrev = () => {
+    if (!details?.imgPaths || zoomImgIndex === null) return;
     if (zoomImgIndex > 0) {
       const prevIndex = zoomImgIndex - 1;
       setZoomImgIndex(prevIndex);
@@ -93,13 +96,13 @@ const PgInfo = () => {
     <>
       <Navbar />
       <div className="w-full h-[50px] flex justify-start items-center mt-[110px] pl-[30px] ">
-        <Link to={"/search"}>
+        <button onClick={() => navigate(-1)} className="flex items-center">
           <img
             src="/images/backArrow.png"
             alt=""
             className="h-[30px] w-[30px] cursor-pointer hover:scale-120 duration-300"
           />
-        </Link>
+        </button>
       </div>
       <section id="PgInfo" className="relative z-2 ">
         <div className="flex items-center justify-center">
@@ -300,24 +303,26 @@ const PgInfo = () => {
                   >
                     ✕
                   </button>
-                  <div className="grid grid-cols-3 gap-4 mt-9 auto-rows-[310px]">
-                    {details.imgPaths.map((img, i) => (
-                      <img
-                        key={i}
-                        src={
-                          img.startsWith("./") ? img.replace("./", "/") : img
-                        }
-                        alt={`pg-img-${i}`}
-                        className={`w-full h-full object-cover rounded-lg cursor-pointer ${
-                          i === 0 ? "col-span-2 row-span-2" : ""
-                        }`}
-                        onClick={() => {
-                          setZoomImg(img);
-                          setZoomImgIndex(i);
-                        }}
-                      />
-                    ))}
-                  </div>
+                  {details?.imgPaths?.length > 0 && (
+                    <div className="grid grid-cols-3 gap-4 mt-9 auto-rows-[310px]">
+                      {details.imgPaths.map((img, i) => (
+                        <img
+                          key={i}
+                          src={
+                            img.startsWith("./") ? img.replace("./", "/") : img
+                          }
+                          alt={`pg-img-${i}`}
+                          className={`w-full h-full object-cover rounded-lg cursor-pointer ${
+                            i === 0 ? "col-span-2 row-span-2" : ""
+                          }`}
+                          onClick={() => {
+                            setZoomImg(img);
+                            setZoomImgIndex(i);
+                          }}
+                        />
+                      ))}
+                    </div>
+                  )}
                 </div>
               ) : (
                 <div className="flex flex-col items-center gap-4">

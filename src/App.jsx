@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { supportedCities } from "./constants/Data";
 import { Houses } from "./constants/Houses";
+import SearchResults from "./sections/SearchResults";
 
 function App() {
   const [cityName, setCityName] = useState(null);
@@ -86,6 +87,10 @@ function App() {
           element={<Search cityName={cityName} nearbyPGs={nearbyPGs} />}
         />
         <Route path="/pg/:RID" element={<PgInfo />} />
+        <Route
+          path="/search/:search_keyword"
+          element={<SearchResults />}
+        ></Route>
       </Routes>
     </Router>
   );

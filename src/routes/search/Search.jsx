@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 import FindRoom from "../../sections/FindRoom.jsx";
 import PgInfo from "../../sections/PgInfo.jsx";
 import Navbar from "../../components/Navbar.jsx";
+import SearchResults from "../../sections/SearchResults.jsx";
 
 const Search = ({ cityName, nearbyPGs }) => {
   const [activeRID, setActiveRID] = useState(null);
@@ -19,19 +21,24 @@ const Search = ({ cityName, nearbyPGs }) => {
       <div className="absolute bottom-[-1000px] right-0 z-1 md:w-[512px] w-[256px]  md:h-[560px] h-[280px] pointer-events-none">
         <img src="/images/bgimg2.png" alt="background" />
       </div>
-      {/* <div className="absolute bottom-[-2050px] right-0 z-1 md:w-[512px] w-[256px]  md:h-[560px] h-[280px] pointer-events-none">
-        <img src="/images/bgimg2.png" alt="background" />
-      </div>
-      <div className="absolute top-[2820px] left-[-20px] z-1 md:w-[512px] w-[256px]  md:h-[560px] h-[280px] pointer-events-none">
-        <img src="/images/bgimg3.png" alt="background" />
-      </div> */}
       <Navbar />
-      <FindRoom
-        activeRID={activeRID}
-        setActiveRID={setActiveRID}
-        cityName={cityName}
-        nearbyPGs={nearbyPGs}
-      />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <FindRoom
+              activeRID={activeRID}
+              setActiveRID={setActiveRID}
+              cityName={cityName}
+              nearbyPGs={nearbyPGs}
+            />
+          }
+        />
+        <Route
+          path="/results/:search_keyword"
+          element={<SearchResults setActiveRID={setActiveRID} />}
+        />
+      </Routes>
       {activeRID && <PgInfo RID={activeRID} />}
     </>
   );

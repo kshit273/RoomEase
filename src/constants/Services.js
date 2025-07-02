@@ -18,7 +18,6 @@ const services = [
 ];
 
 const Services = [
-  // --- RecommendedPgServices ---
   {
     RID: "DEHDITbc51ed",
     services: [
@@ -39,7 +38,7 @@ const Services = [
     services: ["Power Backup", "Kitchen", "Wifi", "Drinking Water", "Parking"],
   },
   {
-    RID: "GURMG c68efd",
+    RID: "GURMGRc68efd",
     services: [
       "Air Conditioner",
       "Fridge",
@@ -82,14 +81,12 @@ const Services = [
     RID: "DELRAJ49ba4f",
     services: ["Kitchen", "Wifi", "Parking", "Power Backup", "Fridge"],
   },
-
-  // --- InCityPgServices ---
   {
-    RID: "DELCONa05b3c",
+    RID: "GURSECb5b54d",
     services: ["Wifi", "Air Conditioner", "Fridge", "CCTV", "Kitchen"],
   },
   {
-    RID: "DELKAR460774",
+    RID: "DELJAN04b237",
     services: [
       "Washing Machine",
       "Wifi",
@@ -99,11 +96,11 @@ const Services = [
     ],
   },
   {
-    RID: "DELDELaffb3f",
+    RID: "NOINOH2761fd",
     services: ["CCTV", "Wifi", "Fridge", "Washing Machine", "Kitchen"],
   },
   {
-    RID: "DELLAX011fd9",
+    RID: "BANELE18eac4",
     services: [
       "Air Conditioner",
       "Power Backup",
@@ -113,41 +110,39 @@ const Services = [
     ],
   },
   {
-    RID: "DELHAU41563c",
+    RID: "DEHPRT6d7391",
     services: ["Wifi", "Geyser", "Fridge", "Power Backup", "CCTV"],
   },
   {
-    RID: "DELSOU1c73d9",
+    RID: "PUNKOT358ea0",
     services: ["Kitchen", "Wifi", "CCTV", "Air Conditioner", "Washing Machine"],
   },
   {
-    RID: "DELJAN645459",
+    RID: "BANGODd3f94e",
     services: ["Fridge", "Geyser", "Wifi", "Power Backup", "Drinking Water"],
   },
   {
-    RID: "DELUTTb8ce4d",
+    RID: "DEHRAJ1f123a",
     services: ["CCTV", "Wifi", "Kitchen", "Washing Machine", "Air Conditioner"],
   },
   {
-    RID: "DELPIT4a9e78",
+    RID: "NOISECb46ac9",
     services: ["Power Backup", "Wifi", "Geyser", "Parking", "Fridge"],
   },
   {
-    RID: "DELRAJa2668e",
+    RID: "DELUTT3db2ee",
     services: ["Wifi", "CCTV", "Drinking Water", "Fridge", "Kitchen"],
   },
-
-  // --- NearAreaPgServices ---
   {
-    RID: "DEHGRA2dedf3",
+    RID: "GURDLFa12cf0",
     services: ["Wifi", "Kitchen", "Parking", "Washing Machine", "Geyser"],
   },
   {
-    RID: "DEHISBf76856",
+    RID: "DEHISBr324a1",
     services: ["Fridge", "Wifi", "CCTV", "Power Backup", "Air Conditioner"],
   },
   {
-    RID: "DEHPRE411cbd",
+    RID: "DELNAS88c3ab",
     services: [
       "Washing Machine",
       "Wifi",
@@ -157,11 +152,11 @@ const Services = [
     ],
   },
   {
-    RID: "DEHRAJeb8b39",
+    RID: "PUNSHIb7c865",
     services: ["Wifi", "Power Backup", "Parking", "Fridge", "CCTV"],
   },
   {
-    RID: "DEHBAL14b20c",
+    RID: "BANMAR0a97ae",
     services: [
       "Geyser",
       "Wifi",
@@ -171,11 +166,11 @@ const Services = [
     ],
   },
   {
-    RID: "DEHCLOcd5f86",
+    RID: "NOISEC4a2f69",
     services: ["Fridge", "Wifi", "Kitchen", "CCTV", "Power Backup"],
   },
   {
-    RID: "DEHEC 0a4560",
+    RID: "BANGOTbcfa65",
     services: [
       "Wifi",
       "Geyser",
@@ -185,11 +180,11 @@ const Services = [
     ],
   },
   {
-    RID: "DELVASbed996",
+    RID: "DEHSAR203a0d",
     services: ["Power Backup", "Wifi", "CCTV", "Fridge", "Kitchen"],
   },
   {
-    RID: "DEHJAK56a797",
+    RID: "DEHPAT9f9431",
     services: [
       "Air Conditioner",
       "Wifi",
@@ -199,7 +194,7 @@ const Services = [
     ],
   },
   {
-    RID: "DEHKAUfb8e1d",
+    RID: "PUNSAD890e07",
     services: ["Fridge", "Wifi", "Kitchen", "Power Backup", "CCTV"],
   },
 ];

@@ -45,8 +45,8 @@ const RoomSlider = ({ list, heading, onRoomClick, desc }) => {
           <img
             src={
               isLeftHovered
-                ? "./images/arrowWhite.png"
-                : "./images/arrowBlack.png"
+                ? "/images/arrowWhite.png"
+                : "/images/arrowBlack.png"
             }
             alt="arrow-right"
             className="h-[20px] w-[20px] rotate-180"
@@ -102,8 +102,8 @@ const RoomSlider = ({ list, heading, onRoomClick, desc }) => {
           <img
             src={
               isRightHovered
-                ? "./images/arrowWhite.png"
-                : "./images/arrowBlack.png"
+                ? "/images/arrowWhite.png"
+                : "/images/arrowBlack.png"
             }
             alt="arrow-right"
             className="h-[20px] w-[20px]"
