@@ -9,6 +9,7 @@ const RoomCard = ({
   isVerified,
   review,
   isPremium,
+  isPremiumSlider,
 }) => {
   const [islikeHovered, setIsLikeHovered] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
@@ -56,7 +57,13 @@ const RoomCard = ({
         </div>
       </div>
       <div className="mx-[10px]">
-        <p className="text-[22px] font-medium text-[#1a1a1a]">{head}</p>
+        <p
+          className={`text-[22px] font-medium ${
+            isPremiumSlider ? `text-[#c0c0c0]` : `text-[#1a1a1a]`
+          } `}
+        >
+          {head}
+        </p>
       </div>
       <div className="flex justify-between">
         <div className="mx-[10px] flex flex-col">

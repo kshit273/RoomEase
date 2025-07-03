@@ -253,11 +253,11 @@ const Houses = [
   },
   {
     RID: "DEHPRT6d7391",
-    head: "PG near Hauz Khas",
+    head: "PG near Prince chowk",
     imgPath: "/images/house-imgs/house28.jpg",
     desc: "from ₹5,500/month",
     description:
-      "A lively PG near Hauz Khas, perfect for students and young professionals. Enjoy the vibrant social scene, parks, and easy metro access.",
+      "A lively PG near Prince chowk, perfect for students and young professionals. Enjoy the vibrant social scene, parks, and easy metro access.",
     isVerified: 1,
     isPremium: 1,
     review: 4.7,
@@ -397,7 +397,7 @@ const Houses = [
   },
   {
     RID: "DELNAS88c3ab",
-    head: "Room near ISBT Dehradun",
+    head: "Room near ISBT Delhi",
     imgPath: "/images/house-imgs/house13.jpg",
     desc: "from ₹6,200/month",
     description:
