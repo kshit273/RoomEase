@@ -8,12 +8,12 @@ const SearchResultsList = ({ search_keyword, list, onRoomClick }) => {
     navigate(`/pg/${RID}`);
   };
   return (
-    <div className="mt-[50px] w-[90%] flex justify-center">
+    <div className="mt-[50px] w-[90%] flex justify-start">
       <div>
         <div className="text-[25px] font-medium text-[#1a1a1a] mb-[20px]">
           Search results for : {search_keyword}
         </div>
-        <div className="grid grid-cols-5 grid-rows-auto gap-[20px]">
+        <div className="grid grid-cols-4 grid-rows-auto gap-[20px]">
           {list.map(
             ({
               RID,
@@ -49,6 +49,7 @@ const SearchResultsList = ({ search_keyword, list, onRoomClick }) => {
           )}
         </div>
       </div>
+      <div></div>
     </div>
   );
 };

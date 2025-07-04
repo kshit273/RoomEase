@@ -12,6 +12,20 @@ const SearchResults = ({ setActiveRID }) => {
   const { search_keyword } = useParams();
   const [results, setResults] = useState([]);
 
+  function sortScore(list) {
+    return list
+      .map((pg) => {
+        const verifiedPoints = pg.isVerified ? 25 : 0;
+        const ratingPoints = Math.min(
+          (pg.review ?? pg.Rooms?.[0]?.Rating ?? 0) * 10,
+          50
+        );
+        const totalPoints = verifiedPoints + ratingPoints;
+        return { ...pg, score: totalPoints };
+      })
+      .sort((a, b) => b.score - a.score);
+  }
+
   useEffect(() => {
     if (!search_keyword) return;
 
@@ -172,10 +186,10 @@ const SearchResults = ({ setActiveRID }) => {
             <div className="w-[90%] h-[1px] bg-[#b3b3b3] mt-[80px]"></div>
 
             {/* Full results list */}
-            {results.length > 0 && (
+            {results.filter((pg) => !pg.isPremium).length > 0 && (
               <SearchResultsList
                 search_keyword={search_keyword}
-                list={results}
+                list={sortScore(results.filter((pg) => !pg.isPremium))}
                 onRoomClick={setActiveRID}
               />
             )}
