@@ -64,7 +64,10 @@ const Form = () => {
               isMobile
                 ? `text-[11px] h-[30px] w-[80px] rounded-[6px]`
                 : `text-[20px] h-[50px] w-[140px] rounded-[10px]`
-            } bg-[#d72638] font-medium text-[#d9d9d9]   `}
+            } font-medium text-[#d9d9d9]`}
+            style={{
+              background: "linear-gradient(90deg, #d72638 0%, #ff0084 100%)",
+            }}
           >
             Submit
           </button>

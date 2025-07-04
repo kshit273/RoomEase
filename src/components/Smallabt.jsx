@@ -1,9 +1,38 @@
+import { useRef, useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const Smallabt = ({ heading, inner, imgpath }) => {
   const isSmallScreen = useMediaQuery({ maxWidth: 800 });
+  const ref = useRef();
+
+  useEffect(() => {
+    const elem = ref.current;
+    gsap.fromTo(
+      elem,
+      { opacity: 0, x: -100 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: elem,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      }
+    );
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex flex-col gap-5" ref={ref}>
       <div>
         <h3
           className={`${

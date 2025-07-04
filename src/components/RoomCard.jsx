@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import Like from "../components/Like";
+import { useMediaQuery } from "react-responsive";
 
 const RoomCard = ({
   RID,
@@ -11,6 +12,8 @@ const RoomCard = ({
   isPremium,
   isPremiumSlider,
 }) => {
+  const isMedScreen = useMediaQuery({ maxWidth: 1024 });
+  const isSmallScreen = useMediaQuery({ maxWidth: 800 });
   const [islikeHovered, setIsLikeHovered] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [isMoreClicked, setMoreClicked] = useState(false);
@@ -34,31 +37,80 @@ const RoomCard = ({
   }, [isMoreClicked]);
 
   return (
-    <div className="h-[390px] w-[350px] rounded-[10px] relative">
-      <div className="h-[280px] w-[350px] flex items-center justify-center relative">
+    <div
+      className={`${
+        isMedScreen ? `h-[260px] w-[250px]` : `h-[390px] w-[350px]`
+      } rounded-[10px] relative`}
+    >
+      <div
+        className={`${
+          isMedScreen ? `h-[180px] w-[250px]` : `h-[280px] w-[350px]`
+        } flex items-center justify-center relative`}
+      >
         <img
           src={imgPath}
           alt=""
-          className="rounded-[20px] w-[330px] h-[260px]"
+          className={
+            isMedScreen
+              ? `rounded-[14px] w-[230px] h-[160px]`
+              : `rounded-[20px] w-[330px] h-[260px]`
+          }
         />
-        <div className="absolute inset-0 m-[20px]">
+        <div
+          className={`absolute inset-0 ${
+            isMedScreen ? `m-[17px]` : `m-[20px]`
+          }`}
+        >
           {isVerified ? (
-            <div className=" flex gap-[5px]  bg-[#e8e8e8] w-[185px] h-[30px] rounded-[20px] p-[5px] mb-[10px] font-medium">
+            <div
+              className={`${
+                isMedScreen
+                  ? `w-[125px] h-[18px] p-[2px]`
+                  : `w-[185px] h-[30px] p-[5px]`
+              } flex gap-[5px]  bg-[#e8e8e8] rounded-[20px]  mb-[10px] font-medium`}
+            >
               <img src="/images/verify2.png" alt="verified" />
-              <p className="text-[#383838] text-[15px]">RoomEase Verified</p>
+              <p
+                className={`text-[#383838] ${
+                  isMedScreen ? `text-[10px]` : `text-[15px]`
+                } `}
+              >
+                RoomEase Verified
+              </p>
             </div>
           ) : null}
           {isPremium ? (
-            <div className=" flex gap-[5px]  bg-[#1a1a1a] w-[115px] h-[30px] rounded-[20px] p-[5px]  font-medium">
-              <img src="/images/crown.png" alt="verified" />
-              <p className="text-[#d8d8d8] text-[15px]">Premium</p>
+            <div
+              className={`flex ${
+                isMedScreen
+                  ? `w-[80px] h-[19px] `
+                  : `w-[115px] h-[30px] pr-[10px] `
+              }  gap-[5px]  items-center  bg-[#1a1a1a]  rounded-[20px]   font-medium`}
+            >
+              <img
+                src="/images/crown.png"
+                alt="verified"
+                className={
+                  isMedScreen ? `h-[15px] ml-[5px]` : `h-[20px] ml-[8px]`
+                }
+              />
+
+              <p
+                className={`${
+                  isMedScreen ? `text-[10px]` : `text-[15px]`
+                } text-[#d8d8d8] `}
+              >
+                Premium
+              </p>
             </div>
           ) : null}
         </div>
       </div>
       <div className="mx-[10px]">
         <p
-          className={`text-[22px] font-medium ${
+          className={`${
+            isMedScreen ? `text-[16px]` : `text-[22px]`
+          } font-medium ${
             isPremiumSlider ? `text-[#c0c0c0]` : `text-[#1a1a1a]`
           } `}
         >
@@ -67,7 +119,13 @@ const RoomCard = ({
       </div>
       <div className="flex justify-between">
         <div className="mx-[10px] flex flex-col">
-          <p className="text-[17px] text-[#919191]">{desc}</p>
+          <p
+            className={`${
+              isMedScreen ? `text-[11px]` : `text-[17px]`
+            } text-[#919191]`}
+          >
+            {desc}
+          </p>
           <div className="flex items-center gap-1">
             {[...Array(5)].map((_, i) =>
               i < review ? (
@@ -75,14 +133,18 @@ const RoomCard = ({
                   key={i}
                   src="/images/star-filled.png"
                   alt="star"
-                  className="w-[13px] h-[13px]"
+                  className={
+                    isMedScreen ? `w-[10px] h-[10px]` : `w-[13px] h-[13px]`
+                  }
                 />
               ) : (
                 <img
                   key={i}
                   src="/images/star-empty.png"
                   alt="star-empty"
-                  className="w-[13px] h-[13px]"
+                  className={
+                    isMedScreen ? `w-[10px] h-[10px]` : `w-[13px] h-[13px]`
+                  }
                 />
               )
             )}
@@ -102,8 +164,12 @@ const RoomCard = ({
             }}
             className="cursor-pointer"
           >
-            <div className="w-[40px] h-[40px] bg-[#d0d0d0] rounded-full flex items-center justify-center p-[9px] duration-300">
-              <Like />
+            <div
+              className={`${
+                isMedScreen ? `w-[20px] h-[20px]` : `w-[40px] h-[40px] p-[7px]`
+              } bg-[#d0d0d0] rounded-full flex items-center justify-center duration-300`}
+            >
+              <Like size={isMedScreen ? 14 : 30} />
             </div>
           </button>
 
@@ -114,7 +180,13 @@ const RoomCard = ({
               setMoreClicked((prev) => !prev);
             }}
           >
-            <div className="w-[40px] h-[40px] bg-[#d0d0d0] rounded-full flex items-center justify-center p-[7px]">
+            <div
+              className={`${
+                isMedScreen
+                  ? `w-[20px] h-[20px] p-[4px]`
+                  : `w-[40px] h-[40px] p-[7px]`
+              } bg-[#d0d0d0] rounded-full flex items-center justify-center `}
+            >
               <img src="/images/more.png" alt="More options" />
             </div>
           </button>

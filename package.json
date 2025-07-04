@@ -6,6 +6,7 @@
   "powermode.enabled": true,
   "scripts": {
     "dev": "vite",
+    "start": "HOST=0.0.0.0 react-scripts start",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"

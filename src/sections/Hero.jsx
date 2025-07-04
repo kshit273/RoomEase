@@ -16,7 +16,14 @@ const Hero = () => {
               <h1 className="text-[#1a1a1a]">to the right</h1>
               <h1 className="text-[#d72638]">room</h1>
             </div>
-            <SearchButton width={600} />
+            {/* <div className="flex items-center justify-center">
+              <img
+                src="/images/abt-imgs/room1.png"
+                alt=""
+                className="h-[250px]"
+              />
+            </div> */}
+            <SearchButton width={isSmallScreen ? 350 : 600} />
           </div>
         </header>
         {!isSmallScreen && (

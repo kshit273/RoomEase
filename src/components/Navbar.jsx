@@ -42,7 +42,14 @@ const Navbar = () => {
               isSmallScreen ? `text-[25px]` : isMedScreen ? `text-[40px]` : ``
             }`}
           >
-            RoomEase
+            <div className="flex items-center">
+              {/* <img
+                src="/images/logo.png"
+                alt=""
+                className={isSmallScreen ? `h-[50px]` : `h-[100px]`}
+              /> */}
+              RoomEase
+            </div>
           </div>
         </Link>
 
@@ -72,7 +79,7 @@ const Navbar = () => {
             className="h-[22px] w-[22px]"
             onClick={() => setShowHamburger(true)}
           >
-            <img src="./images/hamburger-imgs/menu.png" alt="menu" />
+            <img src="/images/menu.png" alt="menu" />
           </div>
         ) : (
           <JoinBtn />

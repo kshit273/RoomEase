@@ -16,8 +16,12 @@ const About = () => {
 
   const timelineLeft = isMedScreen ? "left-[40px]" : "left-[755px]";
   let timelineHeight = "h-[1120px]";
+  let top = "top 75%";
+  let bottom = "bottom 0%";
   if (isSmallScreen) {
     timelineHeight = "h-[1150px]";
+    top = "top 50%";
+    bottom = "bottom -50%";
   } else if (isMedScreen) {
     timelineHeight = "h-[1750px]";
   }
@@ -36,8 +40,8 @@ const About = () => {
           ease: "none",
           scrollTrigger: {
             trigger: timelineRef.current,
-            start: "top 100%",
-            end: "bottom 0%",
+            start: "top 50%",
+            end: "bottom -50%",
             scrub: true,
           },
         }
@@ -62,7 +66,7 @@ const About = () => {
           paused: false,
           scrollTrigger: {
             trigger: triggerRef.current,
-            start: "top 85%",
+            start: "top 90%",
             toggleActions: "play pause resume reset",
             once: false,
           },
@@ -87,15 +91,15 @@ const About = () => {
   };
 
   return (
-    <section id="about" className="relative z-2 pt-[100px]">
+    <section id="about" className="relative z-2 ">
       <div
         ref={timelineRef}
         className={`pointer-events-none absolute top-5 origin-top ${timelineLeft} ${timelineHeight} bg-[#D72638] w-[2px] z-0 ${
           isSmallScreen
-            ? ` mt-[190px]`
+            ? ` mt-[10px]`
             : isMedScreen
-            ? ` mt-[230px]`
-            : ` mt-[230px]`
+            ? ` mt-[10px]`
+            : ` mt-[10px]`
         }`}
       />
 

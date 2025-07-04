@@ -48,7 +48,9 @@ const Testimonials = () => {
           }}
         />
         <div
-          className="flex gap-[30px] animate-marquee-right "
+          className={`flex gap-[30px] ${
+            isSmallScreen ? `animate-marquee-left` : `animate-marquee-right`
+          } `}
           style={{ width: "max-content" }}
         >
           {[...testimonials, ...testimonials].map((card, idx) => (
