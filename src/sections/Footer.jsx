@@ -8,18 +8,22 @@ const Footer = () => {
   const head = isSmallScreen
     ? "text-[18px] font-medium"
     : isMobile
-    ? "text-[15px] font-medium"
+    ? "text-[11px] font-medium"
     : "text-[23px] font-medium";
   const para = isSmallScreen
     ? "text-[15px] font-light"
     : isMobile
-    ? "text-[12px] font-light"
+    ? "text-[9px] font-light"
     : "text-[17px] font-light";
 
   return (
     <section id="footer" className="relative z-10">
-      <div className={`flex ${isMobile ? ` flex-col` : ``} min-h-[300px]`}>
-        <div className={`flex flex-1 flex-col items-start ml-[20px] mt-[10px]`}>
+      <div className={`flex min-h-[150px]`}>
+        <div
+          className={`flex flex-1 flex-col items-start  ${
+            isMobile ? `ml-[10px]` : `mt-[10px] ml-[20px]`
+          } `}
+        >
           <img
             src="/images/logo.png"
             alt="RoomEase"
@@ -27,13 +31,13 @@ const Footer = () => {
               isSmallScreen
                 ? `h-[100px] w-[100px]`
                 : isMobile
-                ? `h-[100px] w-[100px]`
+                ? `h-[70px] w-[70px]`
                 : `h-[200px] w-[200px]`
             }
           />
           <p
             className={`${
-              isMobile ? `text-[12px]` : isSmallScreen ? `text-[12px]` : ``
+              isMobile ? `text-[8px]` : isSmallScreen ? `text-[12px]` : ``
             }`}
           >
             © all copywrite reserved
@@ -50,8 +54,8 @@ const Footer = () => {
         >
           <div
             className={`footer-wrapper flex justify-end p-[20px] ${
-              isMobile ? `gap-[30px]` : `gap-[60px]`
-            }  mt-[20px] `}
+              isMobile ? `gap-[15px]` : `gap-[60px] mt-[20px]`
+            }   `}
           >
             <div className={`flex flex-col `}>
               <h6 className={head}>Help and services</h6>
@@ -87,11 +91,7 @@ const Footer = () => {
               </p>
             </div>
           </div>
-          <div
-            className={`socials flex ${
-              isMobile ? `justify-start ml-[10px]` : `justify-end`
-            } `}
-          >
+          <div className={`socials flex justify-end mr-[20px]`}>
             {socials.map((item) => (
               <div
                 key={item.name}
@@ -115,7 +115,7 @@ const Footer = () => {
                       isSmallScreen
                         ? `h-[25px] w-[25px]`
                         : isMobile
-                        ? `h-[20px] w-[20px]`
+                        ? `h-[18px] w-[18px]`
                         : `h-[35px] w-[35px]`
                     }
                   />

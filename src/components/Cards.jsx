@@ -2,15 +2,15 @@ const Cards = ({ cardList, isMedScreen, isSmallScreen }) => {
   return (
     <div
       className={` flex  ${isMedScreen ? "flex-wrap justify-center" : ""} ${
-        isSmallScreen ? `gap-[30px] mt-[40px]` : `gap-[70px] mt-[70px]`
+        isSmallScreen ? `gap-[20px] mt-[20px]` : `gap-[70px] mt-[70px]`
       }`}
     >
       {cardList.map((card, idx) => (
         <div
           key={idx}
           className={`${
-            isSmallScreen ? `h-[175px] w-[175px]` : `h-[275px] w-[325px]`
-          } flex flex-col bg-[#1a1a1a]  rounded-[10px]`}
+            isSmallScreen ? `h-[145px] w-[145px]` : `h-[275px] w-[325px]`
+          } flex flex-col bg-[#1a1a1a]  rounded-[20px]`}
         >
           <div className="flex items-center justify-center h-[200px]">
             <img

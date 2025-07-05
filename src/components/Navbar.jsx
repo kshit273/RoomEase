@@ -29,7 +29,7 @@ const Navbar = () => {
     <header
       className={`navbar ${scrolled ? "scrolled pb-[10px]" : "not-scrolled"} ${
         isSmallScreen
-          ? `py-[10px] px-5 mt-0 h-[50px]`
+          ? `py-[10px] px-5 mt-0 h-[60px]`
           : isMedScreen
           ? `pt-[30px] px-[50px] mt-0 `
           : `py-5 px-5 mt-0 `
@@ -42,14 +42,7 @@ const Navbar = () => {
               isSmallScreen ? `text-[25px]` : isMedScreen ? `text-[40px]` : ``
             }`}
           >
-            <div className="flex items-center">
-              {/* <img
-                src="/images/logo.png"
-                alt=""
-                className={isSmallScreen ? `h-[50px]` : `h-[100px]`}
-              /> */}
-              RoomEase
-            </div>
+            <div className="flex items-center">RoomEase</div>
           </div>
         </Link>
 
