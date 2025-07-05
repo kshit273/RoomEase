@@ -12,7 +12,7 @@ const RoomCard = ({
   isPremium,
   isPremiumSlider,
 }) => {
-  const isMedScreen = useMediaQuery({ maxWidth: 1024 });
+  const isMedScreen = useMediaQuery({ minWidth: 801, maxWidth: 1024 });
   const isSmallScreen = useMediaQuery({ maxWidth: 800 });
   const [islikeHovered, setIsLikeHovered] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
@@ -39,12 +39,20 @@ const RoomCard = ({
   return (
     <div
       className={`${
-        isMedScreen ? `h-[260px] w-[250px]` : `h-[390px] w-[350px]`
+        isMedScreen
+          ? `h-[260px] w-[250px]`
+          : isSmallScreen
+          ? `h-[180px] w-[150px]`
+          : `h-[390px] w-[350px]`
       } rounded-[10px] relative`}
     >
       <div
         className={`${
-          isMedScreen ? `h-[180px] w-[250px]` : `h-[280px] w-[350px]`
+          isMedScreen
+            ? `h-[180px] w-[250px]`
+            : isSmallScreen
+            ? `h-[100px] w-[150px]`
+            : `h-[280px] w-[350px]`
         } flex items-center justify-center relative`}
       >
         <img
@@ -53,26 +61,38 @@ const RoomCard = ({
           className={
             isMedScreen
               ? `rounded-[14px] w-[230px] h-[160px]`
+              : isSmallScreen
+              ? `rounded-[14px] w-[140px] h-[100px] `
               : `rounded-[20px] w-[330px] h-[260px]`
           }
         />
         <div
           className={`absolute inset-0 ${
-            isMedScreen ? `m-[17px]` : `m-[20px]`
+            isMedScreen
+              ? `m-[17px]`
+              : isSmallScreen
+              ? `mt-[5px] ml-[10px]`
+              : `m-[20px]`
           }`}
         >
           {isVerified ? (
             <div
               className={`${
                 isMedScreen
-                  ? `w-[125px] h-[18px] p-[2px]`
-                  : `w-[185px] h-[30px] p-[5px]`
-              } flex gap-[5px]  bg-[#e8e8e8] rounded-[20px]  mb-[10px] font-medium`}
+                  ? `w-[125px] h-[18px] p-[2px] mb-[10px]`
+                  : isSmallScreen
+                  ? `w-[110px] h-[14px] p-[1px] font-medium mb-[5px]`
+                  : `w-[185px] h-[30px] p-[5px] mb-[10px]`
+              } flex gap-[5px]  bg-[#e8e8e8] rounded-[20px]   font-medium`}
             >
               <img src="/images/verify2.png" alt="verified" />
               <p
                 className={`text-[#383838] ${
-                  isMedScreen ? `text-[10px]` : `text-[15px]`
+                  isMedScreen
+                    ? `text-[10px]`
+                    : isSmallScreen
+                    ? `text-[9px]`
+                    : `text-[15px]`
                 } `}
               >
                 RoomEase Verified
@@ -84,6 +104,8 @@ const RoomCard = ({
               className={`flex ${
                 isMedScreen
                   ? `w-[80px] h-[19px] `
+                  : isSmallScreen
+                  ? `w-[70px] h-[14px]`
                   : `w-[115px] h-[30px] pr-[10px] `
               }  gap-[5px]  items-center  bg-[#1a1a1a]  rounded-[20px]   font-medium`}
             >
@@ -91,13 +113,21 @@ const RoomCard = ({
                 src="/images/crown.png"
                 alt="verified"
                 className={
-                  isMedScreen ? `h-[15px] ml-[5px]` : `h-[20px] ml-[8px]`
+                  isMedScreen
+                    ? `h-[15px] ml-[5px]`
+                    : isSmallScreen
+                    ? `h-[12px] ml-[3px]`
+                    : `h-[20px] ml-[8px]`
                 }
               />
 
               <p
                 className={`${
-                  isMedScreen ? `text-[10px]` : `text-[15px]`
+                  isMedScreen
+                    ? `text-[10px]`
+                    : isSmallScreen
+                    ? `text-[9px]`
+                    : `text-[15px]`
                 } text-[#d8d8d8] `}
               >
                 Premium
@@ -109,7 +139,11 @@ const RoomCard = ({
       <div className="mx-[10px]">
         <p
           className={`${
-            isMedScreen ? `text-[16px]` : `text-[22px]`
+            isMedScreen
+              ? `text-[16px]`
+              : isSmallScreen
+              ? `text-[12px] mt-[5px]`
+              : `text-[22px]`
           } font-medium ${
             isPremiumSlider ? `text-[#c0c0c0]` : `text-[#1a1a1a]`
           } `}
@@ -121,12 +155,20 @@ const RoomCard = ({
         <div className="mx-[10px] flex flex-col">
           <p
             className={`${
-              isMedScreen ? `text-[11px]` : `text-[17px]`
-            } text-[#919191]`}
+              isMedScreen
+                ? `text-[11px] text-[#919191]`
+                : isSmallScreen
+                ? `text-[9px] text-[#585858]`
+                : `text-[17px] text-[#919191]`
+            } `}
           >
             {desc}
           </p>
-          <div className="flex items-center gap-1">
+          <div
+            className={`flex items-center ${
+              isSmallScreen ? `gap-[2px]` : `gap-1`
+            }`}
+          >
             {[...Array(5)].map((_, i) =>
               i < review ? (
                 <img
@@ -134,7 +176,11 @@ const RoomCard = ({
                   src="/images/star-filled.png"
                   alt="star"
                   className={
-                    isMedScreen ? `w-[10px] h-[10px]` : `w-[13px] h-[13px]`
+                    isMedScreen
+                      ? `w-[10px] h-[10px]`
+                      : isSmallScreen
+                      ? `w-[7px] h-[7px]`
+                      : `w-[13px] h-[13px]`
                   }
                 />
               ) : (
@@ -143,7 +189,11 @@ const RoomCard = ({
                   src="/images/star-empty.png"
                   alt="star-empty"
                   className={
-                    isMedScreen ? `w-[10px] h-[10px]` : `w-[13px] h-[13px]`
+                    isMedScreen
+                      ? `w-[10px] h-[10px]`
+                      : isSmallScreen
+                      ? `w-[7px] h-[7px]`
+                      : `w-[13px] h-[13px]`
                   }
                 />
               )
@@ -166,10 +216,14 @@ const RoomCard = ({
           >
             <div
               className={`${
-                isMedScreen ? `w-[20px] h-[20px]` : `w-[40px] h-[40px] p-[7px]`
+                isMedScreen
+                  ? `w-[20px] h-[20px]`
+                  : isSmallScreen
+                  ? `w-[20px] h-[20px]`
+                  : `w-[40px] h-[40px] p-[7px]`
               } bg-[#d0d0d0] rounded-full flex items-center justify-center duration-300`}
             >
-              <Like size={isMedScreen ? 14 : 30} />
+              <Like size={isMedScreen ? 14 : isSmallScreen ? 14 : 30} />
             </div>
           </button>
 
@@ -184,6 +238,8 @@ const RoomCard = ({
               className={`${
                 isMedScreen
                   ? `w-[20px] h-[20px] p-[4px]`
+                  : isSmallScreen
+                  ? `w-[20px] h-[20px] p-[4px]`
                   : `w-[40px] h-[40px] p-[7px]`
               } bg-[#d0d0d0] rounded-full flex items-center justify-center `}
             >
@@ -192,10 +248,20 @@ const RoomCard = ({
           </button>
 
           {isMoreClicked && (
-            <div className="absolute top-[-110px] right-0 bg-[#e8e8e8] shadow-lg rounded-[10px] p-[8px] w-[180px] z-50">
-              <ul className="flex flex-col gap-2 text-[15px] text-[#1a1a1a]">
+            <div
+              className={`absolute top-[-110px] right-0 bg-[#e8e8e8] ${
+                isSmallScreen ? `w-[130px]` : `w-[180px]`
+              } shadow-lg rounded-[10px] p-[8px]  z-50`}
+            >
+              <ul
+                className={`${
+                  isSmallScreen ? `text-[10px] gap-[2px]` : `text-[15px] gap-2`
+                } flex flex-col   text-[#1a1a1a]`}
+              >
                 <li
-                  className="hover:bg-[#cacaca] p-[5px] rounded-[5px] cursor-pointer duration-300"
+                  className={`${
+                    isSmallScreen ? `` : ``
+                  } hover:bg-[#cacaca] p-[5px] rounded-[5px] cursor-pointer duration-300`}
                   onClick={(e) => {
                     e.stopPropagation();
                     console.log("Report listing", RID);
@@ -205,7 +271,9 @@ const RoomCard = ({
                   🚩 Report Listing
                 </li>
                 <li
-                  className="hover:bg-[#cacaca] p-[5px] rounded-[5px] cursor-pointer duration-300"
+                  className={`${
+                    isSmallScreen ? `` : ``
+                  } hover:bg-[#cacaca] p-[5px] rounded-[5px] cursor-pointer duration-300`}
                   onClick={(e) => {
                     e.stopPropagation();
                     navigator.clipboard.writeText(
@@ -217,7 +285,9 @@ const RoomCard = ({
                   🔗 Copy Link
                 </li>
                 <li
-                  className="hover:bg-[#cacaca] p-[5px] rounded-[5px] cursor-pointer duration-300"
+                  className={`${
+                    isSmallScreen ? `` : ``
+                  } hover:bg-[#cacaca] p-[5px] rounded-[5px] cursor-pointer duration-300`}
                   onClick={(e) => {
                     e.stopPropagation();
                     const shareUrl = `https://wa.me/?text=Check%20out%20this%20PG:%20${window.location.origin}/pg/${RID}`;

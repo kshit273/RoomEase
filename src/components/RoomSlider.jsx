@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 
 const RoomSlider = ({ list, heading, onRoomClick, desc }) => {
-  const isMedScreen = useMediaQuery({ maxWidth: 1024 });
+  const isMedScreen = useMediaQuery({ minWidth: 801, maxWidth: 1024 });
   const isSmallScreen = useMediaQuery({ maxWidth: 800 });
   const scrollRef = useRef();
   const navigate = useNavigate();
@@ -26,15 +26,27 @@ const RoomSlider = ({ list, heading, onRoomClick, desc }) => {
     }
   };
   return (
-    <div className={`${isMedScreen ? `mt-[30px]` : `mt-[50px]`}  w-[90%]`}>
+    <div
+      className={`${
+        isMedScreen ? `mt-[30px]` : isSmallScreen ? `mt-[20px]` : `mt-[50px]`
+      }  w-[90%]`}
+    >
       <div
         className={`flex ${
-          isMedScreen ? `gap-[10px]` : `gap-[20px]`
+          isMedScreen
+            ? `gap-[10px]`
+            : isSmallScreen
+            ? `gap-[5px]`
+            : `gap-[20px]`
         }  items-center`}
       >
         <p
           className={`text-[#1a1a1a] ${
-            isMedScreen ? `text-[23px]` : `text-[35px]`
+            isMedScreen
+              ? `text-[23px]`
+              : isSmallScreen
+              ? `text-[17px]`
+              : `text-[35px]`
           } font-medium `}
         >
           {heading}
@@ -43,19 +55,23 @@ const RoomSlider = ({ list, heading, onRoomClick, desc }) => {
           src="/images/arrowBlack.png"
           alt=""
           className={`${
-            isMedScreen ? `h-[14px]` : `h-[20px]`
+            isMedScreen ? `h-[14px]` : isSmallScreen ? `h-[10px]` : `h-[20px]`
           } cursor-pointer hover:translate-x-2 duration-300`}
         />
       </div>
       <p
-        className={`text-[#969696] ${
-          isMedScreen ? `text-[15px]` : `text-[20px]`
+        className={` ${
+          isMedScreen
+            ? `text-[15px] text-[#969696]`
+            : isSmallScreen
+            ? `text-[12px] text-[#606060]`
+            : `text-[20px] text-[#969696]`
         } mb-[5px]`}
       >
         {desc}
       </p>
       <div className=" flex items-center relative">
-        {!isMedScreen ? (
+        {!isMedScreen && !isSmallScreen ? (
           <button
             className="flex items-center justify-center absolute left-[-4%] bottom-[50%] z-10 h-[65px] w-[65px] bg-[#e8e8e8] rounded-full shadow p-2 hover:bg-[#b9b9b9]  transition duration-400"
             onClick={() => scroll("left")}
@@ -79,7 +95,7 @@ const RoomSlider = ({ list, heading, onRoomClick, desc }) => {
         <div
           ref={scrollRef}
           className={`flex ${
-            isMedScreen ? `gap-0` : `gap-[10px]`
+            isMedScreen || isSmallScreen ? `gap-0` : `gap-[10px]`
           }  overflow-x-auto scroll-smooth w-full no-scrollbar`}
           style={{ scrollBehavior: "smooth" }}
         >
@@ -117,7 +133,7 @@ const RoomSlider = ({ list, heading, onRoomClick, desc }) => {
             )
           )}
         </div>
-        {!isMedScreen ? (
+        {!isMedScreen && !isSmallScreen ? (
           <button
             className="flex items-center justify-center absolute right-[-5%] bottom-[50%] h-[70px] w-[70px] z-10 bg-[#e8e8e8] rounded-full shadow p-2 hover:bg-[#b9b9b9]  transition duration-400"
             onClick={() => scroll("right")}

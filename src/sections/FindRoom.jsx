@@ -5,7 +5,7 @@ import { Houses } from "../constants/Houses";
 import { Details } from "../constants/PgData";
 
 const FindRoom = ({ activeRID, setActiveRID, nearbyPGs, cityName }) => {
-  const isMedScreen = useMediaQuery({ maxWidth: 1024 });
+  const isMedScreen = useMediaQuery({ minWidth: 801, maxWidth: 1024 });
   const isSmallScreen = useMediaQuery({ maxWidth: 800 });
 
   function filterPGsByGender(gender) {
@@ -39,19 +39,31 @@ const FindRoom = ({ activeRID, setActiveRID, nearbyPGs, cityName }) => {
     <section id="about" className="relative z-2 pt-[100px]">
       <div
         className={`w-full flex justify-center ${
-          isMedScreen ? ` mt-[40px]` : `mt-[100px]`
+          isMedScreen ? ` mt-[40px]` : isSmallScreen ? `mt-0` : `mt-[100px]`
         }`}
       >
         <div className="w-[90%] h-full pb-[40px] bg-[#dadada] rounded-[20px] drop-shadow-2xl drop-shadow-[#a5a5a5] flex flex-col items-center">
           <div
             className={`flex flex-col items-center ${
-              isMedScreen ? `mt-[50px]` : `mt-[100px]`
+              isMedScreen
+                ? `mt-[50px]`
+                : isSmallScreen
+                ? `mt-[40px]`
+                : `mt-[100px]`
             } gap-[50px]`}
           >
-            <div className="flex justify-center text-center">
+            <div
+              className={`${
+                isSmallScreen ? `w-[90%]` : `w-[80%]`
+              } flex justify-center text-center`}
+            >
               <p
-                className={`w-[80%] text-[#1a1a1a]  ${
-                  isMedScreen ? ` text-[50px]` : `text-[80px]`
+                className={` text-[#1a1a1a]  ${
+                  isMedScreen
+                    ? ` text-[50px]`
+                    : isSmallScreen
+                    ? `text-[35px]`
+                    : `text-[80px]`
                 } font-medium`}
               >
                 Discover <span className="text-[#d72638]">rooms</span> in
@@ -60,10 +72,16 @@ const FindRoom = ({ activeRID, setActiveRID, nearbyPGs, cityName }) => {
             </div>
             <div
               className={`w-[100%] flex justify-center ${
-                isMedScreen ? `scale-80 mb-[50px]` : ` mb-[100px] mt-[30px]`
+                isMedScreen
+                  ? `scale-80 mb-[50px]`
+                  : isSmallScreen
+                  ? `mb-[50px]`
+                  : ` mb-[100px] mt-[30px]`
               }`}
             >
-              <SearchButton width={isMedScreen ? 600 : 800} />
+              <SearchButton
+                width={isMedScreen ? 600 : isSmallScreen ? 300 : 800}
+              />
             </div>
           </div>
           {nearbyPGs.length > 0 && (
