@@ -55,7 +55,7 @@ const FindRoom = ({ activeRID, setActiveRID, nearbyPGs, cityName }) => {
             <div
               className={`${
                 isSmallScreen ? `w-[90%]` : `w-[80%]`
-              } flex justify-center text-center`}
+              } flex justify-center text-center `}
             >
               <p
                 className={` text-[#1a1a1a]  ${

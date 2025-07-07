@@ -7,8 +7,11 @@ import SearchButton from "../components/SearchButton";
 import Navbar from "../components/Navbar";
 import SearchResultsList from "../components/SearchResultsList";
 import NoSearchOutput from "../components/NoSearchOutput";
+import { useMediaQuery } from "react-responsive";
 
 const SearchResults = ({ setActiveRID }) => {
+  const isMedScreen = useMediaQuery({ minWidth: 801, maxWidth: 1024 });
+  const isSmallScreen = useMediaQuery({ maxWidth: 800 });
   const { search_keyword } = useParams();
   const [results, setResults] = useState([]);
 
@@ -147,30 +150,79 @@ const SearchResults = ({ setActiveRID }) => {
       </div>
 
       <Navbar />
-      <section className="relative z-2 pt-[100px]">
-        <div className="w-full flex justify-center mt-[100px]">
+      <section
+        className={`relative z-2 ${isSmallScreen ? `pt-[60px]` : `pt-[100px]`}`}
+      >
+        <div
+          className={`w-full flex justify-center ${
+            isSmallScreen || isMedScreen ? ` mt-[20px]` : ` mt-[100px]`
+          }`}
+        >
           <div className="w-[90%] h-full pb-[40px] bg-[#dadada] rounded-[20px] drop-shadow-2xl drop-shadow-[#a5a5a5] flex flex-col items-center">
             {/* Search bar & icon buttons */}
-            <div className="flex w-full justify-between items-center my-[40px] px-[40px]">
-              <div className="mx-auto">
-                <SearchButton width={1000} />
+            <div
+              className={`flex items-center w-full ${
+                isSmallScreen ? `my-[20px] px-[10px]` : `my-[40px] px-[40px]`
+              } justify-between`}
+            >
+              <div
+                className={`flex-1 flex justify-center ${
+                  isMedScreen ? `scale-70` : `scale-100`
+                }`}
+              >
+                <SearchButton
+                  width={isSmallScreen ? 200 : isMedScreen ? 800 : 1000}
+                />
               </div>
-              <div className="flex gap-[20px] justify-end">
+              <div
+                className={`flex ${
+                  isSmallScreen ? `gap-[5px]` : `gap-[20px]`
+                } justify-end`}
+                style={{ minWidth: isSmallScreen ? 90 : 170 }}
+              >
                 <button>
-                  <div className="h-[50px] w-[50px] bg-[#e8e8e8] rounded-full"></div>
+                  <div
+                    className={`${
+                      isSmallScreen ? `h-[30px] w-[30px]` : `h-[50px] w-[50px]`
+                    } bg-[#e8e8e8] rounded-full`}
+                  ></div>
                 </button>
-                <button>
-                  <div className="h-[50px] w-[50px] bg-[#e8e8e8] rounded-full"></div>
-                </button>
-                <button>
-                  <div className="h-[50px] w-[50px] bg-[#e8e8e8] rounded-full"></div>
-                </button>
+                {!isSmallScreen && !isMedScreen ? (
+                  <button>
+                    <div
+                      className={`${
+                        isSmallScreen
+                          ? `h-[30px] w-[30px]`
+                          : `h-[50px] w-[50px]`
+                      } bg-[#e8e8e8] rounded-full`}
+                    ></div>
+                  </button>
+                ) : null}
+                {!isSmallScreen && !isMedScreen ? (
+                  <button>
+                    <div
+                      className={`${
+                        isSmallScreen
+                          ? `h-[30px] w-[30px]`
+                          : `h-[50px] w-[50px]`
+                      } bg-[#e8e8e8] rounded-full`}
+                    ></div>
+                  </button>
+                ) : null}
               </div>
             </div>
 
             {/* Premium PGs slider */}
             <div className="bg-[#2b2b2b] rounded-[20px] w-[95%] mx-[10px]">
-              <div className="w-[90%] ml-[100px]">
+              <div
+                className={`w-[90%] ${
+                  isSmallScreen
+                    ? `ml-[20px]`
+                    : isMedScreen
+                    ? `ml-[30px]`
+                    : `ml-[90px]`
+                } `}
+              >
                 {premiumHouses.length > 0 && (
                   <PremiumRoomSlider
                     list={premiumHouses}
@@ -183,7 +235,11 @@ const SearchResults = ({ setActiveRID }) => {
               </div>
             </div>
 
-            <div className="w-[90%] h-[1px] bg-[#b3b3b3] mt-[80px]"></div>
+            <div
+              className={`w-[90%] h-[1px] bg-[#b3b3b3] ${
+                isSmallScreen ? `mt-[20px]` : `mt-[80px]`
+              } `}
+            ></div>
 
             {/* Full results list */}
             {results.filter((pg) => !pg.isPremium).length > 0 && (

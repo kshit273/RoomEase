@@ -6,9 +6,9 @@ import { useMediaQuery } from "react-responsive";
 import { Link, Link as RouterLink } from "react-router-dom";
 
 const Navbar = () => {
-  const isMedScreen = useMediaQuery({ minWidth: 770, maxWidth: 1800 });
+  const isMedScreen = useMediaQuery({ minWidth: 770, maxWidth: 1500 });
   const isSmallScreen = useMediaQuery({ maxWidth: 769 });
-  const isHam = useMediaQuery({ maxWidth: 1024 });
+  const isHam = useMediaQuery({ maxWidth: 1501 });
   const [scrolled, setScrolled] = useState(false);
   const [showHamburger, setShowHamburger] = useState(false);
 
