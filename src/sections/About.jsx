@@ -14,12 +14,16 @@ const About = () => {
   const isMedScreen = useMediaQuery({ maxWidth: 1800 });
   const isSmallScreen = useMediaQuery({ maxWidth: 800 });
 
-  const timelineLeft = isMedScreen ? "left-[40px]" : "left-[755px]";
+  const timelineLeft = isSmallScreen
+    ? `left-[27px]`
+    : isMedScreen
+    ? "left-[40px]"
+    : "left-[755px]";
   let timelineHeight = "h-[1120px]";
   let top = "top 75%";
   let bottom = "bottom 0%";
   if (isSmallScreen) {
-    timelineHeight = "h-[1150px]";
+    timelineHeight = "h-[800px]";
     top = "top 50%";
     bottom = "bottom -50%";
   } else if (isMedScreen) {
@@ -27,7 +31,7 @@ const About = () => {
   }
 
   const contentMarginGap = isSmallScreen
-    ? "ml-15 mt-20 gap-15"
+    ? "ml-12 mt-20 gap-10"
     : "ml-25 mt-32 gap-25";
 
   useEffect(() => {
@@ -107,26 +111,26 @@ const About = () => {
         {about.map((item, idx) => {
           const outerCircleRef = useRef(null);
           return (
-            <div key={idx} className="relative flex items-start">
+            <div key={idx} className="relative flex items-start ">
               <div
                 ref={outerCircleRef}
                 className={`absolute`}
                 style={{
-                  left: isSmallScreen ? -34.5 : isMedScreen ? -82 : 633,
+                  left: isSmallScreen ? -31.5 : isMedScreen ? -82 : 633,
                   top: 5,
                   zIndex: 10,
                 }}
               >
                 <div
                   className={`${
-                    isSmallScreen ? `w-[30px] h-[30px]` : `w-[45px] h-[45px]`
+                    isSmallScreen ? `w-[25px] h-[25px]` : `w-[45px] h-[45px]`
                   }  rounded-full bg-[#d9d9d9] flex items-center justify-center`}
                   style={{ zIndex: 2 }}
                 >
                   <PulseCircle triggerRef={outerCircleRef} />
                   <div
                     className={`${
-                      isSmallScreen ? `w-[13px] h-[13px]` : `w-[18px] h-[18px]`
+                      isSmallScreen ? `w-[10px] h-[10px]` : `w-[18px] h-[18px]`
                     } rounded-full bg-[#D72638]`}
                   ></div>
                 </div>

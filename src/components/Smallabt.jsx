@@ -32,33 +32,36 @@ const Smallabt = ({ heading, inner, imgpath }) => {
   }, []);
 
   return (
-    <div className="flex flex-col gap-5" ref={ref}>
+    <div
+      className={`flex flex-col ${isSmallScreen ? `gap-2` : `gap-5`} `}
+      ref={ref}
+    >
       <div>
         <h3
           className={`${
-            isSmallScreen ? `text-[25px]` : `text-[45px]`
+            isSmallScreen ? `text-[20px]` : `text-[45px]`
           } font-medium`}
         >
           {heading}
         </h3>
       </div>
-      <div className="flex gap-3 justify-between pr-[10%]">
-        <div className="flex flex-col gap-3">
+      <div className={`flex gap-3 justify-between pr-[10%]`}>
+        <div className={`flex flex-col ${isSmallScreen ? `gap-2` : `gap-3`} `}>
           {inner.map((item, x) => (
             <div
               key={item.subheading + x}
-              className={isSmallScreen ? `w-[300px]` : `w-[600px]`}
+              className={isSmallScreen ? `w-[250px]` : `w-[600px]`}
             >
               <h2
                 className={`${
-                  isSmallScreen ? `text-[15px]` : `text-[25px]`
+                  isSmallScreen ? `text-[13px]` : `text-[25px]`
                 } text-[#D72638]  font-medium`}
               >
                 {item.subheading}
               </h2>
               <p
                 className={`${
-                  isSmallScreen ? `text-[13px] ` : `text-[22px] `
+                  isSmallScreen ? `text-[10px] ` : `text-[22px] `
                 } text-[#838383] `}
               >
                 {item.para}

@@ -9,20 +9,24 @@ const PlanSlider = () => {
 
   const containerRef = useRef(null);
   const cardRefs = useRef([]);
-  const [centeredIndex, setCenteredIndex] = useState(0);
+  const [centeredIndex, setCenteredIndex] = useState(1);
 
   useEffect(() => {
     const container = containerRef.current;
+    if (cardRefs.current[1] && container) {
+      const card = cardRefs.current[1];
+      const scrollTo =
+        card.offsetLeft + card.offsetWidth / 2 - container.offsetWidth / 2;
+      container.scrollLeft = scrollTo;
+    }
 
     const handleScroll = () => {
       const containerCenter = container.scrollLeft + container.offsetWidth / 2;
-
       const distances = cardRefs.current.map((card) => {
         if (!card) return Infinity;
         const cardCenter = card.offsetLeft + card.offsetWidth / 2;
         return Math.abs(containerCenter - cardCenter);
       });
-
       const closestIndex = distances.indexOf(Math.min(...distances));
       setCenteredIndex(closestIndex);
     };
@@ -38,7 +42,7 @@ const PlanSlider = () => {
       ref={containerRef}
       className={`w-full overflow-x-auto px-4 flex ${
         isSmallOrTab
-          ? "pb-6 gap-[10px] mt-[30px]"
+          ? "pb-6 gap-0 mt-[30px]"
           : isMidOrTab
           ? "pb-6 gap-[20px] mt-[30px]"
           : "gap-[50px] mt-[50px] items-center justify-center"

@@ -20,8 +20,8 @@ const Footer = () => {
     <section id="footer" className="relative z-10">
       <div className={`flex min-h-[150px]`}>
         <div
-          className={`flex flex-1 flex-col items-start  ${
-            isMobile ? `ml-[10px]` : `mt-[10px] ml-[20px]`
+          className={`flex flex-col items-start w-[100px]  ${
+            isMobile ? `mt-[10px] ml-[10px]` : `mt-[10px] ml-[20px]`
           } `}
         >
           <img
@@ -31,16 +31,16 @@ const Footer = () => {
               isSmallScreen
                 ? `h-[100px] w-[100px]`
                 : isMobile
-                ? `h-[70px] w-[70px]`
+                ? `h-[50px] w-[50px]`
                 : `h-[200px] w-[200px]`
             }
           />
           <p
             className={`${
-              isMobile ? `text-[8px]` : isSmallScreen ? `text-[12px]` : ``
+              isMobile ? `text-[7px]` : isSmallScreen ? `text-[12px]` : ``
             }`}
           >
-            © all copywrite reserved
+            © all copywrites reserved
           </p>
         </div>
         <div

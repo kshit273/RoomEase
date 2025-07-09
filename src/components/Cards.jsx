@@ -9,14 +9,14 @@ const Cards = ({ cardList, isMedScreen, isSmallScreen }) => {
         <div
           key={idx}
           className={`${
-            isSmallScreen ? `h-[145px] w-[145px]` : `h-[275px] w-[325px]`
+            isSmallScreen ? `h-[140px] w-[140px]` : `h-[275px] w-[325px]`
           } flex flex-col bg-[#1a1a1a]  rounded-[20px]`}
         >
           <div className="flex items-center justify-center h-[200px]">
             <img
               src={card.img}
               alt="card-img"
-              className={isSmallScreen ? `h-[60px]` : `h-[100px]`}
+              className={isSmallScreen ? `h-[40px]` : `h-[100px]`}
             />
           </div>
           <div

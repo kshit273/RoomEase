@@ -3,7 +3,7 @@ const JoinBtn = ({ isSmallScreen, isMedScreen }) => {
     <div
       className={`${
         isSmallScreen
-          ? `w-[90px] h-[30px] text-[12px]`
+          ? `w-[70px] h-[25px] text-[9px]`
           : `w-[150px] h-[50px] text-xl`
       } rounded-[5px] flex items-center justify-center text-[#eaeaea] font-medium`}
       style={{

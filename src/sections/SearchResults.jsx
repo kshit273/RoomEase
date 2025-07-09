@@ -162,7 +162,9 @@ const SearchResults = ({ setActiveRID }) => {
             {/* Search bar & icon buttons */}
             <div
               className={`flex items-center w-full ${
-                isSmallScreen ? `my-[20px] px-[10px]` : `my-[40px] px-[40px]`
+                isSmallScreen || isMedScreen
+                  ? `my-[20px] px-[10px]`
+                  : `my-[40px] px-[40px]`
               } justify-between`}
             >
               <div
@@ -171,7 +173,7 @@ const SearchResults = ({ setActiveRID }) => {
                 }`}
               >
                 <SearchButton
-                  width={isSmallScreen ? 200 : isMedScreen ? 800 : 1000}
+                  width={isSmallScreen ? 200 : isMedScreen ? 600 : 1000}
                 />
               </div>
               <div
