@@ -6,7 +6,7 @@ const Data = () => {
   return (
     <div
       className={`flex flex-col items-center justify-center transform ${
-        isMedScreen ? `scale-80` : isSmallScreen ? `scale-50` : `scale-100`
+        isMedScreen ? `scale-80` : isSmallScreen ? `scale-40` : `scale-100`
       }`}
     >
       <div className="w-[370px] h-[70px] bg-[#1a1a1a] rounded-full flex items-center pl-[10px] relative select-none">

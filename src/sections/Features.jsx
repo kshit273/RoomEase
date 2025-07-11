@@ -26,7 +26,7 @@ const Features = () => {
           <div
             className={`content-center   text-[#606060]  px-5 ${
               isSmallScreen
-                ? `text-[11px] text-start mt-1`
+                ? `text-[10px] text-center mt-1`
                 : `text-2xl font-medium text-center mt-4`
             }`}
           >
@@ -56,7 +56,7 @@ const Features = () => {
           <div
             className={`content-center   text-[#606060]  px-5 ${
               isSmallScreen
-                ? `text-[11px] text-start mt-1`
+                ? `text-[10px] text-center mt-1`
                 : `text-2xl font-medium text-center mt-4`
             }`}
           >

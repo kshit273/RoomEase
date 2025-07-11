@@ -20,7 +20,7 @@ const Footer = () => {
     <section id="footer" className="relative z-10">
       <div className={`flex min-h-[150px]`}>
         <div
-          className={`flex flex-col items-start w-[100px]  ${
+          className={`flex flex-1 flex-col items-start w-[100px]  ${
             isMobile ? `mt-[10px] ml-[10px]` : `mt-[10px] ml-[20px]`
           } `}
         >
@@ -37,7 +37,11 @@ const Footer = () => {
           />
           <p
             className={`${
-              isMobile ? `text-[7px]` : isSmallScreen ? `text-[12px]` : ``
+              isMobile
+                ? `text-[7px]`
+                : isSmallScreen
+                ? `text-[12px]`
+                : `text-[15px]`
             }`}
           >
             © all copywrites reserved

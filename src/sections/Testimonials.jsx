@@ -23,33 +23,43 @@ const Testimonials = () => {
           isMedScreen
             ? `text-[70px] mt-[50px]`
             : isSmallScreen
-            ? `text-[25px] mt-0`
+            ? `text-[23px] mt-0`
             : `text-[100px] mt-[50px]`
         }  font-medium  text-[#1a1a1a]`}
       >
         <div>Words of praise from others</div>
         <div>about our presence</div>
       </div>
-      <div className="relative overflow-x-hidden w-full mt-[50px]">
+      <div
+        className={`relative overflow-x-hidden w-full ${
+          isSmallScreen ? `mt-[30px]` : `mt-[50px]`
+        }`}
+      >
         <div
           className="pointer-events-none absolute left-0 top-0 h-full w-32 z-10"
           style={{
-            background: `linear-gradient(to right, #e8e8e8 ${
-              isSmallScreen ? `1%` : `10%`
-            }, transparent 100%)`,
+            background: `linear-gradient(to right,  ${
+              isSmallScreen
+                ? `#373737 1% , transparent 0%)`
+                : `#e8e8e8 10% , transparent 100%)`
+            }`,
           }}
         />
         <div
           className="pointer-events-none absolute right-0 top-0 h-full w-32 z-10"
           style={{
-            background: `linear-gradient(to left, #e8e8e8 ${
-              isSmallScreen ? `1%` : `10%`
-            }, transparent 100%)`,
+            background: `linear-gradient(to left,  ${
+              isSmallScreen
+                ? `#373737 1% , transparent 0%)`
+                : `#e8e8e8 10% , transparent 100%)`
+            }`,
           }}
         />
         <div
-          className={`flex gap-[30px] ${
-            isSmallScreen ? `animate-marquee-left` : `animate-marquee-right`
+          className={`flex  ${
+            isSmallScreen
+              ? `animate-marquee-left gap-[10px]`
+              : `animate-marquee-right gap-[30px]`
           } `}
           style={{ width: "max-content" }}
         >
@@ -75,7 +85,9 @@ const Testimonials = () => {
             }}
           />
           <div
-            className="flex gap-[30px] animate-marquee-left "
+            className={`flex ${
+              isSmallScreen ? ` gap-[10px]` : ` gap-[30px]`
+            } animate-marquee-left `}
             style={{ width: "max-content" }}
           >
             {[...testimonials, ...testimonials].map((card, idx) => (
