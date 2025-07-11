@@ -54,9 +54,9 @@ const ReviewCard = ({ card }) => {
       <div
         className={`${
           isSmallScreen
-            ? ` h-[15px] w-[15px] mt-[8px]`
+            ? ` h-[10px] w-[10px] mt-[8px]`
             : ` h-[40px] w-[40px] mt-[15px]`
-        }  flex gap-[5px]`}
+        }  flex gap-[2px]`}
       >
         {[...Array(card.stars || 1)].map((_, idx) => (
           <img
@@ -64,7 +64,7 @@ const ReviewCard = ({ card }) => {
             src="./images/yellowstar.png"
             alt="star"
             className={
-              isSmallScreen ? `h-[15px] w-[15px]` : `h-[40px] w-[40px]`
+              isSmallScreen ? `h-[10px] w-[10px]` : `h-[40px] w-[40px]`
             }
           />
         ))}

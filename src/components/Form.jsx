@@ -6,7 +6,7 @@ const Form = () => {
   return (
     <div
       className={`flex-1 h-full flex flex-col justify-center ${
-        isMobile ? `mx-[20px] mt-[30px]` : `mx-[50px] mt-[50px]`
+        isMobile ? `mx-[20px] mt-[20px]` : `mx-[50px] mt-[50px]`
       }  `}
     >
       <form
@@ -23,7 +23,7 @@ const Form = () => {
               type="text"
               className={`${
                 isMobile
-                  ? `h-[40px] text-[12px] pl-[8px] placeholder:text-[12px] placeholder:pl-[8px] border-[1px] placeholder:font-normal`
+                  ? `h-[40px] text-[10px] pl-[8px] placeholder:text-[10px] placeholder:pl-[8px] border-[1px] placeholder:font-normal`
                   : ` h-[70px] text-[20px] pl-[15px] placeholder:text-[20px] placeholder:pl-[15px] border-[2px] placeholder:font-medium `
               } flex-1 w-full  border-[#707070] rounded-[10px] text-[#d9d9d9] font-medium  placeholder-[#d9d9d9]   bg-transparent`}
               placeholder="First name"
@@ -32,7 +32,7 @@ const Form = () => {
               type="text"
               className={`${
                 isMobile
-                  ? `h-[40px] text-[12px] pl-[8px] placeholder:text-[12px] placeholder:pl-[8px] border-[1px] placeholder:font-normal`
+                  ? `h-[40px] text-[10px] pl-[8px] placeholder:text-[10px] placeholder:pl-[8px] border-[1px] placeholder:font-normal`
                   : `h-[70px] text-[20px] pl-[15px] placeholder:text-[20px] placeholder:pl-[15px] border-[2px] placeholder:font-medium`
               } flex-1 w-full  border-[#707070] rounded-[10px]  text-[#d9d9d9] font-medium  placeholder-[#d9d9d9]   bg-transparent`}
               placeholder="Last name"
@@ -43,7 +43,7 @@ const Form = () => {
               type="text"
               className={`${
                 isMobile
-                  ? `h-[40px] text-[12px] pl-[8px] placeholder:text-[12px] placeholder:pl-[8px] border-[1px] placeholder:font-normal`
+                  ? `h-[40px] text-[10px] pl-[8px] placeholder:text-[10px] placeholder:pl-[8px] border-[1px] placeholder:font-normal`
                   : `h-[70px] text-[20px] pl-[15px] placeholder:text-[20px] placeholder:pl-[15px]  border-[2px] placeholder:font-medium`
               } w-full  border-[#707070] rounded-[10px]  text-[#d9d9d9] font-medium placeholder-[#d9d9d9] bg-transparent`}
               placeholder="Your email"
@@ -53,7 +53,7 @@ const Form = () => {
             <textarea
               className={`${
                 isMobile
-                  ? `h-[250px] font-medium text-[12px] pl-[15px] pt-[15px] placeholder:text-[12px] border-[1px] placeholder:font-normal`
+                  ? `h-[250px] font-medium text-[10px] pl-[15px] pt-[15px] placeholder:text-[10px] border-[1px] placeholder:font-normal`
                   : `h-[490px] font-medium text-[20px] pl-[25px] pt-[25px] placeholder:text-[20px]  border-[2px] placeholder:font-medium`
               } w-full  border-[#707070] rounded-[10px]  text-[#d9d9d9]  placeholder-[#d9d9d9] resize-none bg-transparent`}
               placeholder="Your message"

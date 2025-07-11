@@ -20,7 +20,7 @@ const Contact = () => {
           <div className="flex flex-col items-center">
             <div
               className={`text-[#d9d9d9] font-medium ${
-                isMobile ? `text-[20px] mt-[20px]` : `text-[50px] mt-[50px]`
+                isMobile ? `text-[17px] mt-[15px]` : `text-[50px] mt-[50px]`
               } `}
             >
               Get in touch
