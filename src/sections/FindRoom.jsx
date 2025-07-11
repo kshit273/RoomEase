@@ -62,7 +62,7 @@ const FindRoom = ({ activeRID, setActiveRID, nearbyPGs, cityName }) => {
                   isMedScreen
                     ? ` text-[50px]`
                     : isSmallScreen
-                    ? `text-[35px]`
+                    ? `text-[25px]`
                     : `text-[80px]`
                 } font-medium`}
               >
@@ -73,14 +73,14 @@ const FindRoom = ({ activeRID, setActiveRID, nearbyPGs, cityName }) => {
             <div
               className={`w-[100%] flex justify-center ${
                 isMedScreen
-                  ? `scale-80 mb-[50px]`
+                  ? `scale-80 mb-[40px]`
                   : isSmallScreen
-                  ? `mb-[50px]`
+                  ? `mb-[30px]`
                   : ` mb-[100px] mt-[30px]`
               }`}
             >
               <SearchButton
-                width={isMedScreen ? 600 : isSmallScreen ? 300 : 800}
+                width={isMedScreen ? 600 : isSmallScreen ? 230 : 800}
               />
             </div>
           </div>

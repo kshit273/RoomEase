@@ -47,7 +47,13 @@ const Hamburger = ({ show, onClose }) => {
                 <span className="text-[12px] text-[#d7d7d7]">{name}</span>
               </RouterLink>
             ) : (
-              <Link to="/" onClick={() => scrollToSection(link)}>
+              <Link
+                to="/"
+                onClick={() => {
+                  scrollToSection(link);
+                  onClose(false);
+                }}
+              >
                 <span className="text-[12px] text-[#d7d7d7]">{name}</span>
               </Link>
             )}

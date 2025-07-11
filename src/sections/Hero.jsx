@@ -16,7 +16,7 @@ const Hero = () => {
               <h1 className="text-[#1a1a1a]">to the right</h1>
               <h1 className="text-[#d72638]">room</h1>
             </div>
-            <SearchButton width={isSmallScreen ? 300 : 600} />
+            <SearchButton width={isSmallScreen ? 250 : 600} />
           </div>
         </header>
         {!isSmallScreen && (
