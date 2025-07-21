@@ -132,7 +132,17 @@ const SearchResults = ({ setActiveRID }) => {
     });
 
     const finalSortedResults = scoredResults
-      .filter((pg) => pg.score > 0)
+      .filter((pg) => {
+        // Require a higher score
+        // if (pg.score < 50) return false;
+        // Require at least one strong match
+        const keyword = search_keyword.toLowerCase();
+        return (
+          pg.PgName?.toLowerCase().includes(keyword) ||
+          pg.Address?.toLowerCase().includes(keyword) ||
+          pg.Landmark?.toLowerCase().includes(keyword)
+        );
+      })
       .sort((a, b) => b.score - a.score);
 
     setResults(finalSortedResults);
