@@ -4,8 +4,9 @@ import JoinBtn from "./JoinBtn";
 import Hamburger from "./Hamburger";
 import { useMediaQuery } from "react-responsive";
 import { Link, Link as RouterLink } from "react-router-dom";
+import User from "./User";
 
-const Navbar = () => {
+const Navbar = ({ isUser }) => {
   const isMedScreen = useMediaQuery({ minWidth: 770, maxWidth: 1500 });
   const isSmallScreen = useMediaQuery({ maxWidth: 769 });
   const isHam = useMediaQuery({ maxWidth: 1501 });
@@ -42,7 +43,7 @@ const Navbar = () => {
               isSmallScreen ? `text-[25px]` : isMedScreen ? `text-[40px]` : ``
             }`}
           >
-            <div className="flex items-center">RoomEase</div>
+            <div className="flex items-center ml-[20px]">Zimer</div>
           </div>
         </Link>
 
@@ -74,6 +75,8 @@ const Navbar = () => {
           >
             <img src="/images/menu.png" alt="menu" />
           </div>
+        ) : isUser ? (
+          <User />
         ) : (
           <JoinBtn />
         )}

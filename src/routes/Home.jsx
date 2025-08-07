@@ -7,7 +7,7 @@ import Hero from "../sections/Hero";
 import Plans from "../sections/Plans";
 import Testimonials from "../sections/Testimonials";
 
-function Home() {
+function Home({ isUser }) {
   return (
     <>
       <div className="absolute top-[-20px] left-[-20px] z-1 md:w-[512px] w-[256px]  md:h-[560px] h-[280px] pointer-events-none">
@@ -36,7 +36,7 @@ function Home() {
         <img src="/images/bgimg2.png" alt="background" />
       </div>
 
-      <Navbar />
+      <Navbar isUser={isUser} />
       <Hero />
       <About />
       <Features />

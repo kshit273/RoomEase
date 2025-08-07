@@ -2,14 +2,18 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./routes/Home";
 import ScrollToTop from "./components/ScrollToTop";
 import Search from "./routes/search/Search";
+import UserProfile from "./routes/UserProfile";
+import Userlogin from "./routes/Userlogin";
 import PgInfo from "./sections/PgInfo";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { supportedCities } from "./constants/Data";
 import { Houses } from "./constants/Houses";
 import SearchResults from "./sections/SearchResults";
+import Messenger from "./routes/Messenger";
 
 function App() {
+  const [isUser, setUser] = useState(null);
   const [cityName, setCityName] = useState(null);
   const [nearbyPGs, setNearbyPGs] = useState([]);
   const [cityCode, setCityCode] = useState(null);
@@ -77,20 +81,57 @@ function App() {
     );
   }, []);
 
+  // const handleLogin = async (email, password) => {
+  //   try {
+  //     const res = await fetch("http://localhost:5000/auth/login", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({ email, password }),
+  //     });
+
+  //     const data = await res.json();
+
+  //     if (res.ok) {
+  //       localStorage.setItem("token", data.token);
+  //       setUser(true); // ✅ User is now logged in
+  //     } else {
+  //       alert(data.message || "Login failed");
+  //       setUser(false);
+  //     }
+  //   } catch (error) {
+  //     console.error("Login error:", error);
+  //     setUser(false);
+  //   }
+  // };
+
+  // const handleLogout = () => {
+  //   localStorage.removeItem("token");
+  //   setUser(false);
+  // };
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setUser(true);
+    }
+  }, []);
+
   return (
     <Router>
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home isUser={isUser} />} />
         <Route
           path="/search"
           element={<Search cityName={cityName} nearbyPGs={nearbyPGs} />}
         />
         <Route path="/pg/:RID" element={<PgInfo />} />
-        <Route
-          path="/search/:search_keyword"
-          element={<SearchResults />}
-        ></Route>
+        <Route path="/search/:search_keyword" element={<SearchResults />} />
+        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/userlogin" element={<Userlogin />} />
+        <Route path="/messenger" element={<Messenger />} />
       </Routes>
     </Router>
   );

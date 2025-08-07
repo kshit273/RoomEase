@@ -5,7 +5,10 @@ import { useMediaQuery } from "react-responsive";
 const Hero = () => {
   const isSmallScreen = useMediaQuery({ maxWidth: 1800 });
   return (
-    <section id="hero" className="relative overflow-hidden z-2 mx-[20px]">
+    <section
+      id="hero"
+      className="relative overflow-hidden z-2 mx-[20px] mt-[50px]"
+    >
       <div className={`hero-layout ${isSmallScreen ? "h-[]" : "h-[80vh]"}`}>
         <header className="flex flex-col md:items-start items-center md:justify-center md:w-full w-screen md:px-25 px-5">
           <div className="flex flex-col gap-7">

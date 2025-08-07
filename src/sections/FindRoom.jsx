@@ -89,6 +89,7 @@ const FindRoom = ({ activeRID, setActiveRID, nearbyPGs, cityName }) => {
               list={sortScore(nearbyPGs)}
               heading={`Top rated in ${cityName ? `${cityName}` : ""}`}
               onRoomClick={setActiveRID}
+              cityName={cityName}
               desc={
                 "Find Dehradun’s highest-rated PGs, trusted by students and working professionals alike."
               }
@@ -99,7 +100,7 @@ const FindRoom = ({ activeRID, setActiveRID, nearbyPGs, cityName }) => {
             list={sortScore(Houses).filter(
               (pg) => pg.isVerified == 1 && pg.RID.startsWith("DEH")
             )}
-            heading="Verified By RoomEase"
+            heading="Verified By Zimer"
             onRoomClick={setActiveRID}
             desc={
               "Stay stress-free with PGs officially verified for quality, comfort, and trust by RoomEase."
@@ -110,6 +111,7 @@ const FindRoom = ({ activeRID, setActiveRID, nearbyPGs, cityName }) => {
             <RoomSlider
               list={sortScore(nearbyPGs)}
               heading={`Popular in ${cityName ? `${cityName}` : ""}`}
+              cityName={cityName}
               onRoomClick={setActiveRID}
               desc={
                 "These PGs are trending! Most viewed, most loved, and highly recommended by locals."
@@ -120,6 +122,7 @@ const FindRoom = ({ activeRID, setActiveRID, nearbyPGs, cityName }) => {
           <RoomSlider
             list={sortScore(Houses).filter((pg) => pg.RID.startsWith("NOI"))}
             heading="Rooms in Noida"
+            cityName="Noida"
             onRoomClick={setActiveRID}
             desc={
               "Explore handpicked rooms in Noida, perfect for techies, interns, and students."
@@ -129,6 +132,7 @@ const FindRoom = ({ activeRID, setActiveRID, nearbyPGs, cityName }) => {
           <RoomSlider
             list={sortScore(Houses).filter((pg) => pg.RID.startsWith("GUR"))}
             heading="Rooms in Gurugram"
+            cityName="Gurugram"
             onRoomClick={setActiveRID}
             desc={
               "Explore handpicked rooms in Gurugram, perfect for techies, interns, and students."
@@ -138,6 +142,7 @@ const FindRoom = ({ activeRID, setActiveRID, nearbyPGs, cityName }) => {
           <RoomSlider
             list={sortScore(Houses).filter((pg) => pg.RID.startsWith("DEL"))}
             heading="Rooms in Delhi"
+            cityName="Delhi"
             onRoomClick={setActiveRID}
             desc={
               "Explore handpicked rooms in Delhi, perfect for techies, interns, and students."
@@ -147,6 +152,7 @@ const FindRoom = ({ activeRID, setActiveRID, nearbyPGs, cityName }) => {
           <RoomSlider
             list={sortScore(filterPGsByGender("girls"))}
             heading="Rooms for Girls"
+            cityName="Girls"
             onRoomClick={setActiveRID}
             desc={
               "Safe, secure, and convenient PGs tailored specifically for girl students and working women."
@@ -156,6 +162,7 @@ const FindRoom = ({ activeRID, setActiveRID, nearbyPGs, cityName }) => {
           <RoomSlider
             list={sortScore(filterPGsByGender("boys"))}
             heading="Rooms for Boys"
+            cityName={`Boys`}
             onRoomClick={setActiveRID}
             desc={
               "Safe, secure, and convenient PGs tailored specifically for boy students and working men."

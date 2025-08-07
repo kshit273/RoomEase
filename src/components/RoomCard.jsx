@@ -82,7 +82,7 @@ const RoomCard = ({
                   ? `w-[125px] h-[18px] p-[2px] mb-[10px]`
                   : isSmallScreen
                   ? `w-[110px] h-[14px] p-[1px] font-medium mb-[5px]`
-                  : `w-[185px] h-[30px] p-[5px] mb-[10px]`
+                  : `w-[155px] h-[30px] p-[5px] mb-[10px]`
               } flex gap-[5px]  bg-[#e8e8e8] rounded-[20px]   font-medium`}
             >
               <img src="/images/verify2.png" alt="verified" />
@@ -95,7 +95,7 @@ const RoomCard = ({
                     : `text-[15px]`
                 } `}
               >
-                RoomEase Verified
+                Zimer Verified
               </p>
             </div>
           ) : null}

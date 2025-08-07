@@ -1,7 +1,10 @@
+import { Link } from "react-router-dom";
 import { OwnerDetails } from "../constants/Owners";
+import Messenger from "../routes/Messenger";
 
 const OwnerCard = ({ RID }) => {
   const Owner = OwnerDetails.find((owner) => owner.RID === RID);
+
   if (!Owner) {
     return <div>Owner not found</div>;
   }
@@ -17,13 +20,15 @@ const OwnerCard = ({ RID }) => {
               className="h-[27px] w-[27px]"
             />
           </button>
-          <button className="message w-[40px] h-[40px] hover:bg-[#b3b3b3] rounded-full flex items-center justify-center duration-300">
-            <img
-              src="/images/message.png"
-              alt="message"
-              className="h-[27px] w-[27px]"
-            />
-          </button>
+          <Link to="/messenger">
+            <button className="message w-[40px] h-[40px] hover:bg-[#b3b3b3] rounded-full flex items-center justify-center duration-300 cursor-pointer">
+              <img
+                src="/images/message.png"
+                alt="message"
+                className="h-[27px] w-[27px]"
+              />
+            </button>
+          </Link>
         </div>
       </div>
       <div className="flex gap-[20px] mt-[15px]">

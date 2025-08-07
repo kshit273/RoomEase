@@ -21,7 +21,7 @@ const Features = () => {
               isSmallScreen ? `text-[25px] font-medium` : `text-5xl font-medium`
             }`}
           >
-            <span className="text-[#d72638]">RoomEase</span> For Tenants
+            <span className="text-[#d72638]">Zimer</span> For Tenants
           </div>
           <div
             className={`content-center   text-[#606060]  px-5 ${
@@ -36,7 +36,7 @@ const Features = () => {
                 {" "}
                 cashback on paying rents ?{" "}
               </span>
-              Roomease got you ...
+              Zimer got you ...
             </p>
           </div>
           <Cards
@@ -51,7 +51,7 @@ const Features = () => {
               isSmallScreen ? `text-[25px]` : `text-5xl`
             }`}
           >
-            <span className="text-[#d72638]">RoomEase</span> For Landlords
+            <span className="text-[#d72638]">Zimer</span> For Landlords
           </div>
           <div
             className={`content-center   text-[#606060]  px-5 ${
@@ -62,7 +62,7 @@ const Features = () => {
           >
             <p>
               Let’s create an online world of your business , with
-              <span className="text-[#d72638]"> RoomEase</span>{" "}
+              <span className="text-[#d72638]"> Zimer</span>{" "}
             </p>
           </div>
           <Cards

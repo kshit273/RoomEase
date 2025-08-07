@@ -33,7 +33,7 @@ const PremiumRoomSlider = ({ list, heading, onRoomClick, desc }) => {
             isSmallScreen ? `text-[18px]` : `text-[35px]`
           }  font-medium`}
         >
-          <span className="text-[#d72638]">RoomEase</span> Recommended
+          <span className="text-[#d72638]">Zimer</span> Recommended
         </p>
       </div>
       <p

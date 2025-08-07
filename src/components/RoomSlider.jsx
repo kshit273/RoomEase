@@ -3,11 +3,16 @@ import RoomCard from "../components/RoomCard";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 
-const RoomSlider = ({ list, heading, onRoomClick, desc }) => {
+const RoomSlider = ({ list, heading, onRoomClick, desc, cityName }) => {
   const isMedScreen = useMediaQuery({ minWidth: 801, maxWidth: 1024 });
   const isSmallScreen = useMediaQuery({ maxWidth: 800 });
   const scrollRef = useRef();
   const navigate = useNavigate();
+
+  const handleHeadingClick = () => {
+    console.log(cityName);
+    navigate(`/search/${cityName}`);
+  };
 
   const handleCardClick = (RID) => {
     navigate(`/pg/${RID}`);
@@ -51,13 +56,15 @@ const RoomSlider = ({ list, heading, onRoomClick, desc }) => {
         >
           {heading}
         </p>
-        <img
-          src="/images/arrowBlack.png"
-          alt=""
-          className={`${
-            isMedScreen ? `h-[14px]` : isSmallScreen ? `h-[10px]` : `h-[20px]`
-          } cursor-pointer hover:translate-x-2 duration-300`}
-        />
+        <div onClick={handleHeadingClick}>
+          <img
+            src="/images/arrowBlack.png"
+            alt=""
+            className={`${
+              isMedScreen ? `h-[14px]` : isSmallScreen ? `h-[10px]` : `h-[20px]`
+            } cursor-pointer hover:translate-x-2 duration-300`}
+          />
+        </div>
       </div>
       <p
         className={` ${

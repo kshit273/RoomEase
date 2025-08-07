@@ -4,7 +4,7 @@ const about = [
     inner: [
       {
         subheading: "Verified Listings",
-        para: "Every room listed on RoomEase is thoroughly verified for safety, legality, and accuracy. Say goodbye to scams and surprises.",
+        para: "Every room listed on Zimer is thoroughly verified for safety, legality, and accuracy. Say goodbye to scams and surprises.",
       },
       {
         subheading: "Smart Matching",
@@ -30,13 +30,13 @@ const about = [
       },
       {
         subheading: "Connect & Move Ins",
-        para: "Chat with verified hosts, schedule visits, and finalize your stay—everything within RoomEase.",
+        para: "Chat with verified hosts, schedule visits, and finalize your stay—everything within Zimer.",
       },
     ],
     imgpath: "./images/abt-imgs/room2.png",
   },
   {
-    heading: "Why Choose RoomEase ?",
+    heading: "Why Choose Zimer ?",
     inner: [
       {
         subheading: "Verified & Safe Listings",
@@ -96,7 +96,7 @@ const landlordFeatureCards = [
     img: "./images/feature-imgs/coinstack.png",
   },
   {
-    titleStart: "Just accept payments, let RoomEase ",
+    titleStart: "Just accept payments, let Zimer ",
     titleMid: "keep the record",
     titleEnd: "",
     img: "./images/feature-imgs/payment.png",
@@ -114,24 +114,24 @@ const landlordFeatureCards = [
     img: "./images/feature-imgs/badge.png",
   },
   {
-    titleStart: "Let RoomEase ",
+    titleStart: "Let Zimer ",
     titleMid: "Advertise",
     titleEnd: " Your PGs to the Right Audience",
     img: "./images/feature-imgs/megaphone.png",
   },
 ];
 
-const basicList = ["List your PG on RoomEase for FREE"];
+const basicList = ["List your PG on Zimer for FREE"];
 
 const popularList = [
-  "List your PG on RoomEase for FREE",
+  "List your PG on Zimer for FREE",
   "Gauranted cashback for tenants",
   "Rewards for tenants",
   "We will handle student payment records",
 ];
 
 const premiumList = [
-  "List your PG on RoomEase for FREE",
+  "List your PG on Zimer for FREE",
   "Gauranted cashback for tenants",
   "Rewards for tenants",
   "We will handle student payment records",
