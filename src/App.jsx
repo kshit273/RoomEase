@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Home from "./routes/Home";
 import ScrollToTop from "./components/ScrollToTop";
 import Search from "./routes/search/Search";
@@ -11,12 +16,18 @@ import { supportedCities } from "./constants/Data";
 import { Houses } from "./constants/Houses";
 import SearchResults from "./sections/SearchResults";
 import Messenger from "./routes/Messenger";
+import Navbar from "./components/Navbar";
+
+axios.defaults.withCredentials = true;
 
 function App() {
-  const [isUser, setUser] = useState(null);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [cityName, setCityName] = useState(null);
   const [nearbyPGs, setNearbyPGs] = useState([]);
   const [cityCode, setCityCode] = useState(null);
+
+  const location = useLocation();
 
   function getDistance(lat1, lon1, lat2, lon2) {
     const toRad = (deg) => (deg * Math.PI) / 180;
@@ -54,9 +65,12 @@ function App() {
         const lng = position.coords.longitude;
 
         try {
-          const res = await axios.get(
-            `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=AIzaSyDFEAxMgUN22BvusiI6TPPOdzPVKTGeQa0`
-          );
+          const res = await axios.get("http://localhost:5000/geocode", {
+            params: { lat, lng },
+          });
+
+          // Google API response is inside res.data
+          console.log("Geocode result:", res.data);
 
           const nearestCity = findNearestCity(lat, lng);
 
@@ -81,59 +95,48 @@ function App() {
     );
   }, []);
 
-  // const handleLogin = async (email, password) => {
-  //   try {
-  //     const res = await fetch("http://localhost:5000/auth/login", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({ email, password }),
-  //     });
-
-  //     const data = await res.json();
-
-  //     if (res.ok) {
-  //       localStorage.setItem("token", data.token);
-  //       setUser(true); // ✅ User is now logged in
-  //     } else {
-  //       alert(data.message || "Login failed");
-  //       setUser(false);
-  //     }
-  //   } catch (error) {
-  //     console.error("Login error:", error);
-  //     setUser(false);
-  //   }
-  // };
-
-  // const handleLogout = () => {
-  //   localStorage.removeItem("token");
-  //   setUser(false);
-  // };
-
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      setUser(true);
-    }
+    const checkAuth = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/auth/verify-token", {
+          withCredentials: true, // 👈 send cookies
+        });
+
+        if (res.data.valid) {
+          setUser(res.data.user);
+        } else {
+          setUser(null);
+        }
+      } catch (err) {
+        setUser(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    checkAuth();
   }, []);
 
+  if (loading) return <div>Loading...</div>;
   return (
-    <Router>
+    <>
       <ScrollToTop />
+      {location.pathname !== "/userlogin" && (
+        <Navbar user={user} setUser={setUser} />
+      )}
       <Routes>
-        <Route path="/" element={<Home isUser={isUser} />} />
+        <Route path="/" element={<Home user={user} />} />
         <Route
-          path="/search"
+          path="/search/*"
           element={<Search cityName={cityName} nearbyPGs={nearbyPGs} />}
         />
         <Route path="/pg/:RID" element={<PgInfo />} />
         <Route path="/search/:search_keyword" element={<SearchResults />} />
         <Route path="/profile" element={<UserProfile />} />
-        <Route path="/userlogin" element={<Userlogin />} />
+        <Route path="/userlogin" element={<Userlogin setUser={setUser} />} />
         <Route path="/messenger" element={<Messenger />} />
       </Routes>
-    </Router>
+    </>
   );
 }
 

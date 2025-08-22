@@ -159,7 +159,6 @@ const SearchResults = ({ setActiveRID }) => {
         <img src="/images/bgimg2.png" alt="background" />
       </div>
 
-      <Navbar />
       <section
         className={`relative z-2 ${isSmallScreen ? `pt-[60px]` : `pt-[100px]`}`}
       >

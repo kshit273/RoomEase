@@ -1,6 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 
-const LoginComp = ({ onShowSignup }) => {
+const LoginComp = ({ onSubmit, onShowSignup, setUser }) => {
+  // local state for inputs
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
+  // handle input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  // handle form submit
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+    try {
+      onSubmit(formData);
+      return true;
+    } catch {
+      console.error("Error during signup submission");
+    }
+  };
+
   return (
     <div className="bg-[#e8e8e8] h-[97vh] w-[40vw] rounded-[30px]  ml-[-40px] z-10">
       <div className="flex flex-col shadow-xl h-full">
@@ -8,7 +36,10 @@ const LoginComp = ({ onShowSignup }) => {
           <h2 className="text-[60px] font-semibold my-30">Login.</h2>
         </div>
         <div className="flex items-center justify-center mt-[50px]">
-          <form className="w-3/4 flex flex-col gap-6">
+          <form
+            className="w-3/4 flex flex-col gap-6"
+            onSubmit={handleSubmit} // 👈 submit here
+          >
             <div className="flex items-center bg-[#d7d7d7] rounded-full px-4 py-5">
               <span className="material-icons text-gray-500 mr-4 ml-2">
                 <img
@@ -19,7 +50,10 @@ const LoginComp = ({ onShowSignup }) => {
               </span>
               <input
                 type="text"
-                placeholder="username"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                placeholder="email"
                 className="bg-[#d7d7d7] outline-none flex-1"
               />
             </div>
@@ -33,10 +67,12 @@ const LoginComp = ({ onShowSignup }) => {
               </span>
               <input
                 type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleInputChange}
                 placeholder="password"
                 className="bg-transparent outline-none flex-1"
               />
-              <span className="material-icons text-gray-500 ml-2 cursor-pointer"></span>
             </div>
             <div className="flex justify-between items-center text-sm text-gray-600 mb-[20px]">
               <label>

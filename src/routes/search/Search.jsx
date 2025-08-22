@@ -21,7 +21,6 @@ const Search = ({ cityName, nearbyPGs }) => {
       <div className="absolute bottom-[-1000px] right-0 z-1 md:w-[512px] w-[256px]  md:h-[560px] h-[280px] pointer-events-none">
         <img src="/images/bgimg2.png" alt="background" />
       </div>
-      <Navbar />
       <Routes>
         <Route
           path="/"

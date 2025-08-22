@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const JoinBtn = ({ isSmallScreen, isMedScreen }) => {
+const JoinBtn = ({ isSmallScreen }) => {
   return (
     <Link to="/userlogin">
       <div

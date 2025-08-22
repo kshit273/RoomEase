@@ -94,7 +94,6 @@ const PgInfo = () => {
 
   return (
     <>
-      <Navbar />
       <div className="w-full h-[50px] flex justify-start items-center mt-[110px] pl-[30px] ">
         <button onClick={() => navigate(-1)} className="flex items-center">
           <img

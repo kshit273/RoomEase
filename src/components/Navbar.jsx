@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import { navLinks } from "../constants/Abt";
 import JoinBtn from "./JoinBtn";
+import LogOutBtn from "./logOutBtn";
 import Hamburger from "./Hamburger";
 import { useMediaQuery } from "react-responsive";
 import { Link, Link as RouterLink } from "react-router-dom";
 import User from "./User";
 
-const Navbar = ({ isUser }) => {
+const Navbar = ({ user, setUser }) => {
   const isMedScreen = useMediaQuery({ minWidth: 770, maxWidth: 1500 });
   const isSmallScreen = useMediaQuery({ maxWidth: 769 });
   const isHam = useMediaQuery({ maxWidth: 1501 });
@@ -75,8 +76,11 @@ const Navbar = ({ isUser }) => {
           >
             <img src="/images/menu.png" alt="menu" />
           </div>
-        ) : isUser ? (
-          <User />
+        ) : user ? (
+          <>
+            <User imgPath={user.profilePicture} />
+            <LogOutBtn setUser={setUser} />
+          </>
         ) : (
           <JoinBtn />
         )}

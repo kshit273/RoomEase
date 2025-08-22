@@ -6,8 +6,9 @@ const {
   logout,
   verifyToken,
 } = require("../controllers/authController");
+const upload = require("../middleware/upload");
 
-router.post("/signup", signup);
+router.post("/signup", upload.single("profilePicture"), signup);
 router.post("/login", login);
 router.post("/logout", logout);
 router.get("/verify-token", verifyToken);

@@ -1,4 +1,3 @@
-import Navbar from "../components/Navbar";
 import About from "../sections/About";
 import Contact from "../sections/Contact";
 import Features from "../sections/Features";
@@ -7,7 +6,7 @@ import Hero from "../sections/Hero";
 import Plans from "../sections/Plans";
 import Testimonials from "../sections/Testimonials";
 
-function Home({ isUser }) {
+function Home({ user }) {
   return (
     <>
       <div className="absolute top-[-20px] left-[-20px] z-1 md:w-[512px] w-[256px]  md:h-[560px] h-[280px] pointer-events-none">
@@ -36,7 +35,6 @@ function Home({ isUser }) {
         <img src="/images/bgimg2.png" alt="background" />
       </div>
 
-      <Navbar isUser={isUser} />
       <Hero />
       <About />
       <Features />

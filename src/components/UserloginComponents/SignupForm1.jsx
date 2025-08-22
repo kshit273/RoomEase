@@ -1,15 +1,8 @@
 import React, { useState } from "react";
 import GenderDropdown from "./GenderDropdown";
 
-const signupForm1 = () => {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    dob: "",
-    gender: "Gender*",
-    profilePic: null,
-  });
-
+const signupForm1 = ({ setSignupStep, formData, setFormData }) => {
+  const [errorMsg, setErrorMsg] = useState("");
   const [profilePreview, setProfilePreview] = useState(null);
 
   const handleInputChange = (e) => {
@@ -31,7 +24,7 @@ const signupForm1 = () => {
     const file = event.target.files[0];
     setFormData((prev) => ({
       ...prev,
-      profilePic: file,
+      profilePicture: file,
     }));
     if (file) {
       setProfilePreview(URL.createObjectURL(file));
@@ -40,7 +33,89 @@ const signupForm1 = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+
+    // Check for empty fields
+    if (!formData.firstName.trim() || !formData.dob.trim()) {
+      setErrorMsg("All fields are mandatory");
+      return;
+    }
+
+    // Check for gender selection
+    if (formData.gender === "Gender*") {
+      setErrorMsg("All fields are mandatory");
+      return;
+    }
+
+    // Check for names starting with space
+    if (
+      formData.firstName.startsWith(" ") ||
+      formData.lastName.startsWith(" ")
+    ) {
+      setErrorMsg("Names should not start with space");
+      return;
+    }
+
+    // Check for numbers or special characters in names
+    const nameRegex = /^[A-Za-z\s]+$/;
+    if (
+      !nameRegex.test(formData.firstName) ||
+      !nameRegex.test(formData.lastName)
+    ) {
+      setErrorMsg("Names should not contain numbers or special characters");
+      return;
+    }
+
+    // Check DOB format "DD/MM/YYYY" and only numbers
+    const dobRegex = /^\d{2}\/\d{2}\/\d{4}$/;
+    if (!dobRegex.test(formData.dob)) {
+      setErrorMsg("Invalid date format, use DD/MM/YYYY");
+      return;
+    }
+
+    const [dayStr, monthStr, yearStr] = formData.dob.split("/");
+    const day = parseInt(dayStr, 10);
+    const month = parseInt(monthStr, 10);
+    const year = parseInt(yearStr, 10);
+
+    // Month-day validation
+    const monthsWith30 = [4, 6, 9, 11];
+    const monthsWith31 = [1, 3, 5, 7, 8, 10, 12];
+    const currentYear = new Date().getFullYear();
+
+    if (year > currentYear || year < 1940) {
+      setErrorMsg("Invalid year");
+      return;
+    }
+
+    if (monthsWith31.includes(month)) {
+      if (day > 31) {
+        setErrorMsg("Invalid date");
+        return;
+      }
+    } else if (monthsWith30.includes(month)) {
+      if (day > 30) {
+        setErrorMsg("Invalid date");
+        return;
+      }
+    } else if (month === 2) {
+      if (year % 4 === 0) {
+        if (day > 29) {
+          setErrorMsg("Invalid date");
+          return;
+        }
+      } else {
+        if (day > 28) {
+          setErrorMsg("Invalid date");
+          return;
+        }
+      }
+    } else {
+      setErrorMsg("Invalid month");
+      return;
+    }
+
+    setSignupStep(2);
+
     // have to send formData to backend here
   };
 
@@ -104,7 +179,7 @@ const signupForm1 = () => {
         <input
           type="text"
           name="lastName"
-          placeholder="Last name*"
+          placeholder="Last name"
           className="bg-[#d7d7d7] outline-none flex-1"
           value={formData.lastName}
           onChange={handleInputChange}
@@ -112,7 +187,7 @@ const signupForm1 = () => {
       </div>
       <div className="flex items-center justify-between ">
         <div className="flex items-center bg-[#d7d7d7] rounded-full px-4 pr-15 py-5 flex-1 ml-2">
-          <span className="material-icons text-gray-500 mr-4 ml-2">
+          <span className="  mr-4 ml-2">
             <img
               src="./images/calender.png"
               alt=""
@@ -129,7 +204,7 @@ const signupForm1 = () => {
           />
         </div>
         <div className="flex items-center bg-[#d7d7d7] rounded-full px-4 pr-15 py-5 flex-1 mr-2 ml-2">
-          <span className="material-icons text-gray-500 mr-4 ml-2">
+          <span className=" mr-4 ml-2">
             <img
               src="./images/gender.png"
               alt=""
@@ -144,21 +219,19 @@ const signupForm1 = () => {
           </div>
         </div>
       </div>
-      <div className="flex justify-between items-center text-sm text-gray-600 mb-[20px]">
+      <div className="flex justify-between items-center text-sm text-gray-600 mb-[22px]">
         <p>* mandatory fields</p>
+        <p className="text-[#D72638]">{errorMsg ? "*" + errorMsg : errorMsg}</p>
       </div>
       <div className="flex items-center justify-center ">
-        <button
-          type="submit"
-          className="bg-[#1a1a1a] text-[#e8e8e8] rounded-full py-3 px-7 font-medium text-[12px] shadow-lg hover:bg-gray-900 transition"
-        >
+        <div className="bg-[#1a1a1a] text-[#e8e8e8] rounded-full py-3 px-7 font-medium text-[12px] shadow-lg transition">
           1 / 3
-        </button>
+        </div>
       </div>
       <div className="flex items-center justify-center ">
         <button
-          type="submit"
           className="bg-[#1a1a1a] text-white rounded-full py-3 px-3 font-semibold text-lg shadow-lg hover:bg-gray-900 transition cursor-pointer"
+          type="submit"
         >
           <img
             src="./images/arrowWhite.png"
