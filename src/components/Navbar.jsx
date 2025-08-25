@@ -78,7 +78,7 @@ const Navbar = ({ user, setUser }) => {
           </div>
         ) : user ? (
           <>
-            <User imgPath={user.profilePicture} />
+            <User imgPath={user.profilePicture} role={user.role} />
             <LogOutBtn setUser={setUser} />
           </>
         ) : (

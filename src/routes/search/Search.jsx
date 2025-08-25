@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import FindRoom from "../../sections/FindRoom.jsx";
 import PgInfo from "../../sections/PgInfo.jsx";
-import Navbar from "../../components/Navbar.jsx";
 import SearchResults from "../../sections/SearchResults.jsx";
 
 const Search = ({ cityName, nearbyPGs }) => {

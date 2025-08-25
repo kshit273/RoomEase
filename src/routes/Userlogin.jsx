@@ -45,8 +45,9 @@ const Userlogin = ({ setUser }) => {
         { withCredentials: true }
       );
       setUser(res.data.user);
-      console.log(res.data.user);
-      navigate("/profile");
+
+      const role = res.data.user.role;
+      navigate(`/${role}/dashboard`);
     } catch (err) {
       console.error("Login error:", err.response?.data || err.message);
       alert(err.response?.data?.message || "Login failed");

@@ -7,7 +7,6 @@ import {
 import Home from "./routes/Home";
 import ScrollToTop from "./components/ScrollToTop";
 import Search from "./routes/search/Search";
-import UserProfile from "./routes/UserProfile";
 import Userlogin from "./routes/Userlogin";
 import PgInfo from "./sections/PgInfo";
 import { useEffect, useState } from "react";
@@ -17,6 +16,8 @@ import { Houses } from "./constants/Houses";
 import SearchResults from "./sections/SearchResults";
 import Messenger from "./routes/Messenger";
 import Navbar from "./components/Navbar";
+import TenantDashboard from "./routes/TenantDashboard";
+import LandlordDashboard from "./routes/LandlordDashboard";
 
 axios.defaults.withCredentials = true;
 
@@ -121,9 +122,13 @@ function App() {
   return (
     <>
       <ScrollToTop />
-      {location.pathname !== "/userlogin" && (
-        <Navbar user={user} setUser={setUser} />
-      )}
+      {![
+        "/messenger",
+        "/userlogin",
+        "/tenant/dashboard",
+        "/landlord/dashboard",
+      ].includes(location.pathname) && <Navbar user={user} setUser={setUser} />}
+
       <Routes>
         <Route path="/" element={<Home user={user} />} />
         <Route
@@ -132,7 +137,8 @@ function App() {
         />
         <Route path="/pg/:RID" element={<PgInfo />} />
         <Route path="/search/:search_keyword" element={<SearchResults />} />
-        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/landlord/dashboard" element={<LandlordDashboard />} />
+        <Route path="/tenant/dashboard" element={<TenantDashboard />} />
         <Route path="/userlogin" element={<Userlogin setUser={setUser} />} />
         <Route path="/messenger" element={<Messenger />} />
       </Routes>
