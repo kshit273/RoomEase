@@ -5,7 +5,7 @@ import ZTRS from "./ZTRS";
 
 const Dash2 = () => {
   return (
-    <div className="grid grid-cols-2 grid-rows-2 gap-4">
+    <div className="grid grid-cols-2 grid-rows-2 gap-10">
       <div className="col-span-2">
         <PGAbout />
       </div>
@@ -23,7 +23,7 @@ const Dash2 = () => {
       </div>
 
       <div className="">
-        <ZTRS percentage={75} />
+        <ZTRS percentage={56} />
       </div>
     </div>
   );

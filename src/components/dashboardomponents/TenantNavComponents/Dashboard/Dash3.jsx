@@ -4,7 +4,7 @@ import Notifications from "./Notifications";
 
 const Dash3 = () => {
   return (
-    <div className="flex flex-col">
+    <div className="h-full flex flex-col">
       <RentDue />
       <Notifications />
     </div>
