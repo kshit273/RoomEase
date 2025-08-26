@@ -10,12 +10,20 @@ const Dash2 = () => {
         <PGAbout />
       </div>
 
-      <div className="bg-gray-200 p-4">
-        <MonthlyRentStatus />
+      <div className="">
+        <MonthlyRentStatus
+          dates={[
+            "2025-07-21",
+            "2025-06-19",
+            "2025-06-20",
+            "2025-05-22",
+            "2025-04-22",
+          ]}
+        />
       </div>
 
-      <div className="bg-gray-300 p-4">
-        <ZTRS />
+      <div className="">
+        <ZTRS percentage={75} />
       </div>
     </div>
   );

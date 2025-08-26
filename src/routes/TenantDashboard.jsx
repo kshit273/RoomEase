@@ -19,9 +19,10 @@ const TenantDashboard = () => {
       <div className="absolute bottom-[-1000px] right-0 z-1 md:w-[512px] w-[256px]  md:h-[560px] h-[280px] pointer-events-none">
         <img src="/images/bgimg2.png" alt="background" />
       </div>
+
       <section id="tenantDash" className="relative z-2 pt-[30px]">
         <div className={`w-full flex justify-center `}>
-          <div className="w-[95%] h-full pb-[40px] bg-[#e1e1e1] rounded-[20px] drop-shadow-2xl drop-shadow-[#a5a5a5] flex flex-col items-center px-5">
+          <div className="w-[98%] h-full pb-[40px] bg-[#e1e1e1] rounded-[20px] drop-shadow-2xl drop-shadow-[#a5a5a5] flex flex-col items-center px-5">
             <div className="w-full flex items-center justify-start py-5">
               <BackBtn />
             </div>
