@@ -79,7 +79,6 @@ const Navbar = ({ user, setUser }) => {
         ) : user ? (
           <>
             <User imgPath={user.profilePicture} role={user.role} />
-            <LogOutBtn setUser={setUser} />
           </>
         ) : (
           <JoinBtn />

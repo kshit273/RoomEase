@@ -1,6 +1,9 @@
+import axios from "axios";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const DashboardNav = ({ bar, setBar }) => {
+const DashboardNav = ({ bar, setBar, setUser }) => {
+  const navigate = useNavigate();
   const navList = [
     "Dashboard",
     "Update Profile",
@@ -12,8 +15,27 @@ const DashboardNav = ({ bar, setBar }) => {
   ];
 
   const handleClick = (ele, i) => {
-    console.log(ele, "Clicked");
+    ele === "Log out" ? handleLogOut() : console.log(ele, "Clicked");
     setBar(i);
+  };
+
+  const handleLogOut = async () => {
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/auth/logout",
+        {},
+        { withCredentials: true }
+      );
+      console.log(res.data.message);
+
+      // clear any user state in frontend
+      setUser(null);
+
+      // optionally redirect to login
+      navigate("/");
+    } catch (err) {
+      console.error("Logout failed:", err.response?.data || err.message);
+    }
   };
   return (
     <div className="w-full flex flex-col gap-3 justify-center p-5">

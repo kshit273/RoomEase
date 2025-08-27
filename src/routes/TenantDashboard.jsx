@@ -3,7 +3,7 @@ import BackBtn from "../components/dashboardomponents/BackBtn";
 import DashboardNav from "../components/dashboardomponents/DashboardNav";
 import TenantDashComponents from "../components/dashboardomponents/TenantDashComponents";
 
-const TenantDashboard = () => {
+const TenantDashboard = ({ setUser }) => {
   const [bar, setBar] = useState(0);
   return (
     <>
@@ -30,8 +30,8 @@ const TenantDashboard = () => {
               <div className="w-[85%] flex flex-col justify-center items-center ">
                 <TenantDashComponents bar={bar} setBar={setBar} />
               </div>
-              <div className="w-[15%] min-w-[250px] flex flex-col  items-center ">
-                <DashboardNav bar={bar} setBar={setBar} />
+              <div className="w-[15%] min-w-[250px] flex flex-col items-center sticky top-[30px]">
+                <DashboardNav bar={bar} setBar={setBar} setUser={setUser} />
               </div>
             </div>
           </div>

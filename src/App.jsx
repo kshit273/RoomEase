@@ -138,7 +138,10 @@ function App() {
         <Route path="/pg/:RID" element={<PgInfo />} />
         <Route path="/search/:search_keyword" element={<SearchResults />} />
         <Route path="/landlord/dashboard" element={<LandlordDashboard />} />
-        <Route path="/tenant/dashboard" element={<TenantDashboard />} />
+        <Route
+          path="/tenant/dashboard"
+          element={<TenantDashboard setUser={setUser} />}
+        />
         <Route path="/userlogin" element={<Userlogin setUser={setUser} />} />
         <Route path="/messenger" element={<Messenger />} />
       </Routes>

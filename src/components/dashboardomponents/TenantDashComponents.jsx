@@ -5,10 +5,10 @@ import SavedPGs from "./TenantNavComponents/Dashboard/SavedPGs";
 
 const TenantDashComponents = () => {
   return (
-    <div className="w-full">
+    <div className="w-full flex flex-col gap-4">
       <Dashboard />
-      <LeaveReview />
       <SavedPGs />
+      <LeaveReview />
     </div>
   );
 };
