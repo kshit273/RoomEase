@@ -115,8 +115,6 @@ const signupForm1 = ({ setSignupStep, formData, setFormData }) => {
     }
 
     setSignupStep(2);
-
-    // have to send formData to backend here
   };
 
   return (

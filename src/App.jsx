@@ -59,42 +59,42 @@ function App() {
 
     return closestCity;
   }
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      async (position) => {
-        const lat = position.coords.latitude;
-        const lng = position.coords.longitude;
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition(
+  //     async (position) => {
+  //       const lat = position.coords.latitude;
+  //       const lng = position.coords.longitude;
 
-        try {
-          const res = await axios.get("http://localhost:5000/geocode", {
-            params: { lat, lng },
-          });
+  //       try {
+  //         const res = await axios.get("http://localhost:5000/geocode", {
+  //           params: { lat, lng },
+  //         });
 
-          // Google API response is inside res.data
-          console.log("Geocode result:", res.data);
+  //         // Google API response is inside res.data
+  //         console.log("Geocode result:", res.data);
 
-          const nearestCity = findNearestCity(lat, lng);
+  //         const nearestCity = findNearestCity(lat, lng);
 
-          if (nearestCity) {
-            setCityName(nearestCity.name);
-            setCityCode(nearestCity.code);
+  //         if (nearestCity) {
+  //           setCityName(nearestCity.name);
+  //           setCityCode(nearestCity.code);
 
-            const filteredPGs = Houses.filter((pg) =>
-              pg.RID.startsWith(nearestCity.code)
-            );
-            setNearbyPGs(filteredPGs);
-          } else {
-            console.log("No matching city found");
-          }
-        } catch (err) {
-          console.error("Geocoding failed", err);
-        }
-      },
-      (err) => {
-        console.error("Location access denied", err);
-      }
-    );
-  }, []);
+  //           const filteredPGs = Houses.filter((pg) =>
+  //             pg.RID.startsWith(nearestCity.code)
+  //           );
+  //           setNearbyPGs(filteredPGs);
+  //         } else {
+  //           console.log("No matching city found");
+  //         }
+  //       } catch (err) {
+  //         console.error("Geocoding failed", err);
+  //       }
+  //     },
+  //     (err) => {
+  //       console.error("Location access denied", err);
+  //     }
+  //   );
+  // }, []);
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -140,7 +140,7 @@ function App() {
         <Route path="/landlord/dashboard" element={<LandlordDashboard />} />
         <Route
           path="/tenant/dashboard"
-          element={<TenantDashboard setUser={setUser} />}
+          element={<TenantDashboard setUser={setUser} user={user} />}
         />
         <Route path="/userlogin" element={<Userlogin setUser={setUser} />} />
         <Route path="/messenger" element={<Messenger />} />

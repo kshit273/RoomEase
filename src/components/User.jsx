@@ -3,14 +3,7 @@ import { Link } from "react-router-dom";
 const User = ({ imgPath, role }) => {
   return (
     <>
-      <div className="flex justify-center items-center w-[250px]  gap-10 ">
-        <div>
-          <img
-            src="../images/wishlist.png"
-            alt="wishlist"
-            className="h-[30px] cursor-pointer"
-          />
-        </div>
+      <div className="flex justify-center items-center w-[150px]  gap-10 ">
         <div>
           <img
             src="../images/message.png"

@@ -4,7 +4,7 @@ import Features from "../sections/Features";
 import Footer from "../sections/Footer";
 import Hero from "../sections/Hero";
 import Plans from "../sections/Plans";
-import Testimonials from "../sections/Testimonials";
+import Testimonials from "../Testimonials";
 
 function Home({ user }) {
   return (

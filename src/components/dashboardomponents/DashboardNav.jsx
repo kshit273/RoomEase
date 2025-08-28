@@ -15,7 +15,7 @@ const DashboardNav = ({ bar, setBar, setUser }) => {
   ];
 
   const handleClick = (ele, i) => {
-    ele === "Log out" ? handleLogOut() : console.log(ele, "Clicked");
+    ele === "Log out" ? handleLogOut() : null;
     setBar(i);
   };
 
@@ -46,6 +46,12 @@ const DashboardNav = ({ bar, setBar, setUser }) => {
             ele == "Leave PG" || ele == "Log out"
               ? `text-[#d72638] hover:text-[#e8e8e8] hover:bg-[#d72638]`
               : `text-[#1a1a1a] hover:bg-[#dbdbdb]`
+          } ${
+            bar == i && i != 5
+              ? `bg-[#d7d7d7]`
+              : bar == i && i == 5
+              ? `bg-[#d72638] text-[#e8e8e8]`
+              : ``
           } w-full p-3 text-[20px] rounded-[10px] cursor-pointer duration-200`}
           onClick={() => {
             handleClick(ele, i);

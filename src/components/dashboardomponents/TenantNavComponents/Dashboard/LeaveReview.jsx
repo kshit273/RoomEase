@@ -7,9 +7,8 @@ const StarRating = ({ label, rating, onRatingChange }) => {
   };
 
   return (
-    <div className="flex items-center justify-between rounded-full p-4 my-2 w-[400px]">
+    <div className="flex items-center justify-between bg-[#e1e1e1] rounded-full p-4  my-2 w-[400px]">
       <div className="flex items-center gap-2">
-        {/* You can add icons based on label if needed */}
         <span className="text-gray-800 text-md font-normal">{label}</span>
       </div>
       <div className="flex">
@@ -49,10 +48,10 @@ const LeaveReview = () => {
   };
 
   return (
-    <div className="flex gap-4 bg-[#d9d9d9] p-4 rounded-[20px] justify-between w-full">
+    <div className="flex gap-4  rounded-[20px] justify-between w-full">
       {/* Left: Review Box */}
-      <div className="flex flex-col flex-1 bg-[#e6e6e6] p-6 rounded-[20px]">
-        <p className="text-[#2d2d2d] text-[32px] font-medium mb-4">
+      <div className="flex flex-col flex-1 bg-[#d7d7d7] p-6 rounded-[20px]">
+        <p className="text-[#5c5c5c] text-[32px] font-medium mb-4">
           Leave a review
         </p>
         <textarea
@@ -60,19 +59,21 @@ const LeaveReview = () => {
           value={reviewText}
           onChange={handleTextChange}
           placeholder="type here ..."
-          className="w-full h-[400px] p-4 bg-[#d9d9d9] rounded-xl resize-none text-[#444] outline-none no-scrollbar"
+          className="w-full h-[400px] p-4 bg-[#e2e2e2] rounded-xl resize-none text-[#444] outline-none no-scrollbar"
         />
-        <div className="text-sm text-gray-500 mt-1">
-          {reviewText.length}/2000
+        <div className="flex justify-between">
+          <div className="text-sm text-gray-500 mt-4">
+            {reviewText.length}/2000
+          </div>
+          <button className="mt-2 bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-full self-end">
+            Submit
+          </button>
         </div>
-        <button className="mt-2 bg-pink-500 hover:bg-pink-600 text-white px-6 py-2 rounded-full self-end">
-          Submit
-        </button>
       </div>
 
       {/* Right: Rating Section */}
-      <div className="flex flex-col bg-[#e6e6e6] p-6 rounded-[20px] shadow w-[450px]">
-        <p className="text-[#2d2d2d] text-[30px] font-medium mb-4">
+      <div className="flex flex-col bg-[#e8e8e8] p-6 rounded-[20px] shadow w-[450px]">
+        <p className="text-[#5c5c5c] text-[30px] font-medium mb-4">
           Rate Sunlight PG
         </p>
 

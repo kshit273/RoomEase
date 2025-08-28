@@ -1,6 +1,6 @@
-import Data from "../components/Data";
-import ReviewCard from "../components/ReviewCard";
-import { testimonials } from "../constants/Abt";
+import Data from "./components/Data";
+import ReviewCard from "./components/ReviewCard";
+import { testimonials } from "./constants/Abt";
 import { useMediaQuery } from "react-responsive";
 
 const Testimonials = () => {

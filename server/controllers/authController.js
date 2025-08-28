@@ -153,3 +153,75 @@ exports.verifyToken = (req, res) => {
     return res.status(401).json({ valid: false, message: "Invalid token" });
   }
 };
+
+exports.updateUser = async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const { firstName, lastName, dob, gender, phone, email, password } =
+      req.body;
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // 🔐 If password change requested, check old password
+    // if (newPassword) {
+    //   const isMatch = await bcrypt.compare(oldPassword, user.password);
+    //   if (!isMatch) {
+    //     return res.status(401).json({ message: "Old password is incorrect" });
+    //   }
+    //   user.password = newPassword; // hashing is handled in User model's pre-save hook
+    // }
+
+    if (password) {
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) {
+        return res.status(401).json({ message: "Password is incorrect" });
+      }
+    } else {
+      return res.status(404).json({ message: "Password not provided" });
+    }
+
+    // ✅ Update allowed fields
+    if (firstName) user.firstName = firstName;
+    if (lastName) user.lastName = lastName;
+    if (dob) user.dob = dob;
+    if (gender) user.gender = gender;
+    if (phone) user.phone = phone;
+    if (email) user.email = email;
+
+    // Optional: profile picture update if using multer
+    if (req.file) {
+      user.profilePicture = `/uploads/${req.file.filename}`;
+    }
+
+    await user.save();
+
+    return res.status(200).json({
+      message: "Profile updated successfully",
+      user: {
+        _id: user._id,
+        name: `${user.firstName} ${user.lastName}`,
+        email: user.email,
+        role: user.role,
+        profilePicture: user.profilePicture,
+      },
+    });
+  } catch (err) {
+    console.error("Update error:", err);
+    res.status(500).json({ message: "Update failed" });
+  }
+};
+
+exports.getUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select("-password"); // exclude password
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ message: "Server error" });
+  }
+};
