@@ -8,6 +8,7 @@ const SignupForm3 = ({ setUser, handleSubmit, formData, setFormData }) => {
 
     const updatedData = { ...formData, role: role };
     setFormData(updatedData);
+    console.log(updatedData);
 
     try {
       const success = await handleSubmit(updatedData); // should return true/false
@@ -41,7 +42,7 @@ const SignupForm3 = ({ setUser, handleSubmit, formData, setFormData }) => {
 
         <button
           type="button"
-          onClick={() => handleRoleClick("landlord", "/profile")}
+          onClick={() => handleRoleClick("landlord", "/landlord/dashboard")}
           className="flex flex-col gap-10 text-xl font-normal text-[#d7d7d7] items-center justify-center py-20 px-20 bg-[#1a1a1a] rounded-3xl w-auto cursor-pointer"
         >
           <img src="/images/landlord.png" alt="landlord" className="h-60" />

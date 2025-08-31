@@ -6,14 +6,20 @@ import ViewLegalDocs from "./TenantNavComponents/ViewLegalDocs/ViewLegalDocs";
 import ReferAndEarn from "./TenantNavComponents/ReferAndEarn/ReferAndEarn";
 import LeavePG from "./TenantNavComponents/LeavePG/LeavePG";
 
-const TenantDashComponents = ({ user, bar }) => {
+const TenantDashComponents = ({ user, bar, formData, setFormData }) => {
   let component;
   switch (bar) {
     case 0:
-      component = <DashboardComp />;
+      component = <DashboardComp formData={formData} />;
       break;
     case 1:
-      component = <UpdateProfile user={user} />;
+      component = (
+        <UpdateProfile
+          user={user}
+          formData={formData}
+          setFormData={setFormData}
+        />
+      );
       break;
     case 2:
       component = <RoomsHistory />;

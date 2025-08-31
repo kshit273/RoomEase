@@ -17,7 +17,6 @@ const Userlogin = ({ setUser }) => {
       // Build FormData
       const data = new FormData();
       for (let key in formData) {
-        // 👇 If the key is "profilePic" make sure it's a File object
         if (key === "profilePicture" && formData[key] instanceof File) {
           data.append("profilePicture", formData[key]);
         } else {

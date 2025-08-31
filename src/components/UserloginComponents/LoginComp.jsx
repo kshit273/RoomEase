@@ -86,7 +86,7 @@ const LoginComp = ({ onSubmit, onShowSignup, setUser }) => {
             <div className="flex items-center justify-center ">
               <button
                 type="submit"
-                className="bg-[#1a1a1a] text-white rounded-full py-3 px-20 font-semibold text-lg shadow-lg hover:bg-gray-900 transition"
+                className="bg-[#1a1a1a] text-white rounded-full py-3 px-20 font-semibold text-lg shadow-lg hover:bg-gray-900 transition cursor-pointer"
               >
                 Login
               </button>

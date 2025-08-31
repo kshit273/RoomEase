@@ -2,10 +2,10 @@ import React from "react";
 import UserProfile from "./UserProfile";
 import PaymentAbout from "./PaymentAbout";
 
-const Dash1 = () => {
+const Dash1 = ({ formData }) => {
   return (
     <div className="flex flex-col gap-8">
-      <UserProfile />
+      <UserProfile formData={formData} />
       <PaymentAbout />
     </div>
   );

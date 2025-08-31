@@ -1,10 +1,66 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BackBtn from "../components/dashboardomponents/BackBtn";
 import DashboardNav from "../components/dashboardomponents/DashboardNav";
 import TenantDashComponents from "../components/dashboardomponents/TenantDashComponents";
+import Logout from "../components/Logout";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const TenantDashboard = ({ user, setUser }) => {
   const [bar, setBar] = useState(0);
+  const [showLogout, setShowLogout] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: user?.firstName || "",
+    lastName: user?.lastName || "",
+    dob: user?.dob || "",
+    gender: user?.gender || "",
+    email: user?.email || "",
+    phone: user?.phone || "",
+    profilePicture: user?.profilePicture || "",
+    password: "",
+  });
+  const navigate = useNavigate();
+  const handleLogOut = async () => {
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/auth/logout",
+        {},
+        { withCredentials: true }
+      );
+      console.log(res.data.message);
+
+      // clear user state
+      setUser(null);
+
+      // redirect to home/login
+      navigate("/");
+    } catch (err) {
+      console.error("Logout failed:", err.response?.data || err.message);
+    }
+  };
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/auth/me", {
+          withCredentials: true,
+        });
+        setFormData((prev) => ({
+          ...prev,
+          firstName: res.data.firstName || "",
+          lastName: res.data.lastName || "",
+          dob: res.data.dob || "",
+          gender: res.data.gender || "",
+          email: res.data.email || "",
+          phone: res.data.phone || "",
+          profilePicture: res.data.profilePicture || "",
+        }));
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUserData();
+  }, []);
   return (
     <>
       <div className="absolute top-[-20px] left-[-20px] z-1 md:w-[512px] w-[256px]  md:h-[560px] h-[280px] pointer-events-none">
@@ -22,15 +78,32 @@ const TenantDashboard = ({ user, setUser }) => {
             </div>
             <div className="w-full flex ">
               <div className="w-[85%] flex flex-col justify-center items-center ">
-                <TenantDashComponents user={user} bar={bar} />
+                <TenantDashComponents
+                  user={user}
+                  bar={bar}
+                  formData={formData}
+                  setFormData={setFormData}
+                />
               </div>
               <div className="w-[15%] min-w-[250px] flex flex-col items-center sticky top-[30px]">
-                <DashboardNav bar={bar} setBar={setBar} setUser={setUser} />
+                <DashboardNav
+                  bar={bar}
+                  setBar={setBar}
+                  setUser={setUser}
+                  setShowLogout={setShowLogout}
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      {showLogout && (
+        <Logout
+          onConfirm={handleLogOut}
+          onCancel={() => setShowLogout(false)}
+        />
+      )}
     </>
   );
 };

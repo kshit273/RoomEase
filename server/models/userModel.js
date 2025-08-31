@@ -43,30 +43,33 @@ const userSchema = new mongoose.Schema(
     },
 
     // For PG owners — they can create PG listings
-    ownedPGs: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "PG",
-      },
-    ],
+    ownedPGs: [{ type: String }],
 
-    // For tenants — which PG they live in (optional)
-    currentPG: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "PG",
-    },
+    // For tenants — which PG they live in
+    currentPG: { type: String },
 
-    // Optional — rewards balance
+    // rewards balance
     rewardPoints: {
       type: Number,
       default: 0,
     },
 
-    // Optional — RTRS score
-    rtrsScore: {
+    // ZTRS score
+    ztrsScore: {
       type: Number,
       default: 0,
     },
+
+    // Tenant PG details
+    rentalHistory: [
+      {
+        RID: { type: String, required: true },
+        roomId: { type: String }, // or roomType if no unique room number
+        rent: { type: Number },
+        joinedFrom: { type: Date },
+        leftOn: { type: Date },
+      },
+    ],
   },
   { timestamps: true }
 );

@@ -1,16 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 
-const UserProfile = () => {
+const UserProfile = ({ formData }) => {
+  const hasProfilePic =
+    formData?.profilePicture && formData.profilePicture !== "";
+  const profilePreview = hasProfilePic
+    ? formData.profilePicture.startsWith("http")
+      ? formData.profilePicture
+      : `http://localhost:5000${formData.profilePicture}`
+    : "/images/usericon.png"; // use public folder path
+
   return (
     <div className="flex gap-6">
-      <div>
-        {/* <img src="" alt="" /> */}
-        <div className="w-[150px] h-[150px] bg-[#1a1a1a] rounded-full"></div>
+      <div className="w-[100px] h-[100px] flex items-center justify-center">
+        <img
+          src={profilePreview}
+          alt="profilePicture"
+          className={`object-cover rounded-full ${
+            hasProfilePic
+              ? "w-[100px] h-[100px] opacity-100"
+              : "w-[60px] h-[60px] opacity-60"
+          }`}
+        />
       </div>
       <div className="flex flex-col justify-center">
-        <span className="font-medium text-[20px]">John Snow</span>
-        <span className="text-[16px] text-[#666666]">+91 9368578171</span>
-        <span className="text-[16px] text-[#666666]">divya_217@gmail.com</span>
+        <span className="font-medium text-[20px]">{`${formData.firstName} ${formData.lastName}`}</span>
+        <span className="text-[16px] text-[#666666]">+91 {formData.phone}</span>
+        <span className="text-[16px] text-[#666666]">{formData.email}</span>
         <span className="text-[16px] text-[#666666]">Drkh3F5st7U</span>
       </div>
     </div>

@@ -2,45 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import UpdationForm from "./UpdationForm";
 
-const UpdateProfile = ({ user, setUser }) => {
-  const [formData, setFormData] = useState({
-    firstName: user?.firstName || "",
-    lastName: user?.lastName || "",
-    dob: user?.dob || "",
-    gender: user?.gender || "",
-    email: user?.email || "",
-    phone: user?.phone || "",
-    profilePicture: user?.profilePicture || "",
-    password: "",
-  });
+const UpdateProfile = ({ user, setUser, formData, setFormData }) => {
   const [loading, setLoading] = useState(false);
-  const [fetching, setFetching] = useState(true);
-
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const res = await axios.get("http://localhost:5000/auth/me", {
-          withCredentials: true,
-        });
-        setFormData((prev) => ({
-          ...prev,
-          firstName: res.data.firstName || "",
-          lastName: res.data.lastName || "",
-          dob: res.data.dob || "",
-          gender: res.data.gender || "",
-          email: res.data.email || "",
-          phone: res.data.phone || "",
-          profilePicture: res.data.profilePicture || "",
-        }));
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      } finally {
-        setFetching(false);
-      }
-    };
-
-    fetchUserData();
-  }, []);
 
   // Handle update request
   const handleUpdate = async (e) => {
@@ -61,6 +24,10 @@ const UpdateProfile = ({ user, setUser }) => {
         { withCredentials: true }
       );
 
+      if (res.data?.user) {
+        setUser(res.data.user);
+      }
+
       alert("Profile updated successfully!");
     } catch (err) {
       console.error("Update error:", err.response?.data || err.message);
@@ -69,10 +36,6 @@ const UpdateProfile = ({ user, setUser }) => {
       setLoading(false);
     }
   };
-
-  if (fetching) {
-    return <p>Loading profile...</p>;
-  }
 
   return (
     <div className="w-full bg-[#e8e8e8] rounded-[20px] py-4 items-center justify-center">
