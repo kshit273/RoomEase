@@ -1,17 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
-const DashboardNav = ({ bar, setBar, setUser, setShowLogout }) => {
+const DashboardNav = ({ bar, setBar, setUser, setShowLogout, navList }) => {
   const navigate = useNavigate();
-
-  const navList = [
-    "Dashboard",
-    "Update Profile",
-    "Rooms History",
-    "View Legal docs",
-    "Refer and earn",
-    "Leave PG",
-    "Log out",
-  ];
 
   const handleClick = (ele, i) => {
     ele === "Log out" ? setShowLogout(true) : setBar(i);

@@ -12,8 +12,8 @@ const SignupForm3 = ({ setUser, handleSubmit, formData, setFormData }) => {
 
     try {
       const success = await handleSubmit(updatedData); // should return true/false
-      if (success) {
-        setUser(updatedData); // optional, or wait for backend response
+      if (success && success.user) {
+        setUser(success.user);
         navigate(path);
       } else {
         alert("Signup failed, please try again");

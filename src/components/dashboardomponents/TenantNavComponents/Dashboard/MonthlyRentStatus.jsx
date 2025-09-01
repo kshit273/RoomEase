@@ -1,12 +1,11 @@
 import React from "react";
 
-// Function to convert hex color to RGB
+// Helpers
 const hexToRgb = (hex) => {
   const bigint = parseInt(hex.replace("#", ""), 16);
   return [(bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255];
 };
 
-// Function to interpolate between two colors
 const interpolateColor = (color1, color2, factor) => {
   const rgb1 = hexToRgb(color1);
   const rgb2 = hexToRgb(color2);
@@ -14,36 +13,61 @@ const interpolateColor = (color1, color2, factor) => {
   return `rgb(${result[0]}, ${result[1]}, ${result[2]})`;
 };
 
-const getCurrentMonthColor = () => {
-  const today = new Date();
-  const date = today.getDate();
-  const month = today.getMonth();
+const daysInMonth = (year, monthIndex) =>
+  new Date(year, monthIndex + 1, 0).getDate();
 
+/**
+ * Color for current month based on days since the most recent cycle start
+ */
+const getColorFromStartCycle = (start) => {
   const green = "#61C428";
   const yellow = "#dfdf1a";
   const red = "#d72638";
 
-  // Last day of the current month
-  const lastDay = new Date(today.getFullYear(), month + 1, 0).getDate();
+  const today = new Date();
+  const startDate = new Date(start);
+  if (isNaN(startDate)) return "#d9d9d9";
 
-  if (date <= 15) {
-    // Transition from green to yellow between 1st → 15th
-    const factor = (date - 1) / (15 - 1);
-    return interpolateColor(green, yellow, factor);
+  const anchorDay = startDate.getDate();
+  const y = today.getFullYear();
+  const m = today.getMonth();
+
+  // Anchor for current month (clamped to month length)
+  const dimCurrent = daysInMonth(y, m);
+  const currentAnchor = new Date(y, m, Math.min(anchorDay, dimCurrent));
+
+  // If today's before this month's anchor, use previous month's anchor
+  let cycleStart;
+  if (currentAnchor <= today) {
+    cycleStart = currentAnchor;
   } else {
-    // Transition from yellow to red between 15th → last day
-    const factor = (date - 15) / (lastDay - 15);
+    const prevY = m === 0 ? y - 1 : y;
+    const prevM = m === 0 ? 11 : m - 1;
+    const dimPrev = daysInMonth(prevY, prevM);
+    cycleStart = new Date(prevY, prevM, Math.min(anchorDay, dimPrev));
+  }
+
+  const msPerDay = 24 * 60 * 60 * 1000;
+  const daysPassed = Math.floor((today - cycleStart) / msPerDay);
+
+  if (daysPassed <= 15) {
+    const factor = daysPassed / 15;
+    return interpolateColor(green, yellow, factor);
+  } else if (daysPassed <= 30) {
+    const factor = (daysPassed - 15) / 15;
     return interpolateColor(yellow, red, factor);
+  } else {
+    return red;
   }
 };
 
-const MonthlyRentStatus = ({ dates }) => {
-  const currentMonth = new Date().getMonth();
+const MonthlyRentStatus = ({ start, dates }) => {
+  const today = new Date();
+  const currentMonth = today.getMonth();
+  const startMonth = new Date(start).getMonth();
 
-  // Get unique months from the dates array
-  const monthsPaid = [
-    ...new Set(dates.map((date) => new Date(date).getMonth())),
-  ];
+  // Unique paid months
+  const monthsPaid = [...new Set(dates.map((d) => new Date(d).getMonth()))];
 
   const months = [
     "jan",
@@ -71,20 +95,24 @@ const MonthlyRentStatus = ({ dates }) => {
           const isPaid = monthsPaid.includes(index);
 
           let bgColor = "#d9d9d9";
-          let textColor = "#444"; // default gray
+          let textColor = "#444";
+
           if (isPaid) {
-            bgColor = "#61C428";
+            bgColor = "#61C428"; // green
             textColor = "#e8e8e8";
-          } // green for paid months
-          if (isCurrentMonth) {
-            bgColor = getCurrentMonthColor();
+          } else if (isCurrentMonth) {
+            bgColor = getColorFromStartCycle(start); // gradient
             textColor = "#e8e8e8";
-          } // yellow for current month
+          } else if (index >= startMonth && index < currentMonth) {
+            // Between start and current, unpaid → red
+            bgColor = "#d72638";
+            textColor = "#e8e8e8";
+          }
 
           return (
             <div
               key={month}
-              className="w-[75px] h-[75px] rounded-[12px] flex items-center justify-center font-normal  capitalize cursor-default"
+              className="w-[75px] h-[75px] rounded-[12px] flex items-center justify-center font-normal capitalize cursor-default"
               style={{ backgroundColor: bgColor, color: textColor }}
             >
               {month}

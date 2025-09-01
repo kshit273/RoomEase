@@ -1,7 +1,8 @@
 import React from "react";
 import PaymentHistoryCard from "./PaymentHistoryCard";
+import PaymentCollectionHistoryCard from "../../LandlordNavComponents/Dashboard/PaymentCollectionHistoryCard";
 
-const PaymentAbout = () => {
+const PaymentAbout = ({ formData }) => {
   const pncHistory = [
     {
       rent: 400,
@@ -47,6 +48,8 @@ const PaymentAbout = () => {
     },
   ];
 
+  const role = formData.role;
+
   return (
     <div>
       {/* Top cards */}
@@ -56,20 +59,24 @@ const PaymentAbout = () => {
           <div className="absolute -top-3 -left-3 w-10 h-10 rounded-full border-8 border-[#464646] bg-[#4EC840] flex items-center justify-center">
             <div className="w-3 h-3 rounded-full bg-[#e2e2e2]"></div>
           </div>
-          <p className="text-xl font-normal">Cashback earned</p>
+          <p className="text-xl font-normal">
+            {role === "tenant" ? `Cashback earned` : `Rent Collected`}
+          </p>
           <p className="text-4xl font-medium text-[#4EC840]">$40</p>
         </div>
 
         {/* Rent paid card */}
-        <div className="relative bg-[#e2e2e2] rounded-[20px] flex flex-col gap-4 items-center justify-center py-6 px-17">
-          <div className="absolute -top-3 -left-3 w-10 h-10 rounded-full border-8 border-[#464646] bg-gradient-to-r from-[#5500f8] to-[#d72638] flex items-center justify-center">
-            <div className="w-3 h-3 rounded-full bg-[#e2e2e2]"></div>
+        {role === "tenant" ? (
+          <div className="relative bg-[#e2e2e2] rounded-[20px] flex flex-col gap-4 items-center justify-center py-6 px-17">
+            <div className="absolute -top-3 -left-3 w-10 h-10 rounded-full border-8 border-[#464646] bg-gradient-to-r from-[#5500f8] to-[#d72638] flex items-center justify-center">
+              <div className="w-3 h-3 rounded-full bg-[#e2e2e2]"></div>
+            </div>
+            <p className="text-xl font-normal">Rent paid</p>
+            <p className="text-4xl font-semibold bg-gradient-to-r from-[#5500f8] to-[#d72638] bg-clip-text text-transparent">
+              $400
+            </p>
           </div>
-          <p className="text-xl font-normal">Rent paid</p>
-          <p className="text-4xl font-semibold bg-gradient-to-r from-[#5500f8] to-[#d72638] bg-clip-text text-transparent">
-            $400
-          </p>
-        </div>
+        ) : null}
       </div>
 
       {/* Payment history */}
@@ -84,7 +91,11 @@ const PaymentAbout = () => {
             <div className="flex flex-col gap-4">
               {pncHistory.map((data, i) => (
                 <div key={i}>
-                  <PaymentHistoryCard data={data} />
+                  {role === "tenant" ? (
+                    <PaymentHistoryCard data={data} />
+                  ) : (
+                    <PaymentCollectionHistoryCard data={data} />
+                  )}
                 </div>
               ))}
             </div>

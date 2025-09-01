@@ -38,7 +38,7 @@ const userSchema = new mongoose.Schema(
     // role-based access: tenant, owner, admin
     role: {
       type: String,
-      enum: ["tenant", "owner", "admin"],
+      enum: ["tenant", "landlord", "admin"],
       default: "tenant",
     },
 

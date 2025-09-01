@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import BackBtn from "../components/dashboardomponents/BackBtn";
 import DashboardNav from "../components/dashboardomponents/DashboardNav";
-import TenantDashComponents from "../components/dashboardomponents/TenantDashComponents";
+import LandlordDashComponents from "../components/dashboardomponents/LandlordDashComponents";
 import Logout from "../components/Logout";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -16,9 +16,21 @@ const LandlordDashboard = ({ user, setUser }) => {
     gender: user?.gender || "",
     email: user?.email || "",
     phone: user?.phone || "",
+    role: user?.role || "",
     profilePicture: user?.profilePicture || "",
     password: "",
   });
+
+  const landlordNavList = [
+    "Dashboard",
+    "Register PG",
+    "Update Profile",
+    "View Legal docs",
+    "Updgrade plan",
+    "Update PG info",
+    "Log out",
+  ];
+
   const navigate = useNavigate();
   const handleLogOut = async () => {
     try {
@@ -52,6 +64,7 @@ const LandlordDashboard = ({ user, setUser }) => {
           gender: res.data.gender || "",
           email: res.data.email || "",
           phone: res.data.phone || "",
+          role: res.data.role || "",
           profilePicture: res.data.profilePicture || "",
         }));
       } catch (error) {
@@ -78,7 +91,7 @@ const LandlordDashboard = ({ user, setUser }) => {
             </div>
             <div className="w-full flex ">
               <div className="w-[85%] flex flex-col justify-center items-center ">
-                <TenantDashComponents
+                <LandlordDashComponents
                   user={user}
                   bar={bar}
                   formData={formData}
@@ -91,6 +104,7 @@ const LandlordDashboard = ({ user, setUser }) => {
                   setBar={setBar}
                   setUser={setUser}
                   setShowLogout={setShowLogout}
+                  navList={landlordNavList}
                 />
               </div>
             </div>

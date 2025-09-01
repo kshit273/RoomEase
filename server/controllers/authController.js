@@ -13,6 +13,7 @@ exports.signup = async (req, res) => {
       dob,
       gender,
       phone,
+      role,
       password,
       referralCode,
     } = req.body;
@@ -34,7 +35,7 @@ exports.signup = async (req, res) => {
       gender,
       phone,
       password,
-      role: "tenant", // default role
+      role,
       profilePicture,
     });
 
@@ -58,8 +59,8 @@ exports.signup = async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true, // prevents JS access
-      secure: process.env.NODE_ENV === "production", // only https in production
-      sameSite: "strict", // CSRF protection
+      secure: false, // only https in production ( to be changed to process.env.NODE_ENV === "production")
+      sameSite: "lax", // CSRF protection (to be changed to strict before production)
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 

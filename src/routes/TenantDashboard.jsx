@@ -19,6 +19,16 @@ const TenantDashboard = ({ user, setUser }) => {
     profilePicture: user?.profilePicture || "",
     password: "",
   });
+
+  const tenantNavList = [
+    "Dashboard",
+    "Update Profile",
+    "Rooms History",
+    "View Legal docs",
+    "Refer and earn",
+    "Leave PG",
+    "Log out",
+  ];
   const navigate = useNavigate();
   const handleLogOut = async () => {
     try {
@@ -91,6 +101,7 @@ const TenantDashboard = ({ user, setUser }) => {
                   setBar={setBar}
                   setUser={setUser}
                   setShowLogout={setShowLogout}
+                  navList={tenantNavList}
                 />
               </div>
             </div>

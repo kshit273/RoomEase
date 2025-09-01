@@ -139,9 +139,7 @@ function App() {
         <Route path="/search/:search_keyword" element={<SearchResults />} />
         <Route
           path="/landlord/dashboard"
-          element={<LandlordDashboard />}
-          setUser={setUser}
-          user={user}
+          element={<LandlordDashboard setUser={setUser} user={user} />}
         />
         <Route
           path="/tenant/dashboard"

@@ -46,7 +46,9 @@ const Userlogin = ({ setUser }) => {
       setUser(res.data.user);
 
       const role = res.data.user.role;
-      navigate(`/${role}/dashboard`);
+      {
+        role == `tenant` ? navigate(`/search`) : navigate(`/`);
+      }
     } catch (err) {
       console.error("Login error:", err.response?.data || err.message);
       alert(err.response?.data?.message || "Login failed");
