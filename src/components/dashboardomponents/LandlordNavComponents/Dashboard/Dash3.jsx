@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import JoinReq from "../../TenantNavComponents/Dashboard/Notification/JoinReq";
 import BaseNotification from "../../TenantNavComponents/Dashboard/Notification/BaseNotification";
+import LeaveReq from "../../TenantNavComponents/Dashboard/Notification/LeaveReq";
+import RentPaidNotification from "../../TenantNavComponents/Dashboard/Notification/RentPaidNotification";
 
 const Dash3 = () => {
   const [announcement, setAnnouncement] = useState("");
@@ -8,27 +11,27 @@ const Dash3 = () => {
 
   const notifications = [
     {
-      msg: "sample message : today there will be a cut of electricity for 2-3 hours from 5pm to 6pm so kindly be prepared",
+      msg: "Ajay Arora has sent a join request for room 101 , do you want to accept it ?",
       date: "2025-04-18",
       time: "11:15:00",
     },
     {
-      msg: "sample message : today there will be a cut of electricity for 2-3 hours from 5pm to 6pm so kindly be prepared",
+      msg: "Ajay Arora has sent a join request for room 101 , do you want to accept it ?",
       date: "2025-04-18",
       time: "11:15:00",
     },
     {
-      msg: "sample message : today there will be a cut of electricity for 2-3 hours from 5pm to 6pm so kindly be prepared",
+      msg: "Ajay Arora has sent a join request for room 101 , do you want to accept it ?",
       date: "2025-04-18",
       time: "11:15:00",
     },
     {
-      msg: "sample message : today there will be a cut of electricity for 2-3 hours from 5pm to 6pm so kindly be prepared",
+      msg: "Ajay Arora has sent a join request for room 101 , do you want to accept it ?",
       date: "2025-04-18",
       time: "11:15:00",
     },
     {
-      msg: "sample message : today there will be a cut of electricity for 2-3 hours from 5pm to 6pm so kindly be prepared",
+      msg: "Ajay Arora has sent a join request for room 101 , do you want to accept it ?",
       date: "2025-04-18",
       time: "11:15:00",
     },
@@ -63,8 +66,11 @@ const Dash3 = () => {
             </p>
           ) : (
             notifications.map((notification, index) => (
-              <div key={index} className="mb-4 rounded">
+              <div key={index} className="mb-4 rounded flex flex-col gap-4">
+                <JoinReq data={notification} />
                 <BaseNotification data={notification} />
+                <LeaveReq data={notification} />
+                <RentPaidNotification data={notification} />
               </div>
             ))
           )}
