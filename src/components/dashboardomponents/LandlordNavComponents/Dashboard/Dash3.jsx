@@ -37,7 +37,7 @@ const Dash3 = () => {
     },
   ];
   return (
-    <div className="h-full p-4">
+    <div className=" p-4">
       <div>
         <p className="text-[24px] text-[#5c5c5c] font-medium mb-2">
           Notifications
