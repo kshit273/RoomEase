@@ -6,7 +6,7 @@ const Dash1 = ({ formData }) => {
   return (
     <div className="flex flex-col gap-8">
       <UserProfile formData={formData} />
-      <PaymentAbout />
+      <PaymentAbout formData={formData}/>
     </div>
   );
 };

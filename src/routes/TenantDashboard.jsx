@@ -16,6 +16,7 @@ const TenantDashboard = ({ user, setUser }) => {
     gender: user?.gender || "",
     email: user?.email || "",
     phone: user?.phone || "",
+    role: user?.role || "",
     profilePicture: user?.profilePicture || "",
     password: "",
   });
@@ -29,6 +30,7 @@ const TenantDashboard = ({ user, setUser }) => {
     "Leave PG",
     "Log out",
   ];
+  
   const navigate = useNavigate();
   const handleLogOut = async () => {
     try {
@@ -62,6 +64,7 @@ const TenantDashboard = ({ user, setUser }) => {
           gender: res.data.gender || "",
           email: res.data.email || "",
           phone: res.data.phone || "",
+          role: res.data.role || "",
           profilePicture: res.data.profilePicture || "",
         }));
       } catch (error) {
@@ -102,6 +105,7 @@ const TenantDashboard = ({ user, setUser }) => {
                   setUser={setUser}
                   setShowLogout={setShowLogout}
                   navList={tenantNavList}
+                  role={formData.role}
                 />
               </div>
             </div>

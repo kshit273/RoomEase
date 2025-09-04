@@ -1,5 +1,8 @@
 import DashboardComp from "./LandlordNavComponents/Dashboard/DashboardComp";
+import RegisterPG from "./LandlordNavComponents/RegisterPG/RegisterPG";
+import UpgradePlan from "./LandlordNavComponents/UpgradePlan/UpgradePlan";
 import UpdateProfile from "./TenantNavComponents/UpdateProfile/UpdateProfile";
+import UpdatePGInfo from "./LandlordNavComponents/UpdatePGInfo/UpdatePGInfo";
 import ViewLegalDocs from "./TenantNavComponents/ViewLegalDocs/ViewLegalDocs";
 
 const LandlordDashComponents = ({ user, bar, formData, setFormData }) => {
@@ -9,7 +12,7 @@ const LandlordDashComponents = ({ user, bar, formData, setFormData }) => {
       component = <DashboardComp formData={formData} />;
       break;
     case 1:
-      component = <RegisterPG />; // to be created
+      component = <RegisterPG />;
       break;
     case 2:
       component = (
@@ -24,10 +27,10 @@ const LandlordDashComponents = ({ user, bar, formData, setFormData }) => {
       component = <ViewLegalDocs />;
       break;
     case 4:
-      component = <UpgradePlan />; // to be created
+      component = <UpgradePlan />;
       break;
     case 5:
-      component = <UpdatePGInfo />; // to be created
+      component = <UpdatePGInfo />;
       break;
     default:
       component = <DashboardComp />;

@@ -105,6 +105,7 @@ const LandlordDashboard = ({ user, setUser }) => {
                   setUser={setUser}
                   setShowLogout={setShowLogout}
                   navList={landlordNavList}
+                  role={formData.role}
                 />
               </div>
             </div>
