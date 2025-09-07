@@ -5,18 +5,19 @@ import UpdateProfile from "./TenantNavComponents/UpdateProfile/UpdateProfile";
 import UpdatePGInfo from "./LandlordNavComponents/UpdatePGInfo/UpdatePGInfo";
 import ViewLegalDocs from "./TenantNavComponents/ViewLegalDocs/ViewLegalDocs";
 
-const LandlordDashComponents = ({ user, bar, formData, setFormData }) => {
+const LandlordDashComponents = ({ user,setUser, bar, formData, setFormData ,coords}) => {
   let component;
   switch (bar) {
     case 0:
       component = <DashboardComp formData={formData} />;
       break;
     case 1:
-      component = <RegisterPG />;
+      component = <RegisterPG coords={coords}/>;
       break;
     case 2:
       component = (
         <UpdateProfile
+          setUser={setUser}
           user={user}
           formData={formData}
           setFormData={setFormData}

@@ -6,7 +6,7 @@ import ViewLegalDocs from "./TenantNavComponents/ViewLegalDocs/ViewLegalDocs";
 import ReferAndEarn from "./TenantNavComponents/ReferAndEarn/ReferAndEarn";
 import LeavePG from "./TenantNavComponents/LeavePG/LeavePG";
 
-const TenantDashComponents = ({ user, bar, formData, setFormData }) => {
+const TenantDashComponents = ({ user,setUser, bar, formData, setFormData }) => {
   let component;
   switch (bar) {
     case 0:
@@ -16,6 +16,7 @@ const TenantDashComponents = ({ user, bar, formData, setFormData }) => {
       component = (
         <UpdateProfile
           user={user}
+          setUser={setUser}
           formData={formData}
           setFormData={setFormData}
         />

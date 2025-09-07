@@ -6,7 +6,7 @@ import Logout from "../components/Logout";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const LandlordDashboard = ({ user, setUser }) => {
+const LandlordDashboard = ({ user, setUser , coords }) => {
   const [bar, setBar] = useState(0);
   const [showLogout, setShowLogout] = useState(false);
   const [formData, setFormData] = useState({
@@ -93,9 +93,11 @@ const LandlordDashboard = ({ user, setUser }) => {
               <div className="w-[85%] flex flex-col justify-center items-center ">
                 <LandlordDashComponents
                   user={user}
+                  setUser={setUser}
                   bar={bar}
                   formData={formData}
                   setFormData={setFormData}
+                  coords={coords}
                 />
               </div>
               <div className="w-[15%] min-w-[250px] flex flex-col items-center sticky top-[30px]">

@@ -93,6 +93,7 @@ const TenantDashboard = ({ user, setUser }) => {
               <div className="w-[85%] flex flex-col justify-center items-center ">
                 <TenantDashComponents
                   user={user}
+                  setUser={setUser}
                   bar={bar}
                   formData={formData}
                   setFormData={setFormData}

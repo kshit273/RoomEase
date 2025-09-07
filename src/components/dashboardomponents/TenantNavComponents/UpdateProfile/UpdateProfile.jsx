@@ -6,36 +6,44 @@ const UpdateProfile = ({ user, setUser, formData, setFormData }) => {
   const [loading, setLoading] = useState(false);
 
   // Handle update request
-  const handleUpdate = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+const handleUpdate = async (e) => {
+  e.preventDefault();
+  setLoading(true);
 
-    try {
-      const changedData = {};
-      Object.keys(formData).forEach((key) => {
-        if (formData[key] !== (user?.[key] || "")) {
-          changedData[key] = formData[key];
-        }
-      });
+  try {
+    const formDataToSend = new FormData();
 
-      const res = await axios.put(
-        "http://localhost:5000/auth/update",
-        changedData,
-        { withCredentials: true }
-      );
-
-      if (res.data?.user) {
-        setUser(res.data.user);
+    // Append all changed fields
+    Object.keys(formData).forEach((key) => {
+      // If profilePicture is a File, append it directly
+      if (key === "profilePicture" && formData[key] instanceof File) {
+        formDataToSend.append("profilePicture", formData[key]);
+      } else if (formData[key] !== (user?.[key] || "")) {
+        formDataToSend.append(key, formData[key]);
       }
+    });
 
-      alert("Profile updated successfully!");
-    } catch (err) {
-      console.error("Update error:", err.response?.data || err.message);
-      alert(err.response?.data?.message || "Update failed");
-    } finally {
-      setLoading(false);
+    const res = await axios.put(
+      "http://localhost:5000/auth/update",
+      formDataToSend,
+      {
+        withCredentials: true,
+        headers: { "Content-Type": "multipart/form-data" },
+      }
+    );
+
+    if (res.data?.user) {
+      setUser(res.data.user);
     }
-  };
+
+    alert("Profile updated successfully!");
+  } catch (err) {
+    console.error("Update error:", err.response?.data || err.message);
+    alert(err.response?.data?.message || "Update failed");
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="w-full bg-[#e8e8e8] rounded-[20px] py-4 items-center justify-center">
