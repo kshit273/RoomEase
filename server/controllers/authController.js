@@ -158,7 +158,7 @@ exports.verifyToken = (req, res) => {
 exports.updateUser = async (req, res) => {
   try {
     const userId = req.user.id;
-    const { firstName, lastName, dob, gender, phone, email, password } =
+    const { firstName, lastName, dob, gender, phone, email, password,profilePicture } =
       req.body;
 
     const user = await User.findById(userId);

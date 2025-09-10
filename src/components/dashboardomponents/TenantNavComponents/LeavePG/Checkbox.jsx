@@ -1,11 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-const Checkbox = () => {
+const Checkbox = ({ checked, onChange }) => {
   return (
     <StyledWrapper>
       <label className="checkbox-container">
-        <input className="custom-checkbox" defaultChecked type="checkbox" />
+        <input
+          className="custom-checkbox"
+          type="checkbox"
+          checked={checked}
+          onChange={(e) => onChange(e.target.checked)}
+        />
         <span className="checkmark" />
       </label>
     </StyledWrapper>
@@ -66,13 +71,8 @@ const StyledWrapper = styled.div`
   }
 
   @keyframes checkAnim {
-    0% {
-      height: 0;
-    }
-
-    100% {
-      height: 10px;
-    }
+    0% { height: 0; }
+    100% { height: 10px; }
   }
 
   .custom-checkbox:checked ~ .checkmark:after {

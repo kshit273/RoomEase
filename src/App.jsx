@@ -22,6 +22,7 @@ import LandlordDashboard from "./routes/LandlordDashboard";
 axios.defaults.withCredentials = true;
 
 function App() {
+  const [coords, setCoords] = useState({ lat: null, lng: null });
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [cityName, setCityName] = useState(null);
@@ -59,42 +60,46 @@ function App() {
 
     return closestCity;
   }
-  // useEffect(() => {
-  //   navigator.geolocation.getCurrentPosition(
-  //     async (position) => {
-  //       const lat = position.coords.latitude;
-  //       const lng = position.coords.longitude;
+  
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
 
-  //       try {
-  //         const res = await axios.get("http://localhost:5000/geocode", {
-  //           params: { lat, lng },
-  //         });
+        setCoords({ lat, lng });
+  
 
-  //         // Google API response is inside res.data
-  //         console.log("Geocode result:", res.data);
+        try {
+          const res = await axios.get("http://localhost:5000/geocode", {
+            params: { lat, lng },
+          });
 
-  //         const nearestCity = findNearestCity(lat, lng);
+          // Google API response is inside res.data
+          // console.log("Geocode result:", res.data);
 
-  //         if (nearestCity) {
-  //           setCityName(nearestCity.name);
-  //           setCityCode(nearestCity.code);
+          const nearestCity = findNearestCity(lat, lng);
 
-  //           const filteredPGs = Houses.filter((pg) =>
-  //             pg.RID.startsWith(nearestCity.code)
-  //           );
-  //           setNearbyPGs(filteredPGs);
-  //         } else {
-  //           console.log("No matching city found");
-  //         }
-  //       } catch (err) {
-  //         console.error("Geocoding failed", err);
-  //       }
-  //     },
-  //     (err) => {
-  //       console.error("Location access denied", err);
-  //     }
-  //   );
-  // }, []);
+          if (nearestCity) {
+            setCityName(nearestCity.name);
+            setCityCode(nearestCity.code);
+
+            const filteredPGs = Houses.filter((pg) =>
+              pg.RID.startsWith(nearestCity.code)
+            );
+            setNearbyPGs(filteredPGs);
+          } else {
+            console.log("No matching city found");
+          }
+        } catch (err) {
+          console.error("Geocoding failed", err);
+        }
+      },
+      (err) => {
+        console.error("Location access denied", err);
+      }
+    );
+  }, []);
 
   useEffect(() => {
     const checkAuth = async () => {
@@ -139,7 +144,7 @@ function App() {
         <Route path="/search/:search_keyword" element={<SearchResults />} />
         <Route
           path="/landlord/dashboard"
-          element={<LandlordDashboard setUser={setUser} user={user} />}
+          element={<LandlordDashboard setUser={setUser} user={user} coords={coords} />}
         />
         <Route
           path="/tenant/dashboard"

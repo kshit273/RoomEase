@@ -19,10 +19,10 @@ const roomSchema = new mongoose.Schema(
       },
     ],
     rent: { type: Number, required: true },
-    furnished: { type: String, enum: ["yes", "no", "semi"], default: "no" },
+    furnished: { type: String, enum: ["fully", "no", "semi"], default: "no", required: true },
     amenities: [String], // ["AC", "Attached Bathroom", "Balcony"]
     photos: [String],
-    availableFrom: { type: Date, default: Date.now },
+    availableFrom: { type: Date },
     description: { type: String },
   },
   { _id: false } // rooms don’t need their own ObjectId
@@ -39,10 +39,11 @@ const pgSchema = new mongoose.Schema(
     },
 
     // 📌 Basic Info
-    name: { type: String, required: true },
+    pgName: { type: String, required: true },
+    coverPhoto: { type: String }, 
+    otherPhotos: [String], 
     address: { type: String, required: true },
-    location: { type: String, required: true },
-    description: { type: String },
+    description: { type: String, required:true },
     amenities: [String],
 
     // 📌 Owner
@@ -53,14 +54,11 @@ const pgSchema = new mongoose.Schema(
     },
 
     // 📌 PG Details
-    gender: { type: String, enum: ["boys", "girls", "coed"], required: true },
-    totalRooms: { type: Number, default: 0 },
+    gender: { type: String, enum: ["boys", "girls", "both"], required: true },
     rooms: [roomSchema], // Embed all rooms
 
-    // 📌 Pricing/Charges
-    waterCharges: { type: String }, // e.g., "Included", "₹500/month"
-    electricityCharges: { type: String }, // e.g., "As per meter"
     additionalInfo: { type: String }, // Free text for extra details
+    rules:[String],
 
     // 📌 Food
     foodAvailable: { type: Boolean, default: false },
@@ -69,16 +67,12 @@ const pgSchema = new mongoose.Schema(
     selfCookingAllowed: { type: Boolean, default: false },
     tiffinServiceAvailable: { type: Boolean, default: false },
 
-    // 📌 Rules
-    rules: [String], // ["No smoking", "No loud music after 10PM"]
-
     // 📌 Platform Plan
     plan: {
       type: String,
       enum: ["basic", "popular", "premium"],
       default: "basic",
     },
-    commissionRate: { type: Number, default: 0 },
   },
   { timestamps: true }
 );

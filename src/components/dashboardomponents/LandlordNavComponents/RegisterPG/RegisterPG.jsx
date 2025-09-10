@@ -1,10 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import RoomForm from "./RoomForm";
 import Radio from "./Radio";
+import Loader from "./Loader";
 import Checkbox from "../../TenantNavComponents/LeavePG/Checkbox";
+import MapPreview from "./MapPreview"
+import AreaDropDown from "./AreaDropDown";
+import { cityAreaMap } from"../../../../utils/areaCodes"
+import axios from "axios";
 
-const RegisterPG = () => {
-  const [formData, setFormData] = useState({
+const RegisterPG = ({setBar,coords}) => {
+    const [formData, setFormData] = useState({
     pgName: "",
     description: "",
     address: {
@@ -14,121 +19,303 @@ const RegisterPG = () => {
       city: "",
       state: "",
       pin: "",
+      areaCode:"",
     },
     features: [],
     otherFeatures:"",
     rooms: [],
     pgType: "",
-    totalRooms: "",
     rules: "",
     addInfo: "",
-    foodAvailability: "",
+    foodAvailable: false, 
+    foodAvailabilityDesc:"", 
     menuImage: null,
     selfCooking: false,
     tiffin: false,
-    confirmInfo: false,
+    confirmInfo: false, 
     agreeTerms: false,
     allowPromo: false,
-    coverPhoto: null,
+    coverPhoto: null, 
     otherPhotos: [], 
-  });
+    location: null,
+});
   const [rooms, setRooms] = useState([]);
+  const [availableAreas, setAvailableAreas] = useState([]);
+  const [error,setError] = useState("");
+  const [success,setSuccess] = useState("")
 
-  const handleRoomChange = (index, newData) => {
-    const updated = [...rooms];
-    updated[index] = newData;
-    setRooms(updated);
+  useEffect(() => {
+  setFormData((prev) => ({
+    ...prev,
+    rooms: rooms,
+  }));
+    }, [rooms]);
+
+  const handleRoomChange = (id, newData) => {
+    setRooms((prev) =>
+      prev.map((room) => (room.id === id ? { ...room, ...newData } : room))
+    );
   };
 
   const addRoom = () => {
-    setRooms([...rooms, {}]);
+    const newRoom = {
+      id: Date.now(), // unique id
+      photos: [],
+      roomType: "Select here",
+      furnished: "",
+      rent: "",
+      available: false,
+      availableFrom: "",
+      description: "",
+      features: [],
+    };
+    setRooms(prev => [...prev, newRoom]);
   };
 
-  const removeRoom = (index) => {
-    setRooms(rooms.filter((_, i) => i !== index));
+  const removeRoom = (id) => {
+    setRooms((prev) => prev.filter((room) => room.id !== id));
   };
 
   const handleChange = (e) => {
     const { name, type, files, checked, value } = e.target;
 
+    const MAX_SIZE = 5 * 1024 * 1024; // 5MB limit
+    const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
+
     if (type === "file") {
-      if (name === "coverPhoto") {
+      // Single file
+      if (name === "coverPhoto" || name === "menuImage") {
+        const file = files[0];
+        if (!file) return;
+
+        if (!ALLOWED_TYPES.includes(file.type)) {
+          alert("Only JPG, PNG, or WEBP files are allowed.");
+          return;
+        }
+
+        if (file.size > MAX_SIZE) {
+          alert("File size must be less than 5MB.");
+          return;
+        }
+
+        setFormData((prev) => ({ ...prev, [name]: file }));
+      }
+
+      // Multiple files (otherPhotos)
+      else if (name === "otherPhotos") {
+        const validFiles = Array.from(files).filter(file => {
+          if (!ALLOWED_TYPES.includes(file.type)) {
+            alert(`${file.name} has unsupported format.`);
+            return false;
+          }
+          if (file.size > MAX_SIZE) {
+            alert(`${file.name} is too large (>5MB).`);
+            return false;
+          }
+          return true;
+        });
+
         setFormData((prev) => ({
           ...prev,
-          coverPhoto: files[0],
-        }));
-      } else if (name === "otherPhotos") {
-        setFormData((prev) => ({
-          ...prev,
-          otherPhotos: [...files],
+          otherPhotos: validFiles,
         }));
       }
-    } else {
+    } 
+    else if (["selfCooking", "tiffin", "confirmInfo", "agreeTerms", "allowPromo", "foodAvailable"].includes(name)) {
+      setFormData((prev) => ({ ...prev, [name]: checked }));
+    }
+    // Address fields
+    else if (["line1", "line2", "landmark", "city", "state", "pin", "areaCode"].includes(name)) {
       setFormData((prev) => ({
         ...prev,
-        [name]: type === "checkbox" ? checked : value,
+        address: { ...prev.address, [name]: value },
+      }));
+    } 
+    // All other text/number fields
+    else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]: value,
       }));
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Form Submitted:", formData);
-    console.log("Final Rooms Data:", rooms);
+    const validateRooms = (rooms) => {
+    rooms.forEach((room, index) => {
+      if (room.available && !room.availableFrom) {
+        setError(`Room ${index + 1}: Available from date is required when room is marked as available`);
+        return ;
+      }
+    });
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // 1️⃣ Mandatory PG fields
+    if (
+      !formData.pgName ||
+      !formData.description ||
+      !formData.address.city ||
+      !formData.address.state ||
+      !formData.address.pin ||
+      !formData.address.line1 ||
+      !formData.address.areaCode ||
+      !formData.coverPhoto ||
+      !formData.pgType 
+    ) {
+      setSuccess("");
+      setError("Please fill all mandatory fields: Name, Description, Address, PG Type, Cover Photo");
+      return;
+    }
+
+    // ✅ Added: Terms validation
+    if (!formData.confirmInfo || !formData.agreeTerms) {
+      setSuccess("");
+      setError("Please confirm the information accuracy and agree to terms & conditions");
+      return;
+    }
+
+    // ✅ Added: Food availability validation
+    if (formData.foodAvailable && !formData.foodAvailabilityDesc.trim()) {
+      setSuccess("");
+      setError("Please describe food availability when food is marked as available");
+      return;
+    }
+
+    if(formData.rooms.length === 0){
+      setSuccess("");
+      setError("Please input rooms");
+      return;
+    }
+
+    // 2️⃣ Room-level validation
+    for (let i = 0; i < formData.rooms.length; i++) {
+      const room = formData.rooms[i];
+      if (
+        room.photos.length === 0 ||
+        room.roomType === "Select here" ||
+        !room.rent ||
+        !room.furnished ||
+        (room.available && !room.availableFrom)
+      ) {
+        setSuccess("");
+        setError(`Please complete all required fields for Room ${i + 1}`);
+        return;
+      }
+    }
+
+    validateRooms(formData.rooms);
+
+    try {
+      const fd = new FormData();
+      fd.append("pgName", formData.pgName);
+      fd.append("description", formData.description);
+      fd.append("pgType", formData.pgType);
+      fd.append("coverPhoto", formData.coverPhoto);
+      fd.append("foodAvailable", formData.foodAvailable);
+      fd.append("foodAvailabilityDesc", formData.foodAvailabilityDesc);
+      fd.append("selfCooking", formData.selfCooking);
+      fd.append("tiffin", formData.tiffin);
+      fd.append("addInfo", formData.addInfo);
+      fd.append("rules", formData.rules);
+      fd.append("features", JSON.stringify(formData.features));
+      fd.append("otherFeatures", formData.otherFeatures);
+
+      formData.otherPhotos.forEach((file) => fd.append("otherPhotos", file));
+
+      // Fix room photos with indexed field names
+      formData.rooms.forEach((room, i) => {
+        room.photos.forEach((file) => fd.append(`roomPhotos_${i}`, file));
+      });
+
+      if (formData.menuImage) {
+        fd.append("menuImage", formData.menuImage);
+      }
+
+      fd.append("address", JSON.stringify(formData.address));
+      fd.append("rooms", JSON.stringify(formData.rooms));
+      console.log(fd);
+
+      // send request
+      const res = await axios.post("http://localhost:5000/pgs/", fd,{
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+      console.log("PG registered:", res.data);
+      setError("");
+      setSuccess(`Your PG has been registered : ${res.data.RID}`)
+      setBar(0);
+    } catch (err) {
+      console.error("Registration failed", err);
+      setSuccess("");
+      setError("Failed to register PG. Please try again.");
+    }
+  };
+
+  const addressParts = [
+  formData.address.line1,
+  formData.address.line2,
+  formData.address.landmark,
+  formData.address.city,
+  formData.address.state,
+  formData.address.pin,
+].filter(Boolean); 
+
+const fullAddress = addressParts.join(", ");
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="w-full flex flex-col gap-4 p-6 rounded-[20px]"
-    >
+      className="w-full flex flex-col gap-4 p-6 rounded-[20px]">
+        
       {/* PG Photos */}
      <div className="grid grid-cols-2 gap-4">
-        {/* Cover Photo */}
-<label className="h-100  flex items-center justify-center rounded-lg bg-[#e8e8e8] cursor-pointer relative overflow-hidden">
-  {formData.coverPhoto ? (
-    <img
-      src={URL.createObjectURL(formData.coverPhoto)}
-      alt="Cover Preview"
-      className="w-full h-full object-cover"
-    />
-  ) : (
-    "Add the cover photo here"
-  )}
-  <input
-    type="file"
-    name="coverPhoto"
-    accept="image/*"
-    className="hidden"
-    onChange={handleChange}
-  />
-</label>
 
-{/* Other Photos */}
-<label className="min-h-100  flex items-center justify-center rounded-lg bg-[#e8e8e8] cursor-pointer relative overflow-hidden">
-  {formData.otherPhotos.length > 0 ? (
-    <div className="grid grid-cols-2 gap-2 w-full p-2">
-      {formData.otherPhotos.map((photo, index) => (
-        <img
-          key={index}
-          src={URL.createObjectURL(photo)}
-          alt={`Preview ${index}`}
-          className="w-full h-48 object-cover rounded"
+      {/* Cover Photo */}
+      <label className="h-100  flex items-center justify-center rounded-lg bg-[#e8e8e8] cursor-pointer relative overflow-hidden">
+        {formData.coverPhoto ? (
+          <img
+            src={URL.createObjectURL(formData.coverPhoto)}
+            alt="Cover Preview"
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          "Add the cover photo here"
+        )}
+        <input
+          type="file"
+          name="coverPhoto"
+          accept="image/*"
+          className="hidden"
+          onChange={handleChange}
         />
-      ))}
-    </div>
-  ) : (
-    "Add other photos"
-  )}
-  <input
-    type="file"
-    name="otherPhotos"
-    accept="image/*"
-    multiple
-    className="hidden"
-    onChange={handleChange}
-  />
-</label>
+      </label>
+
+      {/* Other Photos */}
+      <label className="min-h-100  flex items-center justify-center rounded-lg bg-[#e8e8e8] cursor-pointer relative overflow-hidden">
+        {formData.otherPhotos.length > 0 ? (
+          <div className="grid grid-cols-2 gap-2 w-full p-2">
+            {formData.otherPhotos.map((photo, index) => (
+              <img
+                key={index}
+                src={URL.createObjectURL(photo)}
+                alt={`Preview ${index}`}
+                className="w-full h-48 object-cover rounded"
+              />
+            ))}
+          </div>
+        ) : (
+          "Add other photos"
+        )}
+        <input
+          type="file"
+          name="otherPhotos"
+          accept="image/*"
+          multiple
+          className="hidden"
+          onChange={handleChange}
+        />
+      </label>
 
       </div>
       {/* Basic Info */}
@@ -159,6 +346,7 @@ const RegisterPG = () => {
           type="text"
           placeholder="House no. / Building name / Lane no."
           name="line1"
+          value={formData.address.line1 || ""}
           onChange={handleChange}
           className="w-full p-2 bg-[#e8e8e8] rounded-lg mt-2 mb-2"
         />
@@ -166,6 +354,7 @@ const RegisterPG = () => {
           type="text"
           placeholder="Address line 2"
           name="line2"
+          value={formData.address.line2 || ""}
           onChange={handleChange}
           className="w-full p-2 bg-[#e8e8e8] rounded-lg mb-2"
         />
@@ -173,6 +362,7 @@ const RegisterPG = () => {
           type="text"
           placeholder="Nearby landmark (optional)"
           name="landmark"
+          value={formData.address.landmark || ""}
           onChange={handleChange}
           className="w-full p-2 bg-[#e8e8e8] rounded-lg mb-2"
         />
@@ -181,6 +371,7 @@ const RegisterPG = () => {
             type="text"
             placeholder="City name"
             name="city"
+            value={formData.address.city || ""}
             onChange={handleChange}
             className="w-full p-2 bg-[#e8e8e8] rounded-lg"
           />
@@ -188,6 +379,7 @@ const RegisterPG = () => {
             type="text"
             placeholder="State"
             name="state"
+            value={formData.address.state || ""}
             onChange={handleChange}
             className="w-full p-2 bg-[#e8e8e8] rounded-lg"
           />
@@ -196,9 +388,75 @@ const RegisterPG = () => {
           type="text"
           placeholder="Pin Code"
           name="pin"
-          onChange={handleChange}
+          value={formData.address.pin || ""}
+          onChange={(e) => {
+            const pin = e.target.value;
+            setFormData(prev => ({
+              ...prev,
+              address: { ...prev.address, pin: pin }
+            }));
+
+            if (cityAreaMap[pin]) {
+              // Valid pin → auto-fill city & areas
+              setFormData(prev => ({
+                ...prev,
+                address: {
+                  ...prev.address,
+                  city: cityAreaMap[pin].city,
+                  areaCode: "" // reset selected area
+                }
+              }));
+              setAvailableAreas(cityAreaMap[pin].areas);
+            } else {
+              // Invalid pin → reset city & areas
+              setFormData(prev => ({
+                ...prev,
+                address: {
+                  ...prev.address,
+                  city: "",
+                  areaCode: ""
+                }
+              }));
+              setAvailableAreas([]);
+            }
+          }}
           className="w-full p-2 bg-[#e8e8e8] rounded-lg mt-2"
         />
+        
+        {availableAreas.length > 0 && (
+          <AreaDropDown
+            areas={availableAreas}
+            value={formData.areaCode}
+            onChange={(val) =>
+              setFormData((prev) => ({
+                ...prev,
+                address: { ...prev.address, areaCode: val }
+              }))
+            }
+          />
+        )}
+
+      </div>
+
+      {/* Location Details */}
+      <div className="p-4 rounded-lg">
+        <p className="block text-[20px] text-[#5c5c5c] font-medium">Location</p>
+
+        <MapPreview
+          address={fullAddress}
+          pincode={formData.address.pin}
+          onLocationSelect={(pos) =>
+            setFormData((prev) => ({ ...prev, location: [pos.lat, pos.lng] }))
+          }
+          onAddressSelect={(addr) =>
+            setFormData((prev) => ({
+              ...prev,
+              address: { ...prev.address, ...addr },
+            }))
+          }
+        />
+
+        
       </div>
 
       {/* Features */}
@@ -239,7 +497,7 @@ const RegisterPG = () => {
             </button>
           ))}
           </div>
-        <label className="block text-[16px] text-[#5c5c5c] font-medium mt-4">Other features , if any</label>
+        <label className="block text-[16px] text-[#5c5c5c] font-medium mt-4">Other features, seperated by commas</label>
         <textarea
           name="otherFeatures"
           value={formData.otherFeatures}
@@ -255,10 +513,10 @@ const RegisterPG = () => {
         <p className="block text-[22px] text-[#5c5c5c] font-medium mb-2">Rooms</p>
         {rooms.map((room, index) => (
           <RoomForm
-            key={index}
-            index={index}
-            onChange={handleRoomChange}
-            onRemove={removeRoom}
+            key={room.id}
+            room={room}
+            onChange={(newData) => handleRoomChange(room.id, newData)}
+            onRemove={() => removeRoom(room.id)}
           />
         ))}
         <button
@@ -273,20 +531,25 @@ const RegisterPG = () => {
       {/* Other Info */}
       <div className=" p-4 rounded-lg">
         <p className="block text-[22px] text-[#5c5c5c] font-medium mb-2">Other Info</p>
-        <div className="flex items-center gap-4"><p>Pg type</p><Radio option1={"boys"} option2={"girls"} option3={"both"}/></div>
-        <div className="flex flex-col  mt-4">
-          <p>Number of rooms</p>
-          <input
-          type="number"
-          name="totalRooms"
-          placeholder="Total no. of rooms"
-          onChange={handleChange}
-          className="w-full p-2 bg-[#e8e8e8] rounded-lg mt-2"
-        />
+        <div className="flex items-center gap-4">
+          <p>PG type</p>
+          <Radio
+            name="pgType"
+            option1="boys"
+            option2="girls"
+            option3="both"
+            value={formData.pgType}
+            onChange={(val) =>
+              setFormData((prev) => ({
+                ...prev,
+                pgType: val,
+              }))
+            }
+          />
         </div>
         
 
-        <label className="block mt-4">PG Rules & Conditions</label>
+        <label className="block mt-4">PG Rules & Conditions , seperated by commas</label>
         <textarea
           name="rules"
           onChange={handleChange}
@@ -302,96 +565,135 @@ const RegisterPG = () => {
         />
       </div>
 
+      {/* Food availability */}
       <div className=" p-4 rounded-lg ">
         <p className="block text-[22px] text-[#5c5c5c] font-medium mb-2">Food Availability</p>
-        <textarea
-          name="foodAvailability"
-          value={formData.foodAvailability}
-          onChange={handleChange}
-          rows={3}
-          className="w-full p-2 bg-[#e8e8e8] rounded-lg"
-          placeholder="Describe the food availability..."
-        />
-        <div className="mt-3">
-          <label className="block font-medium mb-1">Upload Menu Image</label>
-          <input
-            type="file"
-            name="menuImage"
-            accept="image/*"
-            onChange={handleChange}
-            className="w-full p-2 bg-[#e8e8e8] rounded-lg"
+        
+        {/* Main checkbox for food availability */}
+        <div className="flex items-center gap-3 mb-4">
+          <Checkbox
+            checked={formData.foodAvailable}
+            onChange={(checked) => {
+              setFormData((prev) => ({
+                ...prev,
+                foodAvailable: checked,
+                // Clear food-related fields when unchecked
+                ...(checked ? {} : {
+                  foodAvailabilityDesc: "",
+                  menuImage: null,
+                  selfCooking: false,
+                  tiffin: false,
+                })
+              }))
+            }}
           />
+          <span className="text-[18px] text-[#5c5c5c] font-medium">Food Available?</span>
+        </div>
 
-          {/* Image Preview */}
-          {formData.menuImage && (
+        {/* Conditionally render food details */}
+        {formData.foodAvailable && (
+          <>
+            <textarea
+              name="foodAvailabilityDesc"
+              value={formData.foodAvailabilityDesc}
+              onChange={handleChange}
+              rows={3}
+              className="w-full p-2 bg-[#e8e8e8] rounded-lg mb-3"
+              placeholder="Describe the food availability..."
+            />
+            
             <div className="mt-3">
-              <p className="text-sm text-gray-600 mb-1">Preview:</p>
-              <img
-                src={URL.createObjectURL(formData.menuImage)}
-                alt="Menu Preview"
-                className="max-h-40 rounded-lg border"
+              <label className="block font-medium mb-1">Upload Menu Image</label>
+              <input
+                type="file"
+                name="menuImage"
+                accept="image/*"
+                onChange={handleChange}
+                className="w-full p-2 bg-[#e8e8e8] rounded-lg"
               />
+
+              {/* Image Preview */}
+              {formData.menuImage && (
+                <div className="mt-3">
+                  <p className="text-sm text-gray-600 mb-1">Preview:</p>
+                  <img
+                    src={URL.createObjectURL(formData.menuImage)}
+                    alt="Menu Preview"
+                    className="max-h-40 rounded-lg border"
+                  />
+                </div>
+              )}
             </div>
-          )}
-        </div>
-        <div className="flex gap-4 mt-3">
-          <div className="flex items-center justify-center">
-            {/* <input
-              type="checkbox"
-              name="selfCooking"
-              checked={formData.selfCooking}
-              onChange={handleChange}
-            />{" "} */}
-            <Checkbox/>
-            Self-Cooking Allowed?
-          </div>
-          <div className="flex items-center justify-center">
-            {/* <input
-              type="checkbox"
-              name="tiffin"
-              checked={formData.tiffin}
-              onChange={handleChange}
-            />{" "} */}
-            <Checkbox/>
-            Tiffin Service Available?
-          </div>
-        </div>
+            
+            <div className="flex gap-4 mt-3">
+              <div className="flex items-center justify-center">
+                <Checkbox
+                  checked={formData.selfCooking}
+                  onChange={(checked) =>
+                    setFormData((prev) => ({ ...prev, selfCooking: checked }))
+                  }
+                />
+                Self-Cooking Allowed?
+              </div>
+              <div className="flex items-center justify-center">
+                <Checkbox
+                  checked={formData.tiffin}
+                  onChange={(checked) =>
+                    setFormData((prev) => ({ ...prev, tiffin: checked }))
+                  }
+                />
+                Tiffin Service Available?
+              </div>
+            </div>
+          </>
+        )}
       </div>
 
       {/* Terms */}
       <div className="p-4 rounded-lg shadow flex flex-col gap-2">
         <div className="flex gap-4 items-center">
-          {/* <input
-            type="checkbox"
-            name="confirmInfo"
+          <Checkbox
             checked={formData.confirmInfo}
-            onChange={handleChange}
-          />{" "} */}
-          <Checkbox/>
+            onChange={(checked) =>
+              setFormData((prev) => ({ ...prev, confirmInfo: checked }))
+            }
+          />
           I confirm that the above information is true and accurate.
         </div>
         <div className="flex gap-4 items-center">
-          {/* <input
-            type="checkbox"
-            name="agreeTerms"
+          <Checkbox
             checked={formData.agreeTerms}
-            onChange={handleChange}
-          />{" "} */}
-          <Checkbox/>
+            onChange={(checked) =>
+              setFormData((prev) => ({ ...prev, agreeTerms: checked }))
+            }
+          />
           I agree to Zimer's terms & conditions and privacy policy.
         </div>
         <div className="flex gap-4 items-center">
-          {/* <input
-            type="checkbox"
-            name="allowPromo"
+          <Checkbox
             checked={formData.allowPromo}
-            onChange={handleChange}
-          />{" "} */}
-          <Checkbox/>
+            onChange={(checked) =>
+              setFormData((prev) => ({ ...prev, allowPromo: checked }))
+            }
+          />
           I allow Zimer to use my listing data for promotional purposes.{" "}
           <span className="text-gray-500">(optional)</span>
         </div>
       </div>
+
+      {/* Success Message */}
+      {success && (
+        <div className="p-3 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+          {success}
+        </div>
+      )}
+
+      {/* Error Message */}
+      {error && (
+        <div className="p-3 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+          {error}
+        </div>
+      )}
 
       {/* Submit */}
       <button

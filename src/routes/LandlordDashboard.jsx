@@ -98,6 +98,7 @@ const LandlordDashboard = ({ user, setUser , coords }) => {
                   formData={formData}
                   setFormData={setFormData}
                   coords={coords}
+                  setBar={setBar}
                 />
               </div>
               <div className="w-[15%] min-w-[250px] flex flex-col items-center sticky top-[30px]">

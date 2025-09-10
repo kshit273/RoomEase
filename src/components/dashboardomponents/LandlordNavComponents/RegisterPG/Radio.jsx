@@ -1,29 +1,45 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Radio = ({option1,option2,option3}) => {
+const Radio = ({ option1, option2, option3, value, onChange,name }) => {
   return (
     <StyledWrapper>
       <div className="radio-input">
         <label>
-          <input type="radio" id="value-1" name="value-radio" defaultValue="value-1" />
+          <input
+            name={name}
+            type="radio"
+            value={option1}
+            checked={value === option1}
+            onChange={() => onChange(option1)}
+          />
           <span>{option1}</span>
         </label>
         <label>
-          <input type="radio" id="value-2" name="value-radio" defaultValue="value-2" />
+          <input
+            name={name}
+            type="radio"
+            value={option2}
+            checked={value === option2}
+            onChange={() => onChange(option2)}
+          />
           <span>{option2}</span>
         </label>
         <label>
-          <input type="radio" id="value-3" name="value-radio" defaultValue="value-3" />
-          <span>
-        {option3}
-          </span>
+          <input
+            name={name}
+            type="radio"
+            value={option3}
+            checked={value === option3}
+            onChange={() => onChange(option3)}
+          />
+          <span>{option3}</span>
         </label>
         <span className="selection" />
       </div>
     </StyledWrapper>
   );
-}
+};
 
 const StyledWrapper = styled.div`
   .radio-input input {
@@ -86,6 +102,7 @@ const StyledWrapper = styled.div`
 
   .radio-input label:nth-child(3):has(input:checked) ~ .selection {
     transform: translateX(calc(var(--container_width) * 2/3));
-  }`;
+  }
+`;
 
 export default Radio;

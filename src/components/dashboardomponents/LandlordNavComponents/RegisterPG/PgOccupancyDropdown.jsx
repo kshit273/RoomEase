@@ -4,7 +4,7 @@ import Dropdown from '../../../Dropdown/Dropdown';
 
 
 const PgOccupancyDropdown = ({value,setItem}) => {
-  const List = ["Single","Double","Triple"];
+  const List = ["Single","Double","Triple","Quad","Other"];
  return (
     <Dropdown
       buttonText={value}
