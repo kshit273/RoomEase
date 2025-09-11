@@ -6,9 +6,13 @@ import Logout from "../components/Logout";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const LandlordDashboard = ({ user, setUser , coords }) => {
+const LandlordDashboard = ({ user, setUser, coords }) => {
   const [bar, setBar] = useState(0);
   const [showLogout, setShowLogout] = useState(false);
+  const [ownedPGsData, setOwnedPGsData] = useState([]);
+  const [loadingPGs, setLoadingPGs] = useState(false);
+  const [pgError, setPgError] = useState(null);
+  
   const [formData, setFormData] = useState({
     firstName: user?.firstName || "",
     lastName: user?.lastName || "",
@@ -19,6 +23,7 @@ const LandlordDashboard = ({ user, setUser , coords }) => {
     role: user?.role || "",
     profilePicture: user?.profilePicture || "",
     password: "",
+    ownedPGs: user?.ownedPGs || [], // Add owned PGs array
   });
 
   const landlordNavList = [
@@ -26,12 +31,13 @@ const LandlordDashboard = ({ user, setUser , coords }) => {
     "Register PG",
     "Update Profile",
     "View Legal docs",
-    "Updgrade plan",
+    "Upgrade plan",
     "Update PG info",
     "Log out",
   ];
 
   const navigate = useNavigate();
+  
   const handleLogOut = async () => {
     try {
       const res = await axios.post(
@@ -50,12 +56,15 @@ const LandlordDashboard = ({ user, setUser , coords }) => {
       console.error("Logout failed:", err.response?.data || err.message);
     }
   };
+
+  // Fetch user data including ownedPGs
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         const res = await axios.get("http://localhost:5000/auth/me", {
           withCredentials: true,
         });
+        
         setFormData((prev) => ({
           ...prev,
           firstName: res.data.firstName || "",
@@ -66,14 +75,68 @@ const LandlordDashboard = ({ user, setUser , coords }) => {
           phone: res.data.phone || "",
           role: res.data.role || "",
           profilePicture: res.data.profilePicture || "",
+          ownedPGs: res.data.ownedPGs || [],
         }));
+        
+        // Update user state with fresh data
+        if (setUser) {
+          setUser(res.data);
+        }
       } catch (error) {
         console.error("Error fetching user data:", error);
       }
     };
 
     fetchUserData();
-  }, []);
+  }, [setUser]);
+
+  // Fetch PG data for all owned PGs
+  useEffect(() => {
+    const fetchOwnedPGsData = async () => {
+      if (!formData.ownedPGs || formData.ownedPGs.length === 0) {
+        setOwnedPGsData([]);
+        return;
+      }
+
+      setLoadingPGs(true);
+      setPgError(null);
+      
+      try {
+        // Fetch data for all owned PGs in parallel
+        const pgPromises = formData.ownedPGs.map(async (pgId) => {
+          try {
+            const response = await axios.get(
+              `http://localhost:5000/pgs/${pgId}`,
+              { withCredentials: true }
+            );
+            return response.data;
+          } catch (err) {
+            console.error(`Error fetching PG ${pgId}:`, err);
+            return null; // Return null for failed fetches
+          }
+        });
+
+        const pgsData = await Promise.all(pgPromises);
+        
+        // Filter out any null results from failed fetches
+        const validPGsData = pgsData.filter(pg => pg !== null);
+        setOwnedPGsData(validPGsData);
+        
+        if (validPGsData.length < formData.ownedPGs.length) {
+          setPgError("Some PGs could not be loaded");
+        }
+      } catch (error) {
+        console.error("Error fetching owned PGs data:", error);
+        setPgError("Failed to load PG data");
+        setOwnedPGsData([]);
+      } finally {
+        setLoadingPGs(false);
+      }
+    };
+
+    fetchOwnedPGsData();
+  }, [formData.ownedPGs]);
+
   return (
     <>
       <div className="absolute top-[-20px] left-[-20px] z-1 md:w-[512px] w-[256px]  md:h-[560px] h-[280px] pointer-events-none">
@@ -99,6 +162,9 @@ const LandlordDashboard = ({ user, setUser , coords }) => {
                   setFormData={setFormData}
                   coords={coords}
                   setBar={setBar}
+                  ownedPGsData={ownedPGsData}
+                  loadingPGs={loadingPGs}
+                  pgError={pgError}
                 />
               </div>
               <div className="w-[15%] min-w-[250px] flex flex-col items-center sticky top-[30px]">

@@ -5,14 +5,41 @@ import UpdateProfile from "./TenantNavComponents/UpdateProfile/UpdateProfile";
 import UpdatePGInfo from "./LandlordNavComponents/UpdatePGInfo/UpdatePGInfo";
 import ViewLegalDocs from "./TenantNavComponents/ViewLegalDocs/ViewLegalDocs";
 
-const LandlordDashComponents = ({setBar, user,setUser, bar, formData, setFormData ,coords}) => {
+const LandlordDashComponents = ({
+  setBar, 
+  user, 
+  setUser, 
+  bar, 
+  formData, 
+  setFormData, 
+  coords,
+  ownedPGsData,
+  loadingPGs,
+  pgError
+}) => {
   let component;
+  
   switch (bar) {
     case 0:
-      component = <DashboardComp formData={formData} />;
+      component = (
+        <DashboardComp 
+          formData={formData} 
+          ownedPGsData={ownedPGsData}
+          loadingPGs={loadingPGs}
+          pgError={pgError}
+        />
+      );
       break;
     case 1:
-      component = <RegisterPG coords={coords} setBar={setBar}/>;
+      component = (
+        <RegisterPG 
+          coords={coords} 
+          setBar={setBar}
+          setUser={setUser}
+          user={user}
+          setFormData={setFormData}
+        />
+      );
       break;
     case 2:
       component = (
@@ -31,10 +58,22 @@ const LandlordDashComponents = ({setBar, user,setUser, bar, formData, setFormDat
       component = <UpgradePlan />;
       break;
     case 5:
-      component = <UpdatePGInfo />;
+      component = (
+        <UpdatePGInfo 
+          ownedPGsData={ownedPGsData}
+          loadingPGs={loadingPGs}
+        />
+      );
       break;
     default:
-      component = <DashboardComp />;
+      component = (
+        <DashboardComp 
+          formData={formData}
+          ownedPGsData={ownedPGsData}
+          loadingPGs={loadingPGs}
+          pgError={pgError}
+        />
+      );
       break;
   }
 

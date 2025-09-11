@@ -1,11 +1,11 @@
 import React from "react";
 import RoomTemp from "./RoomTemp";
 
-const PGDash = () => {
+const PGDash = ({pgData,loading,error}) => {
   return (
     <div className="w-full bg-[#d9d9d9] p-4 rounded-[20px]">
       <div className="text-[28px] font-medium text-[#5c5c5c]">
-        Rooms in Sunlight PG
+        Rooms in {pgData.pgName}
       </div>
 
       {/* Masonry Layout */}

@@ -8,7 +8,7 @@ import AreaDropDown from "./AreaDropDown";
 import { cityAreaMap } from"../../../../utils/areaCodes"
 import axios from "axios";
 
-const RegisterPG = ({setBar,coords}) => {
+const RegisterPG = ({setUser,setBar,coords}) => {
     const [formData, setFormData] = useState({
     pgName: "",
     description: "",
@@ -152,7 +152,7 @@ const RegisterPG = ({setBar,coords}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // 1️⃣ Mandatory PG fields
+    // 1️⃣ Mandatory PG fields validation
     if (
       !formData.pgName ||
       !formData.description ||
@@ -169,14 +169,14 @@ const RegisterPG = ({setBar,coords}) => {
       return;
     }
 
-    // ✅ Added: Terms validation
+    // ✅ Terms validation
     if (!formData.confirmInfo || !formData.agreeTerms) {
       setSuccess("");
       setError("Please confirm the information accuracy and agree to terms & conditions");
       return;
     }
 
-    // ✅ Added: Food availability validation
+    // ✅ Food availability validation
     if (formData.foodAvailable && !formData.foodAvailabilityDesc.trim()) {
       setSuccess("");
       setError("Please describe food availability when food is marked as available");
@@ -235,16 +235,47 @@ const RegisterPG = ({setBar,coords}) => {
 
       fd.append("address", JSON.stringify(formData.address));
       fd.append("rooms", JSON.stringify(formData.rooms));
-      console.log(fd);
 
-      // send request
-      const res = await axios.post("http://localhost:5000/pgs/", fd,{
+      // 📌 Register the PG
+      const res = await axios.post("http://localhost:5000/pgs/", fd, {
         headers: { "Content-Type": "multipart/form-data" },
+        withCredentials: true // Important for authentication
       });
-      console.log("PG registered:", res.data);
+      
+      // 📌 Update user's ownedPGs array with the new RID
+      try {
+        // Get current user data first
+        const userRes = await axios.get("http://localhost:5000/auth/me", {
+          withCredentials: true
+        });
+        
+        const currentOwnedPGs = userRes.data.ownedPGs || [];
+        
+        // Update user with new PG RID
+        const updateRes = await axios.put(
+          "http://localhost:5000/user/update",
+          {
+            ownedPGs: [...currentOwnedPGs, res.data.RID]
+          },
+          { withCredentials: true }
+        );
+        
+        
+        // Update the user state if setUser is available
+        if (setUser) {
+          setUser(updateRes.data);
+        }
+        
+      } catch (updateErr) {
+        console.error("Failed to update user's owned PGs:", updateErr);
+        // PG is registered but user update failed - you might want to handle this
+        setError("PG registered but failed to update your profile. Please contact support.");
+      }
+      
       setError("");
-      setSuccess(`Your PG has been registered : ${res.data.RID}`)
+      setSuccess(`Your PG has been registered: ${res.data.RID}`);
       setBar(0);
+      
     } catch (err) {
       console.error("Registration failed", err);
       setSuccess("");

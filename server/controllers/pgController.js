@@ -14,7 +14,7 @@ exports.getAllPGs = async (req, res) => {
 // GET PG by ID
 exports.getPGById = async (req, res) => {
   try {
-    const pg = await PG.findById(req.params.id);
+    const pg = await PG.findOne({ RID: req.params.pgId }); 
     if (!pg) return res.status(404).json({ error: "PG not found" });
     res.json(pg);
   } catch (err) {
@@ -22,6 +22,7 @@ exports.getPGById = async (req, res) => {
   }
 };
 
+// CREATE PG 
 const organizeFiles = (files) => {
   const organized = {};
   
@@ -149,7 +150,6 @@ exports.createPG = async (req, res) => {
     res.status(400).json({ error: "Failed to create PG", details: err.message });
   }
 };
-
 
 // PUT update PG
 exports.updatePG = async (req, res) => {
