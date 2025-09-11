@@ -19,15 +19,17 @@ const SignupComp = ({ onShowLogin, setUser, onSubmit }) => {
     confirm_password: "",
     role: "",
   });
-
-  const handleSubmit = (formData) => {
+  
+  const handleSubmit = async (formData) => {
     try {
-      onSubmit(formData);
-      return true;
-    } catch {
-      console.error("Error during signup submission");
+      const result = await onSubmit(formData);  // Wait for the result
+      return result;  // Pass through the result (true/false or object with user)
+    } catch (error) {
+      console.error("Error during signup submission", error);
+      return false;  // Return false on error
     }
   };
+
   return (
     <div className="bg-[#e8e8e8] h-[97vh] w-[40vw] rounded-[30px]  ml-[-40px] z-10">
       <div className="flex flex-col shadow-xl h-full">

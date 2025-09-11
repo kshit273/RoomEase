@@ -28,9 +28,12 @@ const Userlogin = ({ setUser }) => {
       });
 
       alert("Signup successful! You can login now.");
+      // Return user data if your backend provides it
+      return { user: res.data.user }; // Make sure your backend returns user data
     } catch (err) {
       console.error("Signup error:", err.response?.data || err.message);
       alert(err.response?.data?.message || "Signup failed");
+      return false;
     }
   };
 
